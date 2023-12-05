@@ -10,10 +10,10 @@ export default function UserSearchRoot() {
       filtering={{ keepSectionOrder: true }}
       throttle
     >
-      {docList.map((docsItem, k: number) => (
+      {docList.map((docsItem, key: number) => (
         <List.Section
           title={docsItem?.section?.sectionTitle}
-          key={k}>
+          key={key}>
           {docsItem?.section?.items.map((item, key: number) => (
             <List.Item
               key={key}
@@ -44,7 +44,7 @@ export default function UserSearchRoot() {
                         : null}
                       {item.category === 'Objects' && item.objectProperties && item.objectProperties.length > 0 ?
                         item.objectProperties.map(({name, type}: any) => (
-                          <List.Item.Detail.Metadata.Label title={name ? name : ''} text={type ? type : ''} />
+                          <List.Item.Detail.Metadata.Label title={name ? name : ''} text={type ? type : ''} key={name} />
                         ))
                       : null}
                       {item.category === 'Objects' && item.objectPropertiesDeprecated && item.objectPropertiesDeprecated.length > 0 ?
@@ -55,7 +55,7 @@ export default function UserSearchRoot() {
                         : null}
                       {item.category === 'Objects' && item.objectPropertiesDeprecated && item.objectPropertiesDeprecated.length > 0 ?
                         item.objectPropertiesDeprecated.map(({name, type}: any) => (
-                          <List.Item.Detail.Metadata.Label title={name ? name : ''} text={type ? type : ''} />
+                          <List.Item.Detail.Metadata.Label title={name ? name : ''} text={type ? type : ''} key={name}/>
                         ))
                       : null}
                     </List.Item.Detail.Metadata>
