@@ -1677,14 +1677,62 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/form",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'address1', type: 'string' },
+            { name: 'address2', type: 'string' },
+            { name: 'author', type: 'string' },
+            { name: 'body', type: 'string' },
+            { name: 'city', type: 'string' },
+            { name: 'company', type: 'string' },
+            { name: 'country', type: 'string' },
+            { name: 'email', type: 'string' },
+            { name: 'errors', type: 'form_errors' },
+            { name: 'first_name', type: 'string' },
+            { name: 'id', type: 'string' },
+            { name: 'last_name', type: 'string' },
+            { name: 'message', type: 'string' },
+            { name: 'name', type: 'string' },
+            { name: 'password_needed', type: 'string' },
+            { name: 'phone', type: 'string' },
+            { name: 'posted_successfully?', type: 'boolean' },
+            { name: 'province', type: 'string' },
+            { name: 'set_as_default_checkbox', type: 'string' },
+            { name: 'zip', type: 'string' },
+          ],
+          description: `Information about a form created by a form tag.
+
+    {
+      "address1": "12 Phoenix Feather Alley",
+      "address2": "1",
+      "author": null,
+      "body": null,
+      "city": "Calgary",
+      "company": null,
+      "country": "Canada",
+      "email": null,
+      "errors": null,
+      "first_name": "Cornelius",
+      "id": "new",
+      "last_name": "Potionmaker",
+      "password_needed?": false,
+      "phone": "44 131 496 0905",
+      "posted_successfully?": true,
+      "province": "Alberta",
+      "set_as_default_checkbox": "<input type='checkbox' id='address_default_address_new' name='address[default]' value='1'>",
+      "zip": "T1X 0L4"
+    }
+          `
         },
         {
           title: "form_errors",
           url: "https://shopify.dev/docs/api/liquid/objects/form_errors",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'messages', type: 'array of string' },
+            { name: 'translated_fields', type: 'array of string' },
+          ],
+          description: `The error category strings for errors from a form created by a \`form tag\`. The following table outlines the strings that can be returned and the reason that they would be: \n\n - \`author\` There were issues with required name fields. \n\n - \`body\` 	There were issues with required text content fields. \n\n - \`email\` There were issues with required email fields. \n\n - \`form\` There were general issues with the form. \n\n - \`password\` There were issues with required password fields.`
         },
         {
           title: "fulfillment",
