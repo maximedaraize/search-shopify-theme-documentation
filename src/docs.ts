@@ -313,7 +313,7 @@ export const docList: DocType[] = [
           title: "Include",
           url: "https://shopify.dev/docs/api/liquid/tags/include",
           isDeprecated: true,
-          keyword: ['tags', 'theme'],
+          keyword: ['tags', 'theme', 'deprecated'],
           category: "Tags",
           subcategory: "Theme",
           description: `Renders a snippet. Inside the snippet, you can access and alter variables that are created outside of the snippet.\n\n  \n\n _"Deprecated because the way that variables are handled reduces performance and makes code harder to both read and maintain"._ \n\n The \`include\` tag has been replaced by \`render\`.
@@ -993,196 +993,684 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/collection",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'all_products_count', type: 'number' },
+            { name: 'all_tags', type: 'array of string' },
+            { name: 'all_types', type: 'array of string' },
+            { name: 'all_vendors', type: 'array of string' },
+            { name: 'current_type', type: 'string' },
+            { name: 'current_vendor', type: 'string' },
+            { name: 'default_sort_by', type: 'string from a set of values' },
+            { name: 'description', type: 'string' },
+            { name: 'featured_image', type: 'image' },
+            { name: 'filters', type: 'array of filter' },
+            { name: 'handle', type: 'string' },
+            { name: 'id', type: 'number' },
+            { name: 'image', type: 'image' },
+            { name: 'metafields', type: 'array of metafields' },
+            { name: 'next_product', type: 'product' },
+            { name: 'previous_product', type: 'product' },
+            { name: 'products', type: 'product' },
+            { name: 'products_count', type: 'number' },
+            { name: 'published_at', type: 'string' },
+            { name: 'sort_by', type: 'string' },
+            { name: 'sort_options', type: 'array of sort option' },
+            { name: 'tags', type: 'array of string' },
+            { name: 'template_suffix', type: 'string' },
+            { name: 'title', type: 'string' },
+            { name: 'url', type: 'string' },
+          ],
+          description: `A \`collection\` in a store. 
+          
+          
+    {
+      "all_products_count": 10,
+      "all_tags": [
+        "Burning",
+        "dried",
+        "extracts",
+        "fresh",
+        "ingredients",
+        "plant",
+        "supplies"
+      ],
+      "all_types": [
+        "Animals & Pet Supplies",
+        "Baking Flavors & Extracts",
+        "Cooking & Baking Ingredients",
+        "Dried Flowers",
+        "Fruits & Vegetables",
+        "Seasonings & Spices",
+        "Water"
+      ],
+      "all_vendors": [
+        "Clover's Apothecary",
+        "Polina's Potent Potions",
+        "Ted's Apothecary Supply"
+      ],
+      "current_type": null,
+      "current_vendor": null,
+      "default_sort_by": "created-ascending",
+      "description": "Brew your own potions at home using our fresh, ethically-sourced ingredients.",
+      "featured_image": {},
+      "filters": {},
+      "handle": "ingredients",
+      "id": 266168401985,
+      "image": {},
+      "metafields": {},
+      "next_product": null,
+      "previous_product": null,
+      "products": {},
+      "products_count": 1,
+      "published_at": "2022-04-19 09:52:18 -0400",
+      "sort_by": "",
+      "sort_options": [],
+      "tags": [
+        "Burning"
+      ],
+      "template_suffix": "eight-products-per-page",
+      "title": "Ingredients",
+      "url": {}
+    }
+
+          `
         },
         {
           title: "collections",
           url: "https://shopify.dev/docs/api/liquid/objects/collections",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `All of the \`collections\` on a store.
+
+    {% for collection in collections %}
+      {{- collection.title | link_to: collection.url }}
+    {% endfor %}
+    \n
+    {% for product in collections['sale-potions'].products %}
+      {{- product.title | link_to: product.url }}
+    {% endfor %}
+          
+          `
         },
         {
           title: "color",
           url: "https://shopify.dev/docs/api/liquid/objects/color",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'alpha', type: 'number' },
+            { name: 'blue', type: 'number' },
+            { name: 'green', type: 'number' },
+            { name: 'hue', type: 'number' },
+            { name: 'lightness', type: 'number' },
+            { name: 'red', type: 'number' },
+            { name: 'rgb', type: 'string' },
+            { name: 'rgba', type: 'string' },
+            { name: 'saturation', type: 'number' },
+          ],
+          description: `A color from a \`color setting\`.
+          
+    {{ settings.colors_accent_2 }}
+          `
         },
         {
           title: "color_scheme",
           url: "https://shopify.dev/docs/api/liquid/objects/color_scheme",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'id', type: 'string' },
+            { name: 'setting', type: '-' },
+          ],
+          description: `A \`color_scheme\` from a \`color_scheme\` setting.
+          
+      { settings.card_color_scheme }}   
+          `
         },
         {
           title: "color_scheme_group",
           url: "https://shopify.dev/docs/api/liquid/objects/color_scheme_group",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `A \`color_scheme_group\` from a \`color_scheme_group setting\`.
+
+    {% for scheme in settings.color_schemes %}
+      .color-{{ scheme.id }} {
+        --color-background: {{ scheme.settings.background }};
+        --color-text: {{ scheme.settings.text }};
+      }
+    {% endfor %}     
+          
+          `
         },
         {
           title: "comment",
           url: "https://shopify.dev/docs/api/liquid/objects/comment",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'author', type: 'string' },
+            { name: 'content', type: 'string' },
+            { name: 'created_at', type: 'string' },
+            { name: 'email', type: 'string' },
+            { name: 'id', type: 'number' },
+            { name: 'status', type: 'string' },
+            { name: 'updated_at', type: 'string' },
+            { name: 'url', type: 'string' },
+          ],
+          description: `An article comment.
+          
+          
+    {
+      "author": "Cornelius",
+      "content": "Wow, this is going to save me a fortune in invisibility potion!",
+      "created_at": "2022-06-05 19:33:57 -0400",
+      "email": "cornelius.potionmaker@gmail.com",
+      "id": 129089273921,
+      "status": "published",
+      "updated_at": "2022-06-05 19:33:57 -0400",
+      "url": "/blogs/potion-notions/how-to-tell-if-you-have-run-out-of-invisibility-potion#129089273921"
+    }
+          `
         },
         {
           title: "company",
           url: "https://shopify.dev/docs/api/liquid/objects/company",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'available_locations', type: 'array of company_location' },
+            { name: 'id', type: 'number' },
+            { name: 'metafields', type: 'array of metafield' },
+            { name: 'name', type: 'string' },
+          ],
+          description: `A company that a \`customer\` is purchasing for. To learn about B2B in themes, refer to \`Support B2B customers in your theme\`.
+
+    {
+      "available_locations": [],
+      "id": 98369,
+      "metafields": {},
+      "name": "Cornelius' Custom Concoctions"
+    }
+          
+          `
         },
         {
           title: "company_address",
           url: "https://shopify.dev/docs/api/liquid/objects/company_address",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'address1', type: 'string' },
+            { name: 'address2', type: 'string' },
+            { name: 'attention', type: 'string' },
+            { name: 'city', type: 'string' },
+            { name: 'country', type: 'country' },
+            { name: 'country_code', type: 'string' },
+            { name: 'id', type: 'number' },
+            { name: 'province', type: 'string' },
+            { name: 'province_code', type: 'string' },
+            { name: 'street', type: 'string' },
+            { name: 'zip', type: 'string' },
+          ],
+          description: `The address of a company location. To learn about B2B in themes, refer to Support B2B customers in your theme.
+          
+    {
+      "address1": "99 Cauldron Lane",
+      "address2": "Unit 4B",
+      "attention": "Cornelius Potionmaker",
+      "city": "Edinburgh",
+      "country": {},
+      "country_code": "GB",
+      "id": 65,
+      "province": null,
+      "province_code": null,
+      "street": "99 Cauldron Lane, Unit 4B",
+      "zip": "EH95 1AF"
+    } 
+          
+          `
         },
         {
           title: "company_location",
           url: "https://shopify.dev/docs/api/liquid/objects/company_location",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'company', type: 'company' },
+            { name: 'current?', type: 'boolean' },
+            { name: 'id', type: 'number' },
+            { name: 'metafields', type: 'array of metafield' },
+            { name: 'name', type: 'string' },
+            { name: 'shipping_address', type: 'company_address' },
+            { name: 'tax_registration_id', type: 'number' },
+            { name: 'url_to_set_as_current', type: 'string' },
+          ],
+          description: `A location of the \`company\` that a \`customer\` is purchasing for. To learn about B2B in themes, refer to \`Support B2B customers in your theme\`.
+          
+    {
+      "company": {},
+      "current?": false,
+      "id": 98369,
+      "metafields": {},
+      "name": "99 Cauldron Lane",
+      "shipping_address": {},
+      "tax_registration_id": null,
+      "url_to_set_as_current": "https://polinas-potent-potions.myshopify.com/company_location/update?location_id=98369&return_to=/resource"
+    }
+          
+          
+          `
         },
         {
           title: "content_for_additional_checkout_buttons",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_additional_checkout_buttons",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Returns checkout buttons for any active payment providers with offsite checkouts. \n\n Use \`additional_checkout_buttons\` to check whether these payment providers exist, and \`content_for_additional_checkout_buttons\` to show the associated checkout buttons. To learn more about how to use these objects, refer to \`Accelerated checkout\`.
+          
+    {% if additional_checkout_buttons %}
+      {{ content_for_additional_checkout_buttons }}
+    {% endif %}
+          
+          `
         },
         {
           title: "content_for_header",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_header",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Dynamically returns all scripts required by Shopify. \n\n Include the \`content_for_header\` object in your \`layout files\` between the \`<head>\` and \`</head>\` HTML tags. \n\n You shouldn't try to modify or parse the content_for_header object because the contents are subject to change, which can change the behaviour of your code.`
         },
         {
           title: "content_for_index",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_index",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Dynamically returns the content of \`sections\` to be rendered on the home page. If you use a \`Liquid index template\` \`(templates/index.liquid)\`, then you must include \`{{ content_for_index }}\` in the template. This object can't be used in JSON index templates.`
         },
         {
           title: "content_for_layout",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_layout",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Dynamically returns content based on the current \`template\`. \n\n Include the \`content_for_layout\` object in your \`layout files\` between the \`<body>\` and \`</body>\` HTML tags.`
         },
         {
           title: "country",
           url: "https://shopify.dev/docs/api/liquid/objects/country",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'available_languages', type: 'array of shop_locales' },
+            { name: 'continent', type: 'string' },
+            { name: 'currency', type: 'currency' },
+            { name: 'iso_code', type: 'string' },
+            { name: 'market', type: 'market' },
+            { name: 'name', type: 'string' },
+            { name: 'popular?', type: 'boolean' },
+            { name: 'unit_system', type: 'string from a set of values' },
+          ],
+          description: `A country supported by the store's localization options. \n\n To learn how to use the \`country\` object to offer localization options in your theme, refer to \`Support multiple currencies and languages\`.
+    
+
+    {% for country in localization.available_countries -%}
+      {{ country }}
+    {%- endfor %}
+    \n
+    {
+      "available_languages": [],
+      "continent": "North America",
+      "currency": {},
+      "iso_code": "CA",
+      "market": {},
+      "name": "Canada",
+      "popular?": false,
+      "unit_system": "metric"
+    }
+          
+          `
         },
         {
           title: "country_option_tags",
           url: "https://shopify.dev/docs/api/liquid/objects/country_option_tags",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Creates an \`<option>\` tag for each country and region that's included in a shipping zone on the Shipping page of the Shopify admin. \n\n An attribute called \`data-provinces\` is set for each \`<option>\`, and contains a JSON-encoded array of the country or region's subregions. If a country doesn't have any subregions, then an empty array is set for its \`data-provinces\` attribute.
+          
+          
+    <select name="country">
+      {{ country_option_tags }}
+    </select> 
+          
+          `
         },
         {
           title: "currency",
           url: "https://shopify.dev/docs/api/liquid/objects/currency",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'iso_code', type: 'string'},
+            {name: 'symbol', type: 'string'},
+            {name: 'iso_code', type: 'string'},
+          ],
+          description: `Information about a currency, like the ISO code and symbol.
+          
+    {
+      "iso_code": "CAD",
+      "name": "Canadian Dollar",
+      "symbol": "$"
+    }
+          `
         },
         {
           title: "current_page",
           url: "https://shopify.dev/docs/api/liquid/objects/current_page",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `The current page number. \n\n The \`current_page\` object has a value of 1 for non-paginated resources.
+          
+    {{ page_title }}
+    {% unless current_page == 1 %} - Page
+      {{ current_page }}
+    {% endunless %}
+          
+          
+          `
         },
         {
           title: "current_tags",
           url: "https://shopify.dev/docs/api/liquid/objects/current_tags",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `The currently applied tags. \n\n You can add tags to articles and products. Article tags can be used to filter a blog page to show only articles with specific tags. Similarly, product tags can be used to filter a collection page to show only products with specific tags.`
         },
         {
           title: "customer",
           url: "https://shopify.dev/docs/api/liquid/objects/customer",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'accepts_marketing', type: 'boolean' },
+            { name: 'addresses', type: 'array of address' },
+            { name: 'addresses_count', type: 'number' },
+            { name: 'b2b?', type: 'boolean' },
+            { name: 'company_available_locations', type: 'array of company_location' },
+            { name: 'current_company', type: 'company' },
+            { name: 'current_location', type: 'company_location' },
+            { name: 'default_address', type: 'address' },
+            { name: 'email', type: 'string' },
+            { name: 'first_name', type: 'string' },
+            { name: 'has_account', type: 'boolean' },
+            { name: 'id', type: 'number' },
+            { name: 'last_name', type: 'string' },
+            { name: 'last_order_id', type: 'order' },
+            { name: 'name', type: 'string' },
+            { name: 'orders', type: 'array of order' },
+            { name: 'orders_count', type: 'number' },
+            { name: 'phone', type: 'string' },
+            { name: 'tags', type: 'array of string' },
+            { name: 'tax_exempt', type: 'boolean' },
+            { name: 'total_spent', type: 'number' },
+          ],
+          description: `A \`customer\` of the store. \`The customer\` object is directly accessible globally when a customer is logged in to their account. It's also defined in the following contexts: \n\n - The \`customers/order template\` \n\n - When accessing \`checkout.custome\` \n\n - When accessing \`gift_card.customer\`\n\n - When accessing \`rder.customer\` \n\n Outside of the above contexts, if the customer isn't logged into their account, the \`customer\` object returns nil.
+          
+    {% if customer %}
+      Hello, {{ customer.first_name }}!
+    {% endif %}
+          `
         },
         {
           title: "discount",
           url: "https://shopify.dev/docs/api/liquid/objects/discount",
-          keyword: ['object', 'objects'],
+          keyword: ['object', 'objects', 'deprecated'],
+          isDeprecated: true,
+          objectProperties: [
+            { name: 'amount', type: 'number' },
+            { name: 'code', type: 'string' },
+            { name: 'saving', type: 'number' },
+            { name: 'title', type: 'string' },
+            { name: 'total_amount', type: 'number' },
+            { name: 'total_savings', type: 'string' },
+            { name: 'type', type: 'string from a set of values' },
+          ],
           category: "Objects",
-          description: ``
+          description: `A discount applied to a cart, line item, or order. \n\n Deprecated because not all discount types and details are captured. The \`discount\` object has been replaced by the \`discount_allocation\` and \`discount_application\` objects.
+          
+    {
+      "amount": "40.00",
+      "code": "DIY",
+      "savings": "-40.00",
+      "title": "DIY",
+      "total_amount": "40.00",
+      "total_savings": "-40.00",
+      "type": "PercentageDiscount"
+    }
+
+          `
         },
         {
           title: "discount_allocation",
           url: "https://shopify.dev/docs/api/liquid/objects/discount_allocation",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'amount', type: 'number' },
+            { name: 'discount_application', type: 'discount_application' },
+          ],
+          description: `Information about how a discount affects an item. \n\n To learn about how to display discounts in your theme, refer to \`Discounts.\`
+          
+    {
+      "amount": "40.00",
+      "discount_application": "DiscountApplicationDrop"
+    } 
+          
+          `
         },
         {
           title: "discount_application",
           url: "https://shopify.dev/docs/api/liquid/objects/discount_application",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'target_selection', type: 'string from a set of values' },
+            { name: 'target_type', type: 'string from a set of values' },
+            { name: 'title', type: 'sstring' },
+            { name: 'total_allocated_amount', type: 'number' },
+            { name: 'type', type: 'string from a set of values' },
+            { name: 'value', type: 'number' },
+            { name: 'value_type', type: 'string from a set of values' },
+
+          ],
+          description: `Information about the intent of a discount. To learn about how to display discounts in your theme, refer to \`Discounts\`.
+          
+    {
+      "target_selection": "explicit",
+      "target_type": "line_item",
+      "title": "Bloodroot discount!",
+      "total_allocated_amount": "2.50",
+      "type": "script",
+      "value": "2.5",
+      "value_type": "fixed_amount"
+    }
+          
+          `
         },
         {
           title: "external_video",
           url: "https://shopify.dev/docs/api/liquid/objects/external_video",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'alt', type: 'string' },
+            { name: 'aspect_ratio', type: 'number' },
+            { name: 'external_id', type: 'string' },
+            { name: 'host', type: 'string from a set of values' },
+            { name: 'id', type: 'number' },
+            { name: 'media_type', type: 'string' },
+            { name: 'position', type: 'number' },
+            { name: 'preview_image', type: 'image' },
+          ],
+          description: `Information about an external video from YouTube or Vimeo.
+          
+    {
+      "alt": "Potion beats",
+      "aspect_ratio": "1.77",
+      "external_id": "vj01PAffOac",
+      "host": "youtube",
+      "id": 22015756402753,
+      "media_type": "external_video",
+      "position": 1,
+      "preview_image": {}
+    }
+          
+          `
         },
         {
           title: "filter",
           url: "https://shopify.dev/docs/api/liquid/objects/filter",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'active_values', type: 'array of filter_value' },
+            { name: 'false_value', type: 'filter_value' },
+            { name: 'inactive_values', type: 'array of filter_value' },
+            { name: 'label', type: 'string' },
+            { name: 'max_value', type: 'filter_value' },
+            { name: 'min_value', type: 'filter_value' },
+            { name: 'operator', type: 'string from a set of values' },
+            { name: 'param_name', type: 'string' },
+            { name: 'presentation', type: 'string from a set of values' },
+            { name: 'range_max', type: 'number' },
+            { name: 'true_value', type: 'filter_value' },
+            { name: 'type', type: 'string from a set values' },
+            { name: 'url_to_remove', type: 'string' },
+            { name: 'values', type: 'array of filter_value' },
+          ],
+          description: `A storefront filter. To learn about supporting filters in your theme, refer to Support storefront filtering.
+          
+    {
+      "active_values": [],
+      "inactive_values": [],
+      "label": "Strength",
+      "operator": "OR",
+      "param_name": "filter.v.option.strength",
+      "presentation": "text",
+      "type": "list",
+      "url_to_remove": "/resource?q=potion",
+      "values": []
+    }
+          `
         },
         {
           title: "filter_value",
           url: "https://shopify.dev/docs/api/liquid/objects/filter_value",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'active', type: 'boolean' },
+            { name: 'count', type: 'number' },
+            { name: 'display', type: 'filter of value_display' },
+            { name: 'label', type: 'string' },
+            { name: 'param_name', type: 'string' },
+            { name: 'url_to_add', type: 'string' },
+            { name: 'url_to_remove', type: 'string' },
+            { name: 'value', type: 'string'}
+          ],
+          description: `A specific value of a filter. To learn about supporting filters in your theme, refer to Support storefront filtering. \n\n 
+          
+    {
+      "active": false,
+      "count": 1,
+      "display": null,
+      "label": "High",
+      "param_name": "filter.v.option.strength",
+      "url_to_add": "/resource?filter.v.option.strength=High&q=potion",
+      "url_to_remove": "/resource?q=potion",
+      "value": "High"
+    } 
+          
+          
+          `
+        },
+        {
+          title: "filter_value_display",
+          url: "https://shopify.dev/docs/api/liquid/objects/filter_value_display",
+          keyword: ['object', 'objects'],
+          category: "Objects",
+          objectProperties: [
+            { name: 'type', type: 'string from a set of values' },
+            { name: 'value', type: '-' },
+          ],
+          description: `The visual representation of a filter value.`
         },
         {
           title: "focal_point",
           url: "https://shopify.dev/docs/api/liquid/objects/focal_point",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'x', type: 'number' },
+            { name: 'y', type: 'number' },
+          ],
+          description: `The focal point for an image. \n\n The focal point will remain visible when the image is cropped by the theme. Learn more about supporting focal points in your theme.
+
+    {{ images['potions-header.png'].presentation.focal_point }}
+          `
         },
         {
           title: "font",
           url: "https://shopify.dev/docs/api/liquid/objects/font",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'baseline_ratio', type: 'number' },
+            { name: 'fallback_families', type: 'string' },
+            { name: 'family', type: 'string' },
+            { name: 'style', type: 'string' },
+            { name: 'system?', type: 'boolean' },
+            { name: 'variants', type: 'array of font' },
+            { name: 'weight', type: 'number' },
+          ],
+          description: `A font from a \`font_picker setting\`. You can use the \`font\` object in Liquid assets or inside a style tag to apply font setting values to theme CSS.
+          
+    {
+      "baseline_ratio": 0.133,
+      "fallback_families": "sans-serif",
+      "family": "Assistant",
+      "style": "normal",
+      "system?": false,
+      "variants": {},
+      "weight": "400"
+    }
+  
+          `
         },
         {
           title: "forloop",
           url: "https://shopify.dev/docs/api/liquid/objects/forloop",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'first?', type: 'boolean' },
+            { name: 'index', type: 'number' },
+            { name: 'index0', type: 'number' },
+            { name: 'last?', type: 'boolean' },
+            { name: 'length', type: 'number' },
+            { name: 'parentloop', type: 'forloop' },
+            { name: 'rindex', type: 'number' },
+            { name: 'rindex0', type: 'number' },
+          ],
+          description: `Information about a parent for loop.
+          
+    {% for page in pages -%}
+      {%- if forloop.length > 0 -%}
+        {{ page.title }}{% unless forloop.last %}, {% endunless -%}
+      {%- endif -%}
+    {% endfor %}
+
+`
         },
         {
           title: "form",
