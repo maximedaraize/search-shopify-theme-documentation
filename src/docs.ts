@@ -11,14 +11,32 @@ export const docList: DocType[] = [
           keyword: ['basics'],
           category: "Basics",
           description:
-            "Objects that represent store resources, such as products, collections, articles, and blogs, have handles for identifying an individual resource. The handle is used to build the URL for the resource, or to return properties for the resource",
+            `Objects that represent store resources, such as products, collections, articles, and blogs, have handles for identifying an individual resource. The handle is used to build the URL for the resource, or to return properties for the resource \n\n Other objects like \`linklists\`, \`links\`, and \`settings\` also have handles.
+            
+    {{ product.title | handle }}
+            
+            `,
         },
         {
           title: "Operators",
           url: "https://shopify.dev/docs/api/liquid/basics#operators",
           keyword: ['basics'],
           category: "Basics",
-          description: "Liquid supports basic logical and comparison operators for use with conditional tags.",
+          description: `Liquid supports basic logical and comparison operators for use with [conditional tags](https://shopify.dev/docs/api/liquid/tags/conditional-tags). \n\n 
+
+| Operator | Function                                 |
+|----------|------------------------------------------|
+| ==       | equals                                   |
+| !=       | does not equal                           |
+| >        | greater than                             |
+| <        | less than                                |
+| >=       | greater than or equal to                 |
+| <=       | less than or equal to                    |
+| or       | Condition A or Condition B               |
+| and      | Condition A and Condition B              |
+| contains | Checks for strings in strings or arrrays |
+
+`,
         },
         {
           title: "Types",
@@ -32,14 +50,52 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/basics#truthy-and-falsy",
           keyword: ['basics'],
           category: "Basics",
-          description: 'All data types must return either `true` or `false`. Those which return `true` by default are called truthy. Those that return `false` by default are called falsy.'
+          description: `All data types must return either \`true\` or \`false\`. Those which return \`true\` by default are called truthy. Those that return \`false\` by default are called falsy.
+          
+| Value        | Truthy | Falsy |
+|--------------|--------|-------|
+| true         | ✔︎     |       |
+| false        |        | ✔︎    |
+| nil          |        | ✔︎    |
+| empty string | ✔︎     |       |
+| 0            | ✔︎     |       |
+| integer      | ✔︎     |       |
+| float        | ✔︎     |       |
+| array        | ✔︎     |       |
+| empty object | ✔︎     |       |
+
+
+    {% if settings.featured_potions_title != blank -%}
+      {{ settings.featured_potions_title }}
+    {%- else -%}
+      No value for this setting has been selected.
+    {%- endif %}
+    {% unless pages.recipes == empty -%}
+      {{ pages.recipes.content }}
+    {%- else -%}
+      No page with this handle exists.
+    {%- endunless %}
+          
+          `
         },
         {
           title: "Whitespace control",
           keyword: ['basics'],
           category: "Basics",
           url: "https://shopify.dev/docs/api/liquid/basics#whitespace-control",
-          description: "Even if it doesn't output text, any line of Liquid outputs a line in your rendered content. By including hyphens in your Liquid tag, you can strip any whitespace that your Liquid generates when rendered." + "\n\n" + "f you want to remove whitespace on only one side of the Liquid tag, then you can include the hyphen on either the opening or closing tag."
+          description: `Even if it doesn't output text, any line of Liquid outputs a line in your rendered content. By including hyphens in your Liquid tag, you can strip any whitespace that your Liquid generates when rendered. \n\n If you want to remove whitespace on only one side of the Liquid tag, then you can include the hyphen on either the opening or closing tag.
+          
+          
+    {%- if collection.products.size > 0 -%}
+    The '{{ collection.title }}' collection contains the following types of products:
+
+    {% for type in collection.all_types -%}
+      {% unless type == blank -%}
+        - {{ type }}
+      {%- endunless -%}
+    {%- endfor %}
+    {%- endif -%}
+          `
         },
       ],
     },
