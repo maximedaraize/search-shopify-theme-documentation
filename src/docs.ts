@@ -6,7 +6,7 @@ export const docList: DocType[] = [
       sectionTitle: "Basics",
       items: [
         {
-          title: "Handles",
+          title: "handles",
           url: "https://shopify.dev/docs/api/liquid/basics#handles",
           keyword: ['basics'],
           category: "Basics",
@@ -18,7 +18,7 @@ export const docList: DocType[] = [
             `,
         },
         {
-          title: "Operators",
+          title: "operators",
           url: "https://shopify.dev/docs/api/liquid/basics#operators",
           keyword: ['basics'],
           category: "Basics",
@@ -39,14 +39,14 @@ export const docList: DocType[] = [
 `,
         },
         {
-          title: "Types",
+          title: "types",
           url: "https://shopify.dev/docs/api/liquid/basics#types",
           keyword: ['basics'],
           category: "Basics",
           description: "Liquid supports the following types of data: `String`, `Number`, `Boolean`, `Nil`, `Array`, and `Empty`.",
         },
         {
-          title: "Thruty and falsy",
+          title: "thruty and falsy",
           url: "https://shopify.dev/docs/api/liquid/basics#truthy-and-falsy",
           keyword: ['basics'],
           category: "Basics",
@@ -79,7 +79,7 @@ export const docList: DocType[] = [
           `
         },
         {
-          title: "Whitespace control",
+          title: "whitespace control",
           keyword: ['basics'],
           category: "Basics",
           url: "https://shopify.dev/docs/api/liquid/basics#whitespace-control",
@@ -105,36 +105,71 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: Conditional",
       items: [
         {
-          title: "If",
+          title: "if",
           url: "https://shopify.dev/docs/api/liquid/tags/if",
           keyword: ['tags', 'conditional'],
           category: "Tags",
           subcategory: "Conditional",
-          description: "Renders an expression if a specific condition is `true`."
+          description: `Renders an expression if a specific condition is \`true\`.
+          
+    {% if condition %}
+      expression
+    {% endif %}     
+          
+          `
         },
         {
-          title: "Else",
+          title: "else",
           url: "https://shopify.dev/docs/api/liquid/tags/else",
           keyword: ['tags', 'conditional'],
           category: "Tags",
           subcategory: "Conditional",
-          description: "Allows you to specify a default expression to execute when no other condition is met. \n\n You can use the `else` tag with the following tags:  \n\n - `case`  \n\n - `if`  \n\n - `unless`"
+          description: `Allows you to specify a default expression to execute when no other condition is met. \n\n You can use the \`else\` tag with the following tags:  \n\n - \`case\`  \n\n - \`if\`  \n\n - \`unless\` \n\n
+
+        
+    \`\`\`json      
+    {% if product.available %}
+      This product is available!
+    {% else %}
+      This product is sold out!
+    {% endif %}
+    \`\`\`
+          
+          `
         },
         {
-          title: "Unless",
+          title: "unless",
           url: "https://shopify.dev/docs/api/liquid/tags/unless",
           keyword: ['tags', 'conditional'],
           category: "Tags",
           subcategory: "Conditional",
-          description: "Renders an expression unless a specific condition is `true`. \n\n Similar to the `if` tag, you can use `elsif` to add more conditions to an `unless` tag."
+          description: `Renders an expression unless a specific condition is \`true\`. \n\n Similar to the \`if\` tag, you can use \`elsif\` to add more conditions to an \`unless\` tag.
+          
+    {% unless condition %}
+      expression
+    {% endunless %}
+          
+          `
         },
         {
-          title: "Case",
+          title: "case",
           url: "https://shopify.dev/docs/api/liquid/tags/case",
           keyword: ['tags', 'conditional'],
           category: "Tags",
           subcategory: "Conditional",
-          description: "Renders a specific expression depending on the value of a specific variable."
+          description: `Renders a specific expression depending on the value of a specific variable.
+          
+    {% case product.type %}
+      {% when 'Health' %}
+        This is a health potion.
+      {% when 'Love' %}
+        This is a love potion.
+      {% else %}
+        This is a potion.
+    {% endcase %}
+          
+          
+          `
         },
       ]
     }
@@ -144,20 +179,35 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: HTML",
       items: [
         {
-          title: "Form",
+          title: "form",
           url: "https://shopify.dev/docs/api/liquid/tags/form",
           keyword: ['tags', 'html'],
           category: "Tags",
           subcategory: "HTML",
-          description: "Generates an HTML `<form>` tag, including any required `<input>` tags to submit the form to a specific endpoint. \n\n Because there are many different form types available in Shopify themes, the form tag requires a type. Depending on the form type, an additional parameter might be required, like:  \n\n - `activate_customer_password` \n\n - `cart`  \n\n - `contact` \n\n - `create_customer` \n\n - `currency`, \n\n - `new_comment`"
+          description: `Generates an HTML \`<form>\` tag, including any required \`<input>\` tags to submit the form to a specific endpoint. \n\n Because there are many different form types available in Shopify themes, the form tag requires a type. Depending on the form type, an additional parameter might be required, like:  \n\n - [activate_customer_password](https://shopify.dev/docs/api/liquid/tags/form#form-activate_customer_password) \n\n - [cart](https://shopify.dev/docs/api/liquid/tags/form#form-cart)  \n\n - [contact](https://shopify.dev/docs/api/liquid/tags/form#form-contact) \n\n - [create_customer](https://shopify.dev/docs/api/liquid/tags/form#form-create_customer) \n\n - [currency](https://shopify.dev/docs/api/liquid/tags/form#form-currency) \n\n - [customer](https://shopify.dev/docs/api/liquid/tags/form#form-customer) \n\n - [customer_address](https://shopify.dev/docs/api/liquid/tags/form#form-customer_address) \n\n - [customer_login](https://shopify.dev/docs/api/liquid/tags/form#form-customer_login) \n\n - [guest_login](https://shopify.dev/docs/api/liquid/tags/form#form-guest_login) \n\n - [localization](https://shopify.dev/docs/api/liquid/tags/form#form-localization) \n\n - [new_comment](https://shopify.dev/docs/api/liquid/tags/form#form-new_comment) \n\n - [product](https://shopify.dev/docs/api/liquid/tags/form#form-product) \n\n - [recover_customer_password](https://shopify.dev/docs/api/liquid/tags/form#form-recover_customer_password) \n\n - [reset_customer_password](https://shopify.dev/docs/api/liquid/tags/form#form-reset_customer_password) \n\n - [storefront_password](https://shopify.dev/docs/api/liquid/tags/form#form-storefront_password)
+          
+  \`\`\`json       
+    {% form 'form_type' %}
+      content
+    {% endform %}
+  \`\`\`       
+          `
         },
         {
-          title: "Style",
+          title: "style",
           url: "https://shopify.dev/docs/api/liquid/tags/style",
           keyword: ['tags', 'html'],
           category: "Tags",
           subcategory: "HTML",
-          description: "Generates an HTML `<style>` tag with an attribute of data-shopify. \n\n If you reference `color settings` inside `style` tags, then the associated CSS rules will update as the setting is changed in the theme editor, without a page refresh."
+          description: `Generates an HTML \`<style>\` tag with an attribute of data-shopify. \n\n If you reference \`color settings\` inside \`style\` tags, then the associated CSS rules will update as the setting is changed in the theme editor, without a page refresh.
+          
+    {% style %}
+      .h1 {
+        color: {{ settings.colors_accent_1 }};
+      }
+    {% endstyle %}
+          
+          `
         },
 
       ]
@@ -168,12 +218,12 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: Iteration",
       items: [
         {
-          title: "For",
+          title: "for",
           url: "https://shopify.dev/docs/api/liquid/tags/for",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Renders an expression for every item in an array. You can do a maximum of 50 iterations with a \`for\` loop. If you need to iterate over more than 50 items, then use the \`paginate tag\` to split the items over multiple pages. 
+          description: `Renders an expression for every item in an array. You can do a maximum of 50 iterations with a \`for\` loop. If you need to iterate over more than 50 items, then use the [paginate tag](https://shopify.dev/docs/api/liquid/tags/paginate) to split the items over multiple pages. 
 
     {% for product in collection.products -%}
       {{ product.title }}
@@ -182,12 +232,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Else",
+          title: "else",
           url: "https://shopify.dev/docs/api/liquid/tags/else",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Allows you to specify a default expression to execute when a for loop has zero length. 
+          description: `Allows you to specify a default expression to execute when a [for loop](https://shopify.dev/docs/api/liquid/tags/for) has zero length. 
 
     {% for variable in array %}
       first_expression
@@ -198,12 +248,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Break",
+          title: "break",
           url: "https://shopify.dev/docs/api/liquid/tags/break",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Stops a for loop from iterating. 
+          description: `Stops a [for loop](https://shopify.dev/docs/api/liquid/tags/for) from iterating. 
 
     {% for i in (1..5) -%}
       {%- if i == 4 -%}
@@ -216,12 +266,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Continue",
+          title: "continue",
           url: "https://shopify.dev/docs/api/liquid/tags/continue",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Causes a for loop to skip to the next iteration.
+          description: `Causes a [for loop](https://shopify.dev/docs/api/liquid/tags/for) to skip to the next iteration.
 
     {% for i in (1..5) -%}
       {%- if i == 4 -%}
@@ -234,12 +284,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Cycle",
+          title: "cycle",
           url: "https://shopify.dev/docs/api/liquid/tags/cycle",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Loops through a group of strings and outputs them one at a time for each iteration of a for loop. The \`cycle\` tag must be used inside a \`for\` loop.
+          description: `Loops through a group of strings and outputs them one at a time for each iteration of a [for loop](https://shopify.dev/docs/api/liquid/tags/for). The \`cycle\` tag must be used inside a \`for\` loop.
 
     {% for i in (1..4) -%}
       {% cycle 'one', 'two', 'three' %}
@@ -248,7 +298,7 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Tablerow",
+          title: "tablerow",
           url: "https://shopify.dev/docs/api/liquid/tags/tablerow",
           keyword: ['tags', 'iteration'],
           category: "Tags",
@@ -262,12 +312,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Paginate",
+          title: "paginate",
           url: "https://shopify.dev/docs/api/liquid/tags/paginate",
           keyword: ['tags', 'iteration'],
           category: "Tags",
           subcategory: "Iteration",
-          description: `Splits an array's items across multiple pages. Because \`for loops\` are limited to 50 iterations per page, you need to use the \`paginate\` tag to iterate over an array that has more than 50 items. The following arrays can be paginated: \n\n - \`all_products\` \n\n - \`article.comments\` \n\n - \`blog.articles\` \n\n - \`collections\` \n\n - \`collection.products\` \n\n - \`customer.addresses\` \n\n - \`customer.orders\` \n\n - \`pages\` \n\n - \`search.results\` \n\n - \`collection_list settings\` \n\n - \`product_list settings\` \n\n Within the \`paginate\` tag, you have access to the \`paginate object\`. You can use this object, or the \`default_pagination\` filter, to build page navigation.
+          description: `Splits an array's items across multiple pages. Because [for loops](https://shopify.dev/docs/api/liquid/tags/for) are limited to 50 iterations per page, you need to use the \`paginate\` tag to iterate over an array that has more than 50 items. The following arrays can be paginated: \n\n - [all_products](https://shopify.dev/docs/api/liquid/objects/all_products) \n\n - [article.comments](https://shopify.dev/docs/api/liquid/objects/article#article-comments) \n\n - [blog.articles](https://shopify.dev/docs/api/liquid/objects/blog#blog-articles) \n\n - [collections](https://shopify.dev/docs/api/liquid/objects/collections) \n\n - [collection.products](https://shopify.dev/docs/api/liquid/objects/collection#collection-products) \n\n - [customer.addresses](https://shopify.dev/docs/api/liquid/objects/customer#customer-addresses) \n\n - [customer.orders](https://shopify.dev/docs/api/liquid/objects/customer#customer-orders) \n\n - [pages](https://shopify.dev/docs/api/liquid/objects/pages) \n\n - [search.results](https://shopify.dev/docs/api/liquid/objects/search#search-results) \n\n - [collection_list settings](https://shopify.dev/themes/architecture/settings/input-settings#collection_list) \n\n - [product_list settings](https://shopify.dev/themes/architecture/settings/input-settings#product_list \n\n Within the \`paginate\` tag, you have access to the \`paginate object\`. You can use this object, or the \`default_pagination\` filter, to build page navigation. \n\n Within the paginate tag, you have access to the [paginate object](https://shopify.dev/docs/api/liquid/objects/paginate). You can use this object, or the [default_pagination filter](https://shopify.dev/docs/api/liquid/objects/paginate), to build page navigation.
 
     {% paginate array by page_size %}
       {% for item in array %}
@@ -286,7 +336,7 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: Syntax",
       items: [
         {
-          title: "Comment",
+          title: "comment",
           url: "https://shopify.dev/docs/api/liquid/tags/comment",
           keyword: ['tags', 'syntax'],
           category: "Tags",
@@ -300,12 +350,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Echo",
+          title: "echo",
           url: "https://shopify.dev/docs/api/liquid/tags/echo",
           keyword: ['tags', 'syntax'],
           category: "Tags",
           subcategory: "Syntax",
-          description: `Outputs an expression. Using the \`echo\` tag is the same as wrapping an expression in curly brackets (\`{{ and }}\`). However, unlike the curly bracket method, you can use the echo tag inside liquid tags. 
+          description: `Outputs an expression. Using the \`echo\` tag is the same as wrapping an expression in curly brackets (\`{{ and }}\`). However, unlike the curly bracket method, you can use the echo tag inside [liquid tags](https://shopify.dev/docs/api/liquid/tags/liquid). 
 
     {% echo product.title %}
 
@@ -316,7 +366,7 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Liquid",
+          title: "liquid",
           url: "https://shopify.dev/docs/api/liquid/tags/liquid",
           keyword: ['tags', 'syntax'],
           category: "Tags",
@@ -366,25 +416,25 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: Theme",
       items: [
         {
-          title: "Include",
+          title: "include",
           url: "https://shopify.dev/docs/api/liquid/tags/include",
           isDeprecated: true,
           keyword: ['tags', 'theme', 'deprecated'],
           category: "Tags",
           subcategory: "Theme",
-          description: `Renders a snippet. Inside the snippet, you can access and alter variables that are created outside of the snippet.\n\n  \n\n _"Deprecated because the way that variables are handled reduces performance and makes code harder to both read and maintain"._ \n\n The \`include\` tag has been replaced by \`render\`.
+          description: `Renders a [snippet](https://shopify.dev/themes/architecture#snippets). Inside the snippet, you can access and alter variables that are [created](https://shopify.dev/docs/api/liquid/tags/variable-tags) outside of the snippet.\n\n  \n\n ## ⚠️ Deprecated \n\n Deprecated because the way that variables are handled reduces performance and makes code harder to both read and maintain.\n\n The \`include\` tag has been replaced by \`render\`.
 
     {% include 'filename' %}
 
         `
         },
         {
-          title: "Javascript",
+          title: "javascript",
           url: "https://shopify.dev/docs/api/liquid/tags/javascript",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `JavaScript code included in a \`section\` file. \n\n You need to use these tags only if your section or app block is meant to be installed on multiple themes or stores. Otherwise, you should include the JavaScript that your section needs in your theme's \`assets\` directory. Each section or app block can have only one \`{% javascript %}\` tag. \n\n Liquid isn't rendered inside of \`{% javascript %}\` tags. Including Liquid code can cause syntax errors.
+          description: `JavaScript code included in a [section](https://shopify.dev/themes/architecture/sections) file. \n\n You need to use these tags only if your section or app block is meant to be installed on multiple themes or stores. Otherwise, you should include the JavaScript that your section needs in your theme's [assets](https://shopify.dev/themes/architecture#assets) directory. Each section or app block can have only one \`{% javascript %}\` tag. \n\n Liquid isn't rendered inside of \`{% javascript %}\` tags. \n\n To learn more about how section-specific JavaScript is loaded and run, refer to the documentation for [sections](https://shopify.dev/themes/architecture/sections/section-assets#javascript). \n\n ## ⚠️ Caution \n\n Including Liquid code can cause syntax errors.
 
     {% javascript %}
       javascript_code
@@ -393,12 +443,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Layout",
+          title: "layout",
           url: "https://shopify.dev/docs/api/liquid/tags/layout",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `Specify which \`layout\` to use.
+          description: `Specify which [layout](https://shopify.dev/themes/architecture/layouts) to use.
 
     {% layout 'full-width' %}
     {% layout none %}
@@ -406,24 +456,24 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Render",
+          title: "render",
           url: "https://shopify.dev/docs/api/liquid/tags/render",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `Renders a \`snippet\` or \`app\` block. \n\n Inside snippets and app blocks, you can't directly access variables that are created outside of the snippet or app block. However, you can specify variables as parameters to pass outside variables to snippets. \n\n While you can't directly access created variables, you can access global objects, as well as any objects that are directly accessible outside the snippet or app block. For example, a snippet or app block inside the \`product template\` can access the \`product object\`, and a snippet or app block inside a \`section\` can access the \`section object\`. \n\n Outside a snippet or app block, you can't access variables created inside the snippet or app block.
+          description: `Renders a [snippet](https://shopify.dev/themes/architecture#snippets) or [app block](https://shopify.dev/themes/architecture/sections/section-schema#render-app-blocks). \n\n Inside snippets and app blocks, you can't directly access variables that are [created](https://shopify.dev/docs/api/liquid/tags/variable-tags) outside of the snippet or app block. However, you can [specify variables as parameters](https://shopify.dev/docs/api/liquid/tags/render#render-passing-variables-to-a-snippet) to pass outside variables to snippets. \n\n While you can't directly access created variables, you can access global objects, as well as any objects that are directly accessible outside the snippet or app block. For example, a snippet or app block inside the [product template](https://shopify.dev/themes/architecture/templates/product) can access the [product object](https://shopify.dev/docs/api/liquid/objects/product), and a snippet or app block inside a [section](https://shopify.dev/themes/architecture/sections) can access the [section object](https://shopify.dev/docs/api/liquid/objects/section). \n\n Outside a snippet or app block, you can't access variables created inside the snippet or app block.
 
     {% render 'filename' %}
 
         `
         },
         {
-          title: "Section",
+          title: "section",
           url: "https://shopify.dev/docs/api/liquid/tags/section",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `Renders a section. \n\n Rendering a \`section\` with the section tag renders a section statically. To learn more about sections and how to use them in your theme, refer to \`Render a section\`.
+          description: `Renders a [section](https://shopify.dev/themes/architecture/sections). \n\n Rendering a \`section\` with the section tag renders a section statically. To learn more about sections and how to use them in your theme, refer to [Render a section](https://shopify.dev/themes/architecture/sections#render-a-section).
 
 
     {% section 'header' %}
@@ -431,12 +481,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Sections",
+          title: "sections",
           url: "https://shopify.dev/docs/api/liquid/tags/sections",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `Renders a section group. \n\n Use this tag to render section groups as part of the theme's \`layout\` content. Place the \`sections\` tag where you want to render it in the layout. \n\n To learn more about section groups and how to use them in your theme, refer to \`Section groups\`.
+          description: `Renders a [section group](https://shopify.dev/themes/architecture/section-groups). \n\n Use this tag to render section groups as part of the theme's [layout](https://shopify.dev/themes/architecture/layouts) content. Place the \`sections\` tag where you want to render it in the layout. \n\n To learn more about section groups and how to use them in your theme, refer to [Section groups](https://shopify.dev/themes/architecture/section-groups#usage).
 
 
     {% sections 'name' %}
@@ -444,12 +494,12 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Stylesheet",
+          title: "stylesheet",
           url: "https://shopify.dev/docs/api/liquid/tags/stylesheet",
           keyword: ['tags', 'theme'],
           category: "Tags",
           subcategory: "Theme",
-          description: `CSS styles included in a \`section\` file. \n\n You need to use these tags only if your section or app block is meant to be installed on multiple themes or stores. Otherwise, you should include the CSS styles that your section needs in your theme's \`assets\` directory. Each section or app block can have only one \`{% stylesheet %}\` tag. \n\n To learn more about how section-specific CSS is loaded and run, refer to the documentation for \`section\`s.
+          description: `CSS styles included in a [section](https://shopify.dev/themes/architecture/sections) file. \n\n You need to use these tags only if your section or app block is meant to be installed on multiple themes or stores. Otherwise, you should include the CSS styles that your section needs in your theme's [assets](https://shopify.dev/themes/architecture#assets) directory. Each section or app block can have only one \`{% stylesheet %}\` tag. \n\n To learn more about how section-specific CSS is loaded and run, refer to the documentation for \`section\`s \n\n ## ⚠️ Caution \n\n Liquid isn't rendered inside of \`{% stylesheet %}\` tags. Including Liquid code can cause syntax errors..
 
 
     {% stylesheet %}
@@ -458,8 +508,6 @@ export const docList: DocType[] = [
 
         `
         },
-        
-
       ]
     }
   },
@@ -468,12 +516,12 @@ export const docList: DocType[] = [
       sectionTitle: "Tags: Variable",
       items: [
         {
-          title: "Assign",
+          title: "assign",
           url: "https://shopify.dev/docs/api/liquid/tags/assign",
           keyword: ['tags', 'variable'],
           category: "Tags",
           subcategory: "Variable",
-          description: `Creates a new variable. \n\n You can create variables of any \`basic type\`, \`object\`, or object property.
+          description: `Creates a new variable. \n\n You can create variables of any [basic type](https://shopify.dev/docs/api/liquid/basics#types), [object](https://shopify.dev/docs/api/liquid/objects), or object property.
 
     {%- assign product_title = product.title | upcase -%}
 
@@ -482,7 +530,7 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Capture",
+          title: "capture",
           url: "https://shopify.dev/docs/api/liquid/tags/capture",
           keyword: ['tags', 'variable'],
           category: "Tags",
@@ -506,32 +554,29 @@ export const docList: DocType[] = [
         `
         },
         {
-          title: "Decrement",
+          title: "decrement",
           url: "https://shopify.dev/docs/api/liquid/tags/decrement",
           keyword: ['tags', 'variable'],
           category: "Tags",
           subcategory: "Variable",
-          description: `Creates a new variable, with a default value of -1, that's decreased by 1 with each subsequent call. \n\n Variables that are declared with \`decrement\` are unique to the \`layout\`, \`template\`, or \`section\` file that they're created in. However, the variable is shared across \`snippets\` included in the file. \n\n Similarly, variables that are created with \`decrement\` are independent from those created with \`assign\` and \`capture\`. However, decrement and \`increment\` share variables.
+          description: `Creates a new variable, with a default value of -1, that's decreased by 1 with each subsequent call. \n\n Variables that are declared with \`decrement\` are unique to the [layout](https://shopify.dev/themes/architecture/layouts), [template](https://shopify.dev/themes/architecture/templates), or [section](https://shopify.dev/themes/architecture/sections) file that they're created in. However, the variable is shared across [snippets](https://shopify.dev/themes/architecture#snippets) included in the file. \n\n Similarly, variables that are created with \`decrement\` are independent from those created with [assign](https://shopify.dev/docs/api/liquid/tags/assign) and [capture](https://shopify.dev/docs/api/liquid/tags/capture). However, decrement and [increment](https://shopify.dev/docs/api/liquid/tags/increment) share variables.
 
     {% decrement variable_name %}
 
         `
         },
         {
-          title: "Increment",
+          title: "increment",
           url: "https://shopify.dev/docs/api/liquid/tags/increment",
           keyword: ['tags', 'variable'],
           category: "Tags",
           subcategory: "Variable",
-          description: `Creates a new variable, with a default value of 0, that's increased by 1 with each subsequent call. \n\n Variables that are declared with \`increment\` are unique to the \`layout\`, \`template\`, or \`section\` file that they're created in. However, the variable is shared across \`snippets\` included in the file. \n\n Similarly, variables that are created with \`increment\` are independent from those created with \`assign\` and \`capture\`. However, \`increment\` and \`decrement\` share variables.
+          description: `Creates a new variable, with a default value of 0, that's increased by 1 with each subsequent call. \n\n VVariables that are declared with \`increment\` are unique to the [layout](https://shopify.dev/themes/architecture/layouts), [template](https://shopify.dev/themes/architecture/templates), or [section](https://shopify.dev/themes/architecture/sections) file that they're created in. However, the variable is shared across [snippets](https://shopify.dev/themes/architecture#snippets) included in the file. \n\n Similarly, variables that are created with \`increment\` are independent from those created with [assign](https://shopify.dev/docs/api/liquid/tags/assign) and [capture](https://shopify.dev/docs/api/liquid/tags/capture). However, \`increment\` and [decrement](https://shopify.dev/docs/api/liquid/tags/decrement) share variables.
 
     {% increment variable_name %}
 
         `
         },
-        
-        
-
       ]
     }
   },
