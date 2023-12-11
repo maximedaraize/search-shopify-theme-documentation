@@ -671,7 +671,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/additional_checkout_buttons",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Returns \`true\` if a store has any payment providers with offsite checkouts, such as PayPal Express Checkout. \n\n Use \`additional_checkout_buttons\` to check whether these payment providers exist, and \`content_for_additional_checkout_buttons\` to show the associated checkout buttons. To learn more about how to use these objects, refer to \`Accelerated checkout\`.
+          description: `Returns \`true\` if a store has any payment providers with offsite checkouts, such as PayPal Express Checkout. \n\n Use \`additional_checkout_buttons\` to check whether these payment providers exist, and [content_for_additional_checkout_buttons](https://shopify.dev/docs/api/liquid/objects/content_for_additional_checkout_buttons) to show the associated checkout buttons. To learn more about how to use these objects, refer to [Accelerated checkout](https://shopify.dev/themes/pricing-payments/accelerated-checkout).
           
     {% if additional_checkout_buttons %}
       {{ content_for_additional_checkout_buttons }}
@@ -746,7 +746,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/all_products",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the products on a store. \n\n The \`all_products\` object has a limit of 20 unique handles per page. If you want more than 20 products, then consider using a collection instead. \n\n You can use \`all_products\` to access a product by its \`handle\`. If the product isn't found, then \`empty\` is returned.
+          description: `All of the products on a store. \n\n The \`all_products\` object has a limit of 20 unique handles per page. If you want more than 20 products, then consider using a collection instead. \n\n You can use \`all_products\` to access a product by its [handle](https://shopify.dev/docs/api/liquid/basics#handles). If the product isn't found, then \`empty\` is returned.
           
     {{ all_products['love-potion'].title }}     
           `
@@ -756,7 +756,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/app",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `An app. This object is usually used to access app-specific information for use with \`theme app extensions\`.`
+          description: `An app. This object is usually used to access app-specific information for use with [theme app extensions](https://shopify.dev/apps/online-store/theme-app-extensions).`
         },
         {
           title: "article",
@@ -786,7 +786,7 @@ export const docList: DocType[] = [
             { name: 'url', type: 'string' },
             { name: 'user', type: 'string' },
           ],
-          description: `An article, or \`blog post\`, in a blog. \n\n
+          description: `An article, or [blog post](https://help.shopify.com/manual/online-store/blogs/writing-blogs?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), in a blog. \n\n
           
     {
       "author": "Polina Waters",
@@ -818,7 +818,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/articles",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the articles across the blogs in the store. \n\n You can use \`articles\` to access an article by its handle.
+          description: `All of the articles across the blogs in the store. \n\n You can use \`articles\` to access an article by its [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
     {% assign article = articles['potion-notions/new-potions-for-spring'] %}
     {{ article.title | link_to: article.url }}
@@ -836,7 +836,7 @@ export const docList: DocType[] = [
             { name: 'shopify_attributes', type: 'string' },
             { name: 'type', type: 'string' },
           ],
-          description: `The content and settings of a \`section block\`. \n\n Sections and blocks are reusable modules of content that make up \`templates\`. \n\n To learn more about using blocks, refer to the \`Shopify Partners blog\`.
+          description: `The content and settings of a [section block](https://shopify.dev/themes/architecture/sections/section-schema#blocks). \n\n Sections and blocks are reusable modules of content that make up [templates](https://shopify.dev/themes/architecture/templates). \n\n To learn more about using blocks, refer to the [Shopify Partners blog](https://www.shopify.com/partners/blog/theme-blocks?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
 
     {
       "id": "column1",
@@ -867,7 +867,7 @@ export const docList: DocType[] = [
             { name: 'title', type: 'string' },
             { name: 'url', type: 'string' },
           ],
-          description: `Information about a specific \`blog\` in the store.
+          description: `Information about a specific [blog](https://help.shopify.com/manual/online-store/blogs/adding-a-blog?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in the store.
 
     {
       "all_tags": [],
@@ -893,7 +893,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/blogs",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the blogs in the store. \n\n You can use \`blogs\` to access a blog by its \`handle\`.
+          description: `All of the blogs in the store. \n\n You can use \`blogs\` to access a blog by its [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
     {% for article in blogs.potion-notions.articles %}
       {{- article.title | link_to: article.url }}
@@ -916,7 +916,7 @@ export const docList: DocType[] = [
             { name: 'slogan', type: 'string' },
             { name: 'square_logo', type: 'image'}
           ],
-          description: `The \`brand assets\` for the store. 
+          description: `The [brand assets](https://help.shopify.com/manual/promoting-marketing/managing-brand-assets?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) for the store. 
 
     {
       "colors": {},
@@ -936,7 +936,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/brand_color",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The colors defined as part of a store's brand assets. To access a brand color, specify the following: \n\n - The brand color group: either \`primary\` or \`secondary\` \n\n - The color role: Whether the color is a \`background\` or \`foreground\` (contrasting) color \n\n - The 0-based index of the color within the group and role
+          description: `The colors defined as part of a store's [brand assets](https://help.shopify.com/manual/promoting-marketing/managing-brand-assets?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). To access a brand color, specify the following: \n\n - The brand color group: either \`primary\` or \`secondary\` \n\n - The color role: Whether the color is a \`background\` or \`foreground\` (contrasting) color \n\n - The 0-based index of the color within the group and role
 
     \`\`\`
     {{ shop.brand.colors.primary[0].background }}
@@ -952,7 +952,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/canonical_url",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The canonical URL for the current page. To learn about canonical URLs, refer to \`Google's documentation\`.`
+          description: `The canonical URL for the current page. To learn about canonical URLs, refer to [Google's documentation](https://support.google.com/webmasters/answer/139066?hl=en).`
         },
         {
           title: "cart",
@@ -1052,7 +1052,7 @@ export const docList: DocType[] = [
             {name: 'unfulfilled_line_items', type: 'array of line item' },
 
           ],
-          description: `A customer's checkout. \n\n \`⚠️ Deprecated\` \n\n The \`checkout\` object will be deprecated for the Information, Shipping, and Payment pages on August 13, 2024. Merchants who have customized these pages using \`checkout.liquid\` need to upgrade to Checkout Extensibility before August 13, 2024.
+          description: `A customer's checkout. \n\n ## ⚠️ Deprecated \n\n The \`checkout\` object will be deprecated for the Information, Shipping, and Payment pages on August 13, 2024. Merchants who have customized these pages using \`checkout.liquid\` need to upgrade to Checkout Extensibility before August 13, 2024.
           
     {
       "applied_gift_cards": [],
@@ -1121,7 +1121,7 @@ export const docList: DocType[] = [
             { name: 'title', type: 'string' },
             { name: 'url', type: 'string' },
           ],
-          description: `A \`collection\` in a store. 
+          description: `A [collection](https://help.shopify.com/manual/products/collections?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in a store. 
           
           
     {
@@ -1181,7 +1181,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/collections",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the \`collections\` on a store.
+          description: `All of the [collections](https://shopify.dev/docs/api/liquid/objects/collection) on a store.
 
     {% for collection in collections %}
       {{- collection.title | link_to: collection.url }}
@@ -1209,7 +1209,7 @@ export const docList: DocType[] = [
             { name: 'rgba', type: 'string' },
             { name: 'saturation', type: 'number' },
           ],
-          description: `A color from a \`color setting\`.
+          description: `A color from a [color setting](https://shopify.dev/themes/architecture/settings/input-settings#color).
           
     {{ settings.colors_accent_2 }}
           `
@@ -1223,7 +1223,7 @@ export const docList: DocType[] = [
             { name: 'id', type: 'string' },
             { name: 'setting', type: '-' },
           ],
-          description: `A \`color_scheme\` from a \`color_scheme\` setting.
+          description: `A \`color_scheme\` from a [color_scheme](https://shopify.dev/themes/architecture/settings/input-settings#color_scheme) setting.
           
       { settings.card_color_scheme }}   
           `
@@ -1233,7 +1233,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/color_scheme_group",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `A \`color_scheme_group\` from a \`color_scheme_group setting\`.
+          description: `A \`color_scheme_group\` from a [color_scheme_group setting](https://shopify.dev/themes/architecture/settings/input-settings#color_scheme_group).
 
     {% for scheme in settings.color_schemes %}
       .color-{{ scheme.id }} {
@@ -1285,7 +1285,7 @@ export const docList: DocType[] = [
             { name: 'metafields', type: 'array of metafield' },
             { name: 'name', type: 'string' },
           ],
-          description: `A company that a \`customer\` is purchasing for. To learn about B2B in themes, refer to \`Support B2B customers in your theme\`.
+          description: `A company that a [customer](https://shopify.dev/docs/api/liquid/objects/customer) is purchasing for. To learn about B2B in themes, refer to [Support B2B customers in your theme](https://shopify.dev/themes/pricing-payments/b2b).
 
     {
       "available_locations": [],
@@ -1314,7 +1314,7 @@ export const docList: DocType[] = [
             { name: 'street', type: 'string' },
             { name: 'zip', type: 'string' },
           ],
-          description: `The address of a company location. To learn about B2B in themes, refer to Support B2B customers in your theme.
+          description: `The address of a company location. To learn about B2B in themes, refer to [Support B2B customers in your theme](https://shopify.dev/themes/pricing-payments/b2b).
           
     {
       "address1": "99 Cauldron Lane",
@@ -1347,7 +1347,7 @@ export const docList: DocType[] = [
             { name: 'tax_registration_id', type: 'number' },
             { name: 'url_to_set_as_current', type: 'string' },
           ],
-          description: `A location of the \`company\` that a \`customer\` is purchasing for. To learn about B2B in themes, refer to \`Support B2B customers in your theme\`.
+          description: `A location of the [company](https://shopify.dev/docs/api/liquid/objects/company) that a [customer](https://shopify.dev/docs/api/liquid/objects/customer) is purchasing for. To learn about B2B in themes, refer to [Support B2B customers in your theme](https://shopify.dev/themes/pricing-payments/b2b).
           
     {
       "company": {},
@@ -1368,7 +1368,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_additional_checkout_buttons",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Returns checkout buttons for any active payment providers with offsite checkouts. \n\n Use \`additional_checkout_buttons\` to check whether these payment providers exist, and \`content_for_additional_checkout_buttons\` to show the associated checkout buttons. To learn more about how to use these objects, refer to \`Accelerated checkout\`.
+          description: `Returns checkout buttons for any active payment providers with offsite checkouts. \n\n Use [additional_checkout_buttons](https://shopify.dev/docs/api/liquid/objects/additional_checkout_buttons) to check whether these payment providers exist, and \`content_for_additional_checkout_buttons\` to show the associated checkout buttons. To learn more about how to use these objects, refer to [Accelerated checkout](https://shopify.dev/themes/pricing-payments/accelerated-checkout).
           
     {% if additional_checkout_buttons %}
       {{ content_for_additional_checkout_buttons }}
@@ -1381,21 +1381,21 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_header",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Dynamically returns all scripts required by Shopify. \n\n Include the \`content_for_header\` object in your \`layout files\` between the \`<head>\` and \`</head>\` HTML tags. \n\n You shouldn't try to modify or parse the content_for_header object because the contents are subject to change, which can change the behaviour of your code.`
+          description: `Dynamically returns all scripts required by Shopify. \n\n Include the \`content_for_header\` object in your [layout files](https://shopify.dev/themes/architecture/layouts) between the \`<head>\` and \`</head>\` HTML tags. \n\n You shouldn't try to modify or parse the content_for_header object because the contents are subject to change, which can change the behaviour of your code.`
         },
         {
           title: "content_for_index",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_index",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Dynamically returns the content of \`sections\` to be rendered on the home page. If you use a \`Liquid index template\` \`(templates/index.liquid)\`, then you must include \`{{ content_for_index }}\` in the template. This object can't be used in JSON index templates.`
+          description: `Dynamically returns the content of [sections](https://shopify.dev/themes/architecture/sections) to be rendered on the home page. If you use a [Liquid index template](https://shopify.dev/themes/architecture/templates/index-template) \`(templates/index.liquid)\`, then you must include \`{{ content_for_index }}\` in the template. This object can't be used in JSON index templates.`
         },
         {
           title: "content_for_layout",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_layout",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Dynamically returns content based on the current \`template\`. \n\n Include the \`content_for_layout\` object in your \`layout files\` between the \`<body>\` and \`</body>\` HTML tags.`
+          description: `Dynamically returns content based on the current [template](https://shopify.dev/themes/architecture/templates). \n\n Include the \`content_for_layout\` object in your [layout files](https://shopify.dev/themes/architecture/layouts) between the \`<body>\` and \`</body>\` HTML tags.`
         },
         {
           title: "country",
@@ -1412,7 +1412,7 @@ export const docList: DocType[] = [
             { name: 'popular?', type: 'boolean' },
             { name: 'unit_system', type: 'string from a set of values' },
           ],
-          description: `A country supported by the store's localization options. \n\n To learn how to use the \`country\` object to offer localization options in your theme, refer to \`Support multiple currencies and languages\`.
+          description: `A country supported by the store's localization options. \n\n To learn how to use the \`country\` object to offer localization options in your theme, refer to [Support multiple currencies and languages](https://shopify.dev/themes/internationalization/multiple-currencies-languages).
     
 
     {% for country in localization.available_countries -%}
@@ -1437,7 +1437,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/country_option_tags",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `Creates an \`<option>\` tag for each country and region that's included in a shipping zone on the Shipping page of the Shopify admin. \n\n An attribute called \`data-provinces\` is set for each \`<option>\`, and contains a JSON-encoded array of the country or region's subregions. If a country doesn't have any subregions, then an empty array is set for its \`data-provinces\` attribute.
+          description: `Creates an \`<option>\` tag for each country and region that's included in a shipping zone on the [Shipping](https://www.shopify.com/admin/settings/shipping?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) page of the Shopify admin. \n\n An attribute called \`data-provinces\` is set for each \`<option>\`, and contains a JSON-encoded array of the country or region's subregions. If a country doesn't have any subregions, then an empty array is set for its \`data-provinces\` attribute.
           
           
     <select name="country">
@@ -1485,7 +1485,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/current_tags",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The currently applied tags. \n\n You can add tags to articles and products. Article tags can be used to filter a blog page to show only articles with specific tags. Similarly, product tags can be used to filter a collection page to show only products with specific tags.`
+          description: `The currently applied [tags](https://help.shopify.com/en/manual/shopify-admin/productivity-tools/using-tags?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). \n\n You can add tags to articles and products. Article tags can be used to [filter a blog page](https://shopify.dev/themes/architecture/templates/blog#filter-articles-by-tag) to show only articles with specific tags. Similarly, product tags can be used to [filter a collection page](https://shopify.dev/themes/navigation-search/filtering/tag-filtering) to show only products with specific tags.`
         },
         {
           title: "customer",
@@ -1515,7 +1515,9 @@ export const docList: DocType[] = [
             { name: 'tax_exempt', type: 'boolean' },
             { name: 'total_spent', type: 'number' },
           ],
-          description: `A \`customer\` of the store. \`The customer\` object is directly accessible globally when a customer is logged in to their account. It's also defined in the following contexts: \n\n - The \`customers/order template\` \n\n - When accessing \`checkout.custome\` \n\n - When accessing \`gift_card.customer\`\n\n - When accessing \`rder.customer\` \n\n Outside of the above contexts, if the customer isn't logged into their account, the \`customer\` object returns nil.
+          description: `A [customer](https://help.shopify.com/manual/customers?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) of the store. \`The customer\` object is directly accessible globally when a customer is logged in to their account. It's also defined in the following contexts: \n\n - The [customers/account template
+](https://shopify.dev/themes/architecture/templates/customers-account) \n\n - The [customers/address template
+](https://shopify.dev/themes/architecture/templates/customers-addresses) \n\n - The [customers/order template](https://shopify.dev/themes/architecture/templates/customers-order) \n\n - When accessing [checkout.customer](https://shopify.dev/docs/api/liquid/objects/checkout#checkout-customer) \n\n - When accessing [gift_card.customer](https://shopify.dev/docs/api/liquid/objects/gift_card#gift_card-customer)\n\n - When accessing [order.customer](https://shopify.dev/docs/api/liquid/objects/order#order-customer) \n\n Outside of the above contexts, if the customer isn't logged into their account, the \`customer\` object returns nil.
           
     {% if customer %}
       Hello, {{ customer.first_name }}!
@@ -1560,7 +1562,7 @@ export const docList: DocType[] = [
             { name: 'amount', type: 'number' },
             { name: 'discount_application', type: 'discount_application' },
           ],
-          description: `Information about how a discount affects an item. \n\n To learn about how to display discounts in your theme, refer to \`Discounts.\`
+          description: `Information about how a discount affects an item. \n\n To learn about how to display discounts in your theme, refer to [Discounts](https://shopify.dev/themes/pricing-payments/discounts).
           
     {
       "amount": "40.00",
@@ -1584,7 +1586,7 @@ export const docList: DocType[] = [
             { name: 'value_type', type: 'string from a set of values' },
 
           ],
-          description: `Information about the intent of a discount. To learn about how to display discounts in your theme, refer to \`Discounts\`.
+          description: `Information about the intent of a discount. To learn about how to display discounts in your theme, refer to [Discounts](https://shopify.dev/themes/pricing-payments/discounts).
           
     {
       "target_selection": "explicit",
@@ -1649,7 +1651,7 @@ export const docList: DocType[] = [
             { name: 'url_to_remove', type: 'string' },
             { name: 'values', type: 'array of filter_value' },
           ],
-          description: `A storefront filter. To learn about supporting filters in your theme, refer to Support storefront filtering.
+          description: `A [storefront filter](https://help.shopify.com/manual/online-store/themes/customizing-themes/storefront-filters?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). To learn about supporting filters in your theme, refer to [Support storefront filtering](https://shopify.dev/themes/navigation-search/filtering/storefront-filtering/support-storefront-filtering).
           
     {
       "active_values": [],
@@ -1679,7 +1681,7 @@ export const docList: DocType[] = [
             { name: 'url_to_remove', type: 'string' },
             { name: 'value', type: 'string'}
           ],
-          description: `A specific value of a filter. To learn about supporting filters in your theme, refer to Support storefront filtering. \n\n 
+          description: `A specific value of a filter. To learn about supporting filters in your theme, refer to [Support storefront filtering](https://shopify.dev/themes/navigation-search/filtering/storefront-filtering/support-storefront-filtering). \n\n 
           
     {
       "active": false,
@@ -1715,7 +1717,7 @@ export const docList: DocType[] = [
             { name: 'x', type: 'number' },
             { name: 'y', type: 'number' },
           ],
-          description: `The focal point for an image. \n\n The focal point will remain visible when the image is cropped by the theme. Learn more about supporting focal points in your theme.
+          description: `The focal point for an image. \n\n The focal point will remain visible when the image is cropped by the theme. [Learn more about supporting focal points in your theme](https://shopify.dev/themes/architecture/settings/input-settings#image-focal-points).
 
     {{ images['potions-header.png'].presentation.focal_point }}
           `
@@ -1734,7 +1736,7 @@ export const docList: DocType[] = [
             { name: 'variants', type: 'array of font' },
             { name: 'weight', type: 'number' },
           ],
-          description: `A font from a \`font_picker setting\`. You can use the \`font\` object in Liquid assets or inside a style tag to apply font setting values to theme CSS.
+          description: `A font from a [font_picker setting](https://shopify.dev/themes/architecture/settings/input-settings#font_picker). You can use the \`font\` object in Liquid [assets](https://shopify.dev/themes/architecture#assets) or inside a [style tag](https://shopify.dev/docs/api/liquid/tags/style) to apply font setting values to theme CSS.
           
     {
       "baseline_ratio": 0.133,
@@ -1763,7 +1765,7 @@ export const docList: DocType[] = [
             { name: 'rindex', type: 'number' },
             { name: 'rindex0', type: 'number' },
           ],
-          description: `Information about a parent for loop.
+          description: `Information about a parent [for loop](https://shopify.dev/docs/api/liquid/tags/for).
           
     {% for page in pages -%}
       {%- if forloop.length > 0 -%}
@@ -1800,7 +1802,7 @@ export const docList: DocType[] = [
             { name: 'set_as_default_checkbox', type: 'string' },
             { name: 'zip', type: 'string' },
           ],
-          description: `Information about a form created by a form tag.
+          description: `Information about a form created by a [form tag](https://shopify.dev/docs/api/liquid/tags/form).
 
     {
       "address1": "12 Phoenix Feather Alley",
@@ -1833,7 +1835,7 @@ export const docList: DocType[] = [
             { name: 'messages', type: 'array of string' },
             { name: 'translated_fields', type: 'array of string' },
           ],
-          description: `The error category strings for errors from a form created by a \`form tag\`. The following table outlines the strings that can be returned and the reason that they would be: \n\n - \`author\` There were issues with required name fields. \n\n - \`body\` 	There were issues with required text content fields. \n\n - \`email\` There were issues with required email fields. \n\n - \`form\` There were general issues with the form. \n\n - \`password\` There were issues with required password fields.`
+          description: `The error category strings for errors from a form created by a [form tag](https://shopify.dev/docs/api/liquid/tags/form). The following table outlines the strings that can be returned and the reason that they would be: \n\n - \`author\` There were issues with required name fields. \n\n - \`body\` 	There were issues with required text content fields. \n\n - \`email\` There were issues with required email fields. \n\n - \`form\` There were general issues with the form. \n\n - \`password\` There were issues with required password fields.`
         },
         {
           title: "fulfillment",
@@ -1848,7 +1850,7 @@ export const docList: DocType[] = [
             { name: 'tracking_number', type: 'array of string' },
             { name: 'tracking_url', type: 'string' },
           ],
-          description: `An order fulfillment, which includes information like the line items being fulfilled and shipment tracking.
+          description: `An order [fulfillment](https://help.shopify.com/manual/orders/fulfillment?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), which includes information like the line items being fulfilled and shipment tracking.
           
     {
       "created_at": "2022-06-15 17:08:30 -0400",
@@ -1886,7 +1888,7 @@ export const docList: DocType[] = [
             { name: 'preview_image', type: 'image' },
             { name: 'url', type: 'string' },
           ],
-          description: `A file from a file_reference type \`metafield\` that is neither an image or video.
+          description: `A file from a file_reference type [metafield](https://shopify.dev/docs/api/liquid/objects/metafield) that is neither an image or video.
           
     {
       "alt": null,
@@ -1924,7 +1926,7 @@ export const docList: DocType[] = [
             {name: 'template_suffix', type: 'string'},
             {name: 'url', type: 'string'},
           ],
-          description: `A gift card that's been issued to a customer or a recipient.
+          description: `A [gift card](https://help.shopify.com/manual/products/gift-card-products?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) that's been issued to a customer or a recipient.
           
     {
       "balance": 5000,
@@ -1974,7 +1976,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/handle",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The \`handle\` of the resource associated with the current template. The handle object will return a value only when the following \`templates\` are being viewed: \n\n - article \n\n - blog \n\n - collection \n\n - page \n\n - product \n\n If none of the above templates are being viewed, then \`nil\` is returned.`
+          description: `The [handle](https://shopify.dev/docs/api/liquid/basics#handles) of the resource associated with the current template. The handle object will return a value only when the following \`templates\` are being viewed: \n\n - [article](https://shopify.dev/themes/architecture/templates/article) \n\n - [blog](https://shopify.dev/themes/architecture/templates/blog) \n\n - [collection](https://shopify.dev/themes/architecture/templates/collection) \n\n - [page](https://shopify.dev/themes/architecture/templates/page) \n\n - [product](https://shopify.dev/themes/architecture/templates/product) \n\n If none of the above templates are being viewed, then \`nil\` is returned.`
         },
         {
           title: "image",
@@ -1996,7 +1998,7 @@ export const docList: DocType[] = [
             { name: 'variants', type: 'array of variant' },
             { name: 'width', type: 'number' },
           ],
-          description: `An image, such as a product or collection image. To learn about the image formats that Shopify supports, visit the Shopify Help Center.
+          description: `An image, such as a product or collection image. To learn about the image formats that Shopify supports, visit the [Shopify Help Center](https://help.shopify.com/manual/online-store/images/theme-images?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#image-formats).
           
     {{ product.featured_image }}
 
@@ -2029,7 +2031,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/images",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the images that have been uploaded to a store. You can access images from the images array by their filename.
+          description: `All of the [images](https://shopify.dev/docs/api/liquid/objects/image) that have been [uploaded](https://help.shopify.com/manual/online-store/images/theme-images?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#upload-images) to a store. You can access images from the images array by their filename.
 
     {{ images['potions-header.png'] | image_url: width: 300 | image_tag }}
 
@@ -2158,7 +2160,7 @@ export const docList: DocType[] = [
             { name: 'type', type: 'string from a set of values' },
             { name: 'url', type: 'string' },
           ],
-          description: `A link in a menu. To learn about how to implement navigation in a theme, refer to Add navigation to your theme.
+          description: `A link in a [menu](https://help.shopify.com/manual/online-store/menus-and-links/drop-down-menus?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). To learn about how to implement navigation in a theme, refer to [Add navigation to your theme](https://shopify.dev/themes/navigation-search/navigation).
           
     {
       "active": false,
@@ -2187,7 +2189,7 @@ export const docList: DocType[] = [
             { name: 'links', type: 'array of link' },
             { name: 'title', type: 'string' },
           ],
-          description: `A menu in a store. To learn about how to implement navigation in a theme, refer to Add navigation to your theme.
+          description: `A [menu](https://help.shopify.com/manual/online-store/menus-and-links/drop-down-menus?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in a store. To learn about how to implement navigation in a theme, refer to [Add navigation to your theme](https://shopify.dev/themes/navigation-search/navigation).
 
     {
       "handle": "main-menu",
@@ -2203,7 +2205,7 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/linklists",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the menus in a store. You can access a specific menu through the linklists object using the menu's handle.
+          description: `All of the [menus](https://help.shopify.com/manual/online-store/menus-and-links/drop-down-menus?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in a store. You can access a specific menu through the linklists object using the menu's [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
     <!-- Main menu -->
     {% for link in linklists.main-menu.links -%}
@@ -2230,7 +2232,7 @@ export const docList: DocType[] = [
             { name: 'language', type: 'shop_locale' },
             { name: 'market', type: 'market' },
           ],
-          description: `Information about the countries and languages that are available on a store. The \`localization\` object can be used in a localization form. To learn about how to offer localization options in your theme, refer to Support multiple currencies and languages.
+          description: `Information about the countries and languages that are available on a store. The [localization](https://shopify.dev/docs/api/liquid/tags/form#form-localization) object can be used in a localization form. To learn about how to offer localization options in your theme, refer to [Support multiple currencies and languages](https://shopify.dev/themes/internationalization/multiple-currencies-languages).
           
     {
       "available_countries": [],
@@ -2255,7 +2257,7 @@ export const docList: DocType[] = [
             { name: 'metefields', type: '-' },
             { name: 'name', type: 'string' },
           ],
-          description: `A store location.
+          description: `A store [location](https://help.shopify.com/manual/locations?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
           
     {
       "address": {},
@@ -2277,7 +2279,7 @@ export const docList: DocType[] = [
             { name: 'handle', type: 'string' },
             { name: 'id', type: 'string' },
           ],
-          description: `A group of one or more regions of the world that a merchant is targeting for sales. \n\n To learn more about markets, refer to Shopify Markets. To make sure that visitors interact with the optimal version of a store using Shopify Markets, refer to Detect and set a visitor's optimal localization.
+          description: `A group of one or more regions of the world that a merchant is targeting for sales. \n\n To learn more about markets, refer to [Shopify Markets](https://shopify.dev/docs/apps/markets). To make sure that visitors interact with the optimal version of a store using Shopify Markets, refer to [Detect and set a visitor's optimal localization](https://shopify.dev/docs/themes/markets/localization-discovery).
           
     {
       "handle": "ca",
@@ -2321,7 +2323,7 @@ export const docList: DocType[] = [
             { name: 'position', type: 'number' },
             { name: 'preview_image', type: 'image' },
           ],
-          description: `An abstract media object that can represent the following object types: \n\n - \`image\` \n\n - \`model\` \n\n - \`video\` \n\n - \`external_video\` \n\n The media object can be returned by the product.media array or a file_reference metafield. \n\n You can use media filters to generate URLs and media displays. To learn about how to use media in your theme, refer to Support product media.
+          description: `An abstract media object that can represent the following object types: \n\n - [image](https://shopify.dev/docs/api/liquid/objects/image) \n\n - [model](https://shopify.dev/docs/api/liquid/objects/model) \n\n - [video](https://shopify.dev/docs/api/liquid/objects/video) \n\n - [external_video](https://shopify.dev/docs/api/liquid/objects/external_video) \n\n The media object can be returned by the [product.media array](https://shopify.dev/docs/api/liquid/objects/product#product-media) or a [file_reference metafield](https://shopify.dev/apps/metafields/types). \n\n You can use [media filters](https://shopify.dev/docs/api/liquid/filters/media-filters) to generate URLs and media displays. To learn about how to use media in your theme, refer to [Support product media](https://shopify.dev/themes/product-merchandising/media/support-media).
           
     {
       "alt": "Dandelion milk",
@@ -2343,7 +2345,7 @@ export const docList: DocType[] = [
             {name: 'type', type: 'string from a set of values'},
             {name: 'value', type: '-'},
           ],
-          description: `A metafield attached to a parent object. \n\n To learn about how to access a metafield on a specific object, refer to Access metafields. \n\n Metafields support multiple data types, which determine the kind of information that's stored in the metafield. You can also output the metafield content in a type-specific format using metafield filters.
+          description: `A [metafield](https://shopify.dev/apps/metafields) attached to a parent object. \n\n To learn about how to access a metafield on a specific object, refer to [Access metafields](https://shopify.dev/docs/api/liquid/objects/metafield#metafield-access-metafields). \n\n Metafields support [multiple data types](https://shopify.dev/apps/metafields/types), which determine the kind of information that's stored in the metafield. You can also output the metafield content in a type-specific format using [metafield filters](https://shopify.dev/docs/api/liquid/filters/metafield-filters).
           
           
     {{ resource.metafields.namespace.key }}
@@ -2364,7 +2366,7 @@ export const docList: DocType[] = [
           objectProperties: [
             { name: 'system', type: 'metaobject_system' },
           ],
-          description: `A metaobject entry, which includes the values for a set of fields. The set is defined by the parent metaobject_definition.
+          description: `A metaobject entry, which includes the values for a set of [fields](https://shopify.dev/docs/api/liquid/objects#metafield). The set is defined by the parent [metaobject_definition](https://shopify.dev/docs/api/liquid/objects#metaobject_definition).
           
     {{ shop.metaobjects.testimonials.homepage.title }}
     {{ shop.metaobjects['highlights']['washable'].image.value }}
@@ -2380,7 +2382,7 @@ export const docList: DocType[] = [
             { name: 'values', type: 'array of metaobject' },
             { name: 'values_count', type: 'number' },
           ],
-          description: `A \`metaobject_definition\` defines the structure of a metaobject type for the store, which consists of a merchant-defined set of field definitions. \n\n One or more corresponding metaobject objects contain values for the fields specified in the metaobject definition.
+          description: `A \`metaobject_definition\` defines the structure of a metaobject type for the store, which consists of a merchant-defined set of [field definitions](https://help.shopify.com/en/manual/metafields/metafield-definitions?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). \n\n One or more corresponding metaobject objects contain values for the fields specified in the [metaobject](https://shopify.dev/docs/api/liquid/objects#metaobject) definition.
 
     {% for testimonial in shop.metaobjects.testimonials.values %}
       {{ testimonial.author.value }}
@@ -2399,7 +2401,7 @@ export const docList: DocType[] = [
             { name: 'type', type: 'string' },
             { name: 'url', type: 'string' },
           ],
-          description: `Basic information about a metaobject. These properties are grouped under the system object to avoid collisions between system property names and user-defined metaobject fields.
+          description: `Basic information about a [metaobject](https://shopify.dev/api/liquid/objects#metaobject). These properties are grouped under the system object to avoid collisions between system property names and user-defined metaobject fields.
           
     {% for metaobject in product.metafields.custom.mixed_metaobject_list.value %}
       {% if metaobject.system.type == "testimonial" %}
@@ -2523,7 +2525,7 @@ export const docList: DocType[] = [
           objectPropertiesDeprecated: [
             { name: 'discounts', type: 'discount' },
           ],
-          description: `An order.
+          description: `An [order](https://help.shopify.com/manual/orders?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
           
     {
       "attributes": {},
@@ -2590,7 +2592,7 @@ export const docList: DocType[] = [
             { name: 'title', type: 'string' },
             { name: 'url', type: 'string' },
           ],
-          description: `A page on a store.
+          description: `A [page](page) on a store.
           
     {
       "author": null,
@@ -2611,28 +2613,28 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/page_description",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The meta description of the current page. \n\n The page_description object can be used to provide a brief description of a page for search engine listings and social media previews. \n\n To learn about where to edit the meta description for a page, visit the Shopify Help Center.`
+          description: `The meta description of the current page. \n\n The page_description object can be used to provide a brief description of a page for search engine listings and social media previews. \n\n To learn about where to edit the meta description for a page, visit the [Shopify Help Center](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#edit-the-title-and-meta-description-for-a-page).`
         },
         {
           title: "page_image",
           url: "https://shopify.dev/docs/api/liquid/objects/page_image",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `An image to be shown in search engine listings and social media previews for the current page. \n\n The resource's featured image for product and collection pages, and blog posts, is used. For all other pages, or pages where there's no featured image, the social sharing image is used.`
+          description: `An image to be shown in search engine listings and social media previews for the current page. \n\n The resource's featured image for product and collection pages, and blog posts, is used. For all other pages, or pages where there's no featured image, the s[ocial sharing image](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#setting-the-social-sharing-image-in-your-admin) is used.`
         },
         {
           title: "page_title",
           url: "https://shopify.dev/docs/api/liquid/objects/page_title",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `The page title of the current page. \n\n The page_title object can be used to specify the title of page for search engine listings and social media previews. \n\n To learn about where to edit the title for a page, visit the Shopify Help Center.`
+          description: `The page title of the current page. \n\n The page_title object can be used to specify the title of page for search engine listings and social media previews. \n\n To learn about where to edit the title for a page, visit the [Shopify Help Center](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#edit-the-title-and-meta-description-for-a-page).`
         },
         {
           title: "pages",
           url: "https://shopify.dev/docs/api/liquid/objects/pages",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: `All of the pages on a store. You can access a specific page through the pages object using the page's handle.
+          description: `All of the [pages](https://shopify.dev/docs/api/liquid/objects/page) on a store. You can access a specific page through the pages object using the page's handle.
           
     {{ pages.contact.title }}
     {{ pages['about-us'].title }}
@@ -2663,7 +2665,7 @@ export const docList: DocType[] = [
             { name: 'parts', type: 'array of part' },
             { name: 'previous', type: 'part' },
           ],
-          description: `Information about the pagination inside a set of paginate tags.`
+          description: `Information about the pagination inside a set of [paginate tags](https://shopify.dev/docs/api/liquid/tags/paginate).`
         },
         {
           title: "part",
@@ -2711,7 +2713,7 @@ export const docList: DocType[] = [
             { name: 'title', type: 'string' },
             { name: 'url', type: 'string' },
           ],
-          description: `A store policy, such as a privacy or return policy.`
+          description: `A [store policy](https://help.shopify.com/manual/checkout-settings/refund-privacy-tos?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), such as a privacy or return policy.`
         },
         {
           title: "powered_by_link",
