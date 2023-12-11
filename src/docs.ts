@@ -511,7 +511,7 @@ export const docList: DocType[] = [
       ]
     }
   },
-    {
+  {
     section: {
       sectionTitle: "Tags: Variable",
       items: [
@@ -585,83 +585,29 @@ export const docList: DocType[] = [
 
   {
     section: {
-      sectionTitle: "Filters",
+      sectionTitle: "Filters: Array",
       items: [
         {
-          title: "Array",
-          url: "https://shopify.dev/docs/api/liquid/filters/array-filters",
+          title: "assign",
+          url: "https://shopify.dev/docs/api/liquid/tags/assign",
+          keyword: ['filters', 'variable'],
+          category: "Tags",
+          subcategory: "Variable",
+          description: `Creates a new variable. \n\n You can create variables of any [basic type](https://shopify.dev/docs/api/liquid/basics#types), [object](https://shopify.dev/docs/api/liquid/objects), or object property.
+
+    {%- assign product_title = product.title | upcase -%}
+
+    {{ product_title }}
+
+        `
         },
-        {
-          title: "Cart",
-          url: "https://shopify.dev/docs/api/liquid/filters/cart-filters",
-        },
-        {
-          title: "Collection",
-          url: "https://shopify.dev/docs/api/liquid/filters/collection-filters",
-        },
-        {
-          title: "Color",
-          url: "https://shopify.dev/docs/api/liquid/filters/color-filters",
-        },
-        {
-          title: "Customer",
-          url: "https://shopify.dev/docs/api/liquid/filters/customer-filters",
-        },
-        {
-          title: "Default",
-          url: "https://shopify.dev/docs/api/liquid/filters/default-filters",
-        },
-        {
-          title: "Font",
-          url: "https://shopify.dev/docs/api/liquid/filters/font-filters",
-        },
-        {
-          title: "Format",
-          url: "https://shopify.dev/docs/api/liquid/tags/variable-tags",
-        },
-        {
-          title: "HTML",
-          url: "https://shopify.dev/docs/api/liquid/filters/html-filters",
-        },
-        {
-          title: "Hosted Files",
-          url: "https://shopify.dev/docs/api/liquid/filters/hosted_file-filters",
-        },
-        {
-          title: "Localization",
-          url: "https://shopify.dev/docs/api/liquid/filters/localization-filters",
-        },
-        {
-          title: "Math",
-          url: "https://shopify.dev/docs/api/liquid/filters/math-filters",
-        },
-        {
-          title: "Media",
-          url: "https://shopify.dev/docs/api/liquid/filters/media-filters",
-        },
-        {
-          title: "Metafield",
-          url: "https://shopify.dev/docs/api/liquid/filters/metafield-filters",
-        },
-        {
-          title: "Money",
-          url: "https://shopify.dev/docs/api/liquid/filters/money-filters",
-        },
-        {
-          title: "Payment",
-          url: "https://shopify.dev/docs/api/liquid/filters/payment-filters",
-        },
-        {
-          title: "String",
-          url: "https://shopify.dev/docs/api/liquid/filters/string-filters",
-        },
-        {
-          title: "Tag",
-          url: "https://shopify.dev/docs/api/liquid/filters/tag-filters",
-        },
+
       ],
     },
   },
+
+
+
   {
     section: {
       sectionTitle: "Objects",
@@ -669,7 +615,7 @@ export const docList: DocType[] = [
         {
           title: "additional_checkout_buttons",
           url: "https://shopify.dev/docs/api/liquid/objects/additional_checkout_buttons",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Returns \`true\` if a store has any payment providers with offsite checkouts, such as PayPal Express Checkout. \n\n Use \`additional_checkout_buttons\` to check whether these payment providers exist, and [content_for_additional_checkout_buttons](https://shopify.dev/docs/api/liquid/objects/content_for_additional_checkout_buttons) to show the associated checkout buttons. To learn more about how to use these objects, refer to [Accelerated checkout](https://shopify.dev/themes/pricing-payments/accelerated-checkout).
           
@@ -682,7 +628,7 @@ export const docList: DocType[] = [
         {
           title: "address",
           url: "https://shopify.dev/docs/api/liquid/objects/address",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: "address1", type: "string" },
@@ -731,7 +677,7 @@ export const docList: DocType[] = [
         {
           title: "all_country_option_tags",
           url: "https://shopify.dev/docs/api/liquid/objects/all_country_option_tags",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Creates an \`<option>\` tag for each country. \n\n An attribute called \`data-provinces\` is set for each \`<option>\`, and contains a JSON-encoded array of the country or region's subregions. If a country doesn't have any subregions, then an empty array is set for its \`data-provinces\` attribute. \n\n You can wrap the \`all_country_option_tags\` object in \`<select>\` tags to build a country option selector. 
 
@@ -744,7 +690,7 @@ export const docList: DocType[] = [
         {
           title: "all_products",
           url: "https://shopify.dev/docs/api/liquid/objects/all_products",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the products on a store. \n\n The \`all_products\` object has a limit of 20 unique handles per page. If you want more than 20 products, then consider using a collection instead. \n\n You can use \`all_products\` to access a product by its [handle](https://shopify.dev/docs/api/liquid/basics#handles). If the product isn't found, then \`empty\` is returned.
           
@@ -754,14 +700,14 @@ export const docList: DocType[] = [
         {
           title: "app",
           url: "https://shopify.dev/docs/api/liquid/objects/app",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `An app. This object is usually used to access app-specific information for use with [theme app extensions](https://shopify.dev/apps/online-store/theme-app-extensions).`
         },
         {
           title: "article",
           url: "https://shopify.dev/docs/api/liquid/objects/article",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'author', type: 'string' },
@@ -816,7 +762,7 @@ export const docList: DocType[] = [
         {
           title: "articles",
           url: "https://shopify.dev/docs/api/liquid/objects/articles",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the articles across the blogs in the store. \n\n You can use \`articles\` to access an article by its [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
@@ -828,7 +774,7 @@ export const docList: DocType[] = [
         {
           title: "block",
           url: "https://shopify.dev/docs/api/liquid/objects/block",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'id', type: 'string' },
@@ -849,7 +795,7 @@ export const docList: DocType[] = [
         {
           title: "blog",
           url: "https://shopify.dev/docs/api/liquid/objects/blog",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'all_tags', type: 'array of string' },
@@ -891,7 +837,7 @@ export const docList: DocType[] = [
         {
           title: "blogs",
           url: "https://shopify.dev/docs/api/liquid/objects/blogs",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the blogs in the store. \n\n You can use \`blogs\` to access a blog by its [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
@@ -904,7 +850,7 @@ export const docList: DocType[] = [
         {
           title: "brand",
           url: "https://shopify.dev/docs/api/liquid/objects/brand",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'colors', type: '' },
@@ -934,7 +880,7 @@ export const docList: DocType[] = [
         {
           title: "brand_color",
           url: "https://shopify.dev/docs/api/liquid/objects/brand_color",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The colors defined as part of a store's [brand assets](https://help.shopify.com/manual/promoting-marketing/managing-brand-assets?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). To access a brand color, specify the following: \n\n - The brand color group: either \`primary\` or \`secondary\` \n\n - The color role: Whether the color is a \`background\` or \`foreground\` (contrasting) color \n\n - The 0-based index of the color within the group and role
 
@@ -950,14 +896,14 @@ export const docList: DocType[] = [
         {
           title: "canonical_url",
           url: "https://shopify.dev/docs/api/liquid/objects/canonical_url",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The canonical URL for the current page. To learn about canonical URLs, refer to [Google's documentation](https://support.google.com/webmasters/answer/139066?hl=en).`
         },
         {
           title: "cart",
           url: "https://shopify.dev/docs/api/liquid/objects/cart",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'attributes', type: '-' },
@@ -1006,7 +952,7 @@ export const docList: DocType[] = [
         {
           title: "checkout",
           url: "https://shopify.dev/docs/api/liquid/objects/checkout",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'applied_gift_cards', type: 'array of gift_card' },
@@ -1092,7 +1038,7 @@ export const docList: DocType[] = [
         {
           title: "collection",
           url: "https://shopify.dev/docs/api/liquid/objects/collection",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'all_products_count', type: 'number' },
@@ -1179,7 +1125,7 @@ export const docList: DocType[] = [
         {
           title: "collections",
           url: "https://shopify.dev/docs/api/liquid/objects/collections",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the [collections](https://shopify.dev/docs/api/liquid/objects/collection) on a store.
 
@@ -1196,7 +1142,7 @@ export const docList: DocType[] = [
         {
           title: "color",
           url: "https://shopify.dev/docs/api/liquid/objects/color",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alpha', type: 'number' },
@@ -1217,7 +1163,7 @@ export const docList: DocType[] = [
         {
           title: "color_scheme",
           url: "https://shopify.dev/docs/api/liquid/objects/color_scheme",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'id', type: 'string' },
@@ -1231,7 +1177,7 @@ export const docList: DocType[] = [
         {
           title: "color_scheme_group",
           url: "https://shopify.dev/docs/api/liquid/objects/color_scheme_group",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `A \`color_scheme_group\` from a [color_scheme_group setting](https://shopify.dev/themes/architecture/settings/input-settings#color_scheme_group).
 
@@ -1247,7 +1193,7 @@ export const docList: DocType[] = [
         {
           title: "comment",
           url: "https://shopify.dev/docs/api/liquid/objects/comment",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'author', type: 'string' },
@@ -1277,7 +1223,7 @@ export const docList: DocType[] = [
         {
           title: "company",
           url: "https://shopify.dev/docs/api/liquid/objects/company",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'available_locations', type: 'array of company_location' },
@@ -1299,7 +1245,7 @@ export const docList: DocType[] = [
         {
           title: "company_address",
           url: "https://shopify.dev/docs/api/liquid/objects/company_address",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'address1', type: 'string' },
@@ -1335,7 +1281,7 @@ export const docList: DocType[] = [
         {
           title: "company_location",
           url: "https://shopify.dev/docs/api/liquid/objects/company_location",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'company', type: 'company' },
@@ -1366,7 +1312,7 @@ export const docList: DocType[] = [
         {
           title: "content_for_additional_checkout_buttons",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_additional_checkout_buttons",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Returns checkout buttons for any active payment providers with offsite checkouts. \n\n Use [additional_checkout_buttons](https://shopify.dev/docs/api/liquid/objects/additional_checkout_buttons) to check whether these payment providers exist, and \`content_for_additional_checkout_buttons\` to show the associated checkout buttons. To learn more about how to use these objects, refer to [Accelerated checkout](https://shopify.dev/themes/pricing-payments/accelerated-checkout).
           
@@ -1379,28 +1325,28 @@ export const docList: DocType[] = [
         {
           title: "content_for_header",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_header",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Dynamically returns all scripts required by Shopify. \n\n Include the \`content_for_header\` object in your [layout files](https://shopify.dev/themes/architecture/layouts) between the \`<head>\` and \`</head>\` HTML tags. \n\n You shouldn't try to modify or parse the content_for_header object because the contents are subject to change, which can change the behaviour of your code.`
         },
         {
           title: "content_for_index",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_index",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Dynamically returns the content of [sections](https://shopify.dev/themes/architecture/sections) to be rendered on the home page. If you use a [Liquid index template](https://shopify.dev/themes/architecture/templates/index-template) \`(templates/index.liquid)\`, then you must include \`{{ content_for_index }}\` in the template. This object can't be used in JSON index templates.`
         },
         {
           title: "content_for_layout",
           url: "https://shopify.dev/docs/api/liquid/objects/content_for_layout",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Dynamically returns content based on the current [template](https://shopify.dev/themes/architecture/templates). \n\n Include the \`content_for_layout\` object in your [layout files](https://shopify.dev/themes/architecture/layouts) between the \`<body>\` and \`</body>\` HTML tags.`
         },
         {
           title: "country",
           url: "https://shopify.dev/docs/api/liquid/objects/country",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'available_languages', type: 'array of shop_locales' },
@@ -1435,7 +1381,7 @@ export const docList: DocType[] = [
         {
           title: "country_option_tags",
           url: "https://shopify.dev/docs/api/liquid/objects/country_option_tags",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Creates an \`<option>\` tag for each country and region that's included in a shipping zone on the [Shipping](https://www.shopify.com/admin/settings/shipping?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) page of the Shopify admin. \n\n An attribute called \`data-provinces\` is set for each \`<option>\`, and contains a JSON-encoded array of the country or region's subregions. If a country doesn't have any subregions, then an empty array is set for its \`data-provinces\` attribute.
           
@@ -1449,7 +1395,7 @@ export const docList: DocType[] = [
         {
           title: "currency",
           url: "https://shopify.dev/docs/api/liquid/objects/currency",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'iso_code', type: 'string'},
@@ -1468,7 +1414,7 @@ export const docList: DocType[] = [
         {
           title: "current_page",
           url: "https://shopify.dev/docs/api/liquid/objects/current_page",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The current page number. \n\n The \`current_page\` object has a value of 1 for non-paginated resources.
           
@@ -1483,14 +1429,14 @@ export const docList: DocType[] = [
         {
           title: "current_tags",
           url: "https://shopify.dev/docs/api/liquid/objects/current_tags",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The currently applied [tags](https://help.shopify.com/en/manual/shopify-admin/productivity-tools/using-tags?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3). \n\n You can add tags to articles and products. Article tags can be used to [filter a blog page](https://shopify.dev/themes/architecture/templates/blog#filter-articles-by-tag) to show only articles with specific tags. Similarly, product tags can be used to [filter a collection page](https://shopify.dev/themes/navigation-search/filtering/tag-filtering) to show only products with specific tags.`
         },
         {
           title: "customer",
           url: "https://shopify.dev/docs/api/liquid/objects/customer",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'accepts_marketing', type: 'boolean' },
@@ -1527,7 +1473,7 @@ export const docList: DocType[] = [
         {
           title: "discount",
           url: "https://shopify.dev/docs/api/liquid/objects/discount",
-          keyword: ['object', 'objects', 'deprecated'],
+          keyword: ['objects', 'deprecated'],
           isDeprecated: true,
           objectProperties: [
             { name: 'amount', type: 'number' },
@@ -1556,7 +1502,7 @@ export const docList: DocType[] = [
         {
           title: "discount_allocation",
           url: "https://shopify.dev/docs/api/liquid/objects/discount_allocation",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'amount', type: 'number' },
@@ -1574,7 +1520,7 @@ export const docList: DocType[] = [
         {
           title: "discount_application",
           url: "https://shopify.dev/docs/api/liquid/objects/discount_application",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'target_selection', type: 'string from a set of values' },
@@ -1603,7 +1549,7 @@ export const docList: DocType[] = [
         {
           title: "external_video",
           url: "https://shopify.dev/docs/api/liquid/objects/external_video",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alt', type: 'string' },
@@ -1633,7 +1579,7 @@ export const docList: DocType[] = [
         {
           title: "filter",
           url: "https://shopify.dev/docs/api/liquid/objects/filter",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'active_values', type: 'array of filter_value' },
@@ -1669,7 +1615,7 @@ export const docList: DocType[] = [
         {
           title: "filter_value",
           url: "https://shopify.dev/docs/api/liquid/objects/filter_value",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'active', type: 'boolean' },
@@ -1700,7 +1646,7 @@ export const docList: DocType[] = [
         {
           title: "filter_value_display",
           url: "https://shopify.dev/docs/api/liquid/objects/filter_value_display",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'type', type: 'string from a set of values' },
@@ -1711,7 +1657,7 @@ export const docList: DocType[] = [
         {
           title: "focal_point",
           url: "https://shopify.dev/docs/api/liquid/objects/focal_point",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'x', type: 'number' },
@@ -1725,7 +1671,7 @@ export const docList: DocType[] = [
         {
           title: "font",
           url: "https://shopify.dev/docs/api/liquid/objects/font",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'baseline_ratio', type: 'number' },
@@ -1753,7 +1699,7 @@ export const docList: DocType[] = [
         {
           title: "forloop",
           url: "https://shopify.dev/docs/api/liquid/objects/forloop",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'first?', type: 'boolean' },
@@ -1778,7 +1724,7 @@ export const docList: DocType[] = [
         {
           title: "form",
           url: "https://shopify.dev/docs/api/liquid/objects/form",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'address1', type: 'string' },
@@ -1829,7 +1775,7 @@ export const docList: DocType[] = [
         {
           title: "form_errors",
           url: "https://shopify.dev/docs/api/liquid/objects/form_errors",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'messages', type: 'array of string' },
@@ -1840,7 +1786,7 @@ export const docList: DocType[] = [
         {
           title: "fulfillment",
           url: "https://shopify.dev/docs/api/liquid/objects/fulfillment",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'created_at', type: 'string' },
@@ -1878,7 +1824,7 @@ export const docList: DocType[] = [
         {
           title: "generic_file",
           url: "https://shopify.dev/docs/api/liquid/objects/generic_file",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alt', type: 'string' },
@@ -1904,7 +1850,7 @@ export const docList: DocType[] = [
         {
           title: "gift_card",
           url: "https://shopify.dev/docs/api/liquid/objects/gift_card",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'balance', type: 'number'},
@@ -1954,7 +1900,7 @@ export const docList: DocType[] = [
         {
           title: "group",
           url: "https://shopify.dev/docs/api/liquid/objects/group",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'rules', type: 'array of rule' },
@@ -1974,14 +1920,14 @@ export const docList: DocType[] = [
         {
           title: "handle",
           url: "https://shopify.dev/docs/api/liquid/objects/handle",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The [handle](https://shopify.dev/docs/api/liquid/basics#handles) of the resource associated with the current template. The handle object will return a value only when the following \`templates\` are being viewed: \n\n - [article](https://shopify.dev/themes/architecture/templates/article) \n\n - [blog](https://shopify.dev/themes/architecture/templates/blog) \n\n - [collection](https://shopify.dev/themes/architecture/templates/collection) \n\n - [page](https://shopify.dev/themes/architecture/templates/page) \n\n - [product](https://shopify.dev/themes/architecture/templates/product) \n\n If none of the above templates are being viewed, then \`nil\` is returned.`
         },
         {
           title: "image",
           url: "https://shopify.dev/docs/api/liquid/objects/image",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alt', type: 'string' },
@@ -2019,7 +1965,7 @@ export const docList: DocType[] = [
         {
           title: "image_presentation",
           url: "https://shopify.dev/docs/api/liquid/objects/image_presentation",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'focal_point', type: 'focal_point' },
@@ -2029,7 +1975,7 @@ export const docList: DocType[] = [
         {
           title: "images",
           url: "https://shopify.dev/docs/api/liquid/objects/images",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the [images](https://shopify.dev/docs/api/liquid/objects/image) that have been [uploaded](https://help.shopify.com/manual/online-store/images/theme-images?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#upload-images) to a store. You can access images from the images array by their filename.
 
@@ -2040,7 +1986,7 @@ export const docList: DocType[] = [
         {
           title: "line_item",
           url: "https://shopify.dev/docs/api/liquid/objects/line_item",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'discount_allocations', type: 'array of discount_allocation' },
@@ -2145,7 +2091,7 @@ export const docList: DocType[] = [
         {
           title: "link",
           url: "https://shopify.dev/docs/api/liquid/objects/link",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'active', type: 'boolean' },
@@ -2181,7 +2127,7 @@ export const docList: DocType[] = [
         {
           title: "linklist",
           url: "https://shopify.dev/docs/api/liquid/objects/linklist",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'handle', type: 'string' },
@@ -2203,7 +2149,7 @@ export const docList: DocType[] = [
         {
           title: "linklists",
           url: "https://shopify.dev/docs/api/liquid/objects/linklists",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the [menus](https://help.shopify.com/manual/online-store/menus-and-links/drop-down-menus?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in a store. You can access a specific menu through the linklists object using the menu's [handle](https://shopify.dev/docs/api/liquid/basics#handles).
           
@@ -2223,7 +2169,7 @@ export const docList: DocType[] = [
         {
           title: "localization",
           url: "https://shopify.dev/docs/api/liquid/objects/localization",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'available_countries', type: 'array of country' },
@@ -2247,7 +2193,7 @@ export const docList: DocType[] = [
         {
           title: "location",
           url: "https://shopify.dev/docs/api/liquid/objects/location",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'address', type: 'address' },
@@ -2273,7 +2219,7 @@ export const docList: DocType[] = [
         {
           title: "market",
           url: "https://shopify.dev/docs/api/liquid/objects/market",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'handle', type: 'string' },
@@ -2292,7 +2238,7 @@ export const docList: DocType[] = [
         {
           title: "measurement",
           url: "https://shopify.dev/docs/api/liquid/objects/measurement",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'type', type: 'string from a set of values' },
@@ -2314,7 +2260,7 @@ export const docList: DocType[] = [
         {
           title: "media",
           url: "https://shopify.dev/docs/api/liquid/objects/media",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alt', type: 'string' },
@@ -2338,7 +2284,7 @@ export const docList: DocType[] = [
         {
           title: "metafield",
           url: "https://shopify.dev/docs/api/liquid/objects/metafield",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'list?', type: 'boolean'},
@@ -2361,7 +2307,7 @@ export const docList: DocType[] = [
         {
           title: "metaobject",
           url: "https://shopify.dev/docs/api/liquid/objects/metaobject",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'system', type: 'metaobject_system' },
@@ -2376,7 +2322,7 @@ export const docList: DocType[] = [
         {
           title: "metaobject_definition",
           url: "https://shopify.dev/docs/api/liquid/objects/metaobject_definition",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'values', type: 'array of metaobject' },
@@ -2393,7 +2339,7 @@ export const docList: DocType[] = [
         {
           title: "metaobject_system",
           url: "https://shopify.dev/docs/api/liquid/objects/metaobject_system",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'handle', type: 'string' },
@@ -2416,7 +2362,7 @@ export const docList: DocType[] = [
         {
           title: "model",
           url: "https://shopify.dev/docs/api/liquid/objects/model",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'alt', type: 'string' },
@@ -2442,7 +2388,7 @@ export const docList: DocType[] = [
         {
           title: "model_source",
           url: "https://shopify.dev/docs/api/liquid/objects/model_source",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'format', type: 'string' },
@@ -2462,7 +2408,7 @@ export const docList: DocType[] = [
         {
           title: "money",
           url: "https://shopify.dev/docs/api/liquid/objects/money",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'currency', type: 'currency' },
@@ -2475,7 +2421,7 @@ export const docList: DocType[] = [
         {
           title: "order",
           url: "https://shopify.dev/docs/api/liquid/objects/order",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'attributes', type: '-' },
@@ -2579,7 +2525,7 @@ export const docList: DocType[] = [
         {
           title: "page",
           url: "https://shopify.dev/docs/api/liquid/objects/page",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'author', type: 'string' },
@@ -2611,28 +2557,28 @@ export const docList: DocType[] = [
         {
           title: "page_description",
           url: "https://shopify.dev/docs/api/liquid/objects/page_description",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The meta description of the current page. \n\n The page_description object can be used to provide a brief description of a page for search engine listings and social media previews. \n\n To learn about where to edit the meta description for a page, visit the [Shopify Help Center](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#edit-the-title-and-meta-description-for-a-page).`
         },
         {
           title: "page_image",
           url: "https://shopify.dev/docs/api/liquid/objects/page_image",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `An image to be shown in search engine listings and social media previews for the current page. \n\n The resource's featured image for product and collection pages, and blog posts, is used. For all other pages, or pages where there's no featured image, the s[ocial sharing image](https://help.shopify.com/manual/online-store/images/showing-social-media-thumbnail-images?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#setting-the-social-sharing-image-in-your-admin) is used.`
         },
         {
           title: "page_title",
           url: "https://shopify.dev/docs/api/liquid/objects/page_title",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `The page title of the current page. \n\n The page_title object can be used to specify the title of page for search engine listings and social media previews. \n\n To learn about where to edit the title for a page, visit the [Shopify Help Center](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3#edit-the-title-and-meta-description-for-a-page).`
         },
         {
           title: "pages",
           url: "https://shopify.dev/docs/api/liquid/objects/pages",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `All of the [pages](https://shopify.dev/docs/api/liquid/objects/page) on a store. You can access a specific page through the pages object using the page's handle.
           
@@ -2652,7 +2598,7 @@ export const docList: DocType[] = [
         {
           title: "paginate",
           url: "https://shopify.dev/docs/api/liquid/objects/paginate",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'current_offset', type: 'number' },
@@ -2670,7 +2616,7 @@ export const docList: DocType[] = [
         {
           title: "part",
           url: "https://shopify.dev/docs/api/liquid/objects/part",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'is_link', type: 'boolean' },
@@ -2694,7 +2640,7 @@ export const docList: DocType[] = [
         {
           title: "pending_payment_instruction_input",
           url: "https://shopify.dev/docs/api/liquid/objects/pending_payment_instruction_input",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'header', type: 'link' },
@@ -2705,7 +2651,7 @@ export const docList: DocType[] = [
         {
           title: "policy",
           url: "https://shopify.dev/docs/api/liquid/objects/policy",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             { name: 'body', type: 'string' },
@@ -2718,7 +2664,7 @@ export const docList: DocType[] = [
         {
           title: "powered_by_link",
           url: "https://shopify.dev/docs/api/liquid/objects/powered_by_link",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Creates an HTML link element that links to a localied version of \`shopify.com\`, based on the locale of the store.
           
@@ -2728,7 +2674,7 @@ export const docList: DocType[] = [
         {
           title: "predictive_search",
           url: "https://shopify.dev/docs/api/liquid/objects/predictive_search",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'performed', type: 'boolean' },
@@ -2741,7 +2687,7 @@ export const docList: DocType[] = [
         {
           title: "predictive_search_resources",
           url: "https://shopify.dev/docs/api/liquid/objects/predictive_search_resources",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'articles', type: 'array of article' },
@@ -2763,7 +2709,7 @@ export const docList: DocType[] = [
         {
           title: "product",
           url: "https://shopify.dev/docs/api/liquid/objects/product",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'available', type: 'boolean' },
@@ -2868,7 +2814,7 @@ export const docList: DocType[] = [
         {
           title: "product_option",
           url: "https://shopify.dev/docs/api/liquid/objects/product_option",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'name', type: 'string' },
@@ -2894,7 +2840,7 @@ export const docList: DocType[] = [
         {
           title: "quantity_price_break",
           url: "https://shopify.dev/docs/api/liquid/objects/quantity_price_break",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'minimum_quantity', type: 'number' },
@@ -2912,7 +2858,7 @@ export const docList: DocType[] = [
         {
           title: "quantity_rule",
           url: "https://shopify.dev/docs/api/liquid/objects/quantity_rule",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'increment', type: 'number' },
@@ -2928,7 +2874,7 @@ export const docList: DocType[] = [
         {
           title: "rating",
           url: "https://shopify.dev/docs/api/liquid/objects/rating",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'rating', type: 'number' },
@@ -2948,7 +2894,7 @@ export const docList: DocType[] = [
         {
           title: "recipient",
           url: "https://shopify.dev/docs/api/liquid/objects/recipient",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'email', type: 'string' },
@@ -2968,7 +2914,7 @@ export const docList: DocType[] = [
         {
           title: "recommendations",
           url: "https://shopify.dev/docs/api/liquid/objects/recommendations",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'intent', type: 'string' },
@@ -2990,7 +2936,7 @@ export const docList: DocType[] = [
         {
           title: "request",
           url: "https://shopify.dev/docs/api/liquid/objects/request",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'design_mode', type: 'boolean' },
@@ -3018,7 +2964,7 @@ export const docList: DocType[] = [
         {
           title: "robots",
           url: "https://shopify.dev/docs/api/liquid/objects/robots",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'default_groups', type: 'array of group' },
@@ -3034,7 +2980,7 @@ export const docList: DocType[] = [
         {
           title: "routes",
           url: "https://shopify.dev/docs/api/liquid/objects/routes",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'account_addresses_url', type: 'string' },
@@ -3082,7 +3028,7 @@ export const docList: DocType[] = [
         {
           title: "rule",
           url: "https://shopify.dev/docs/api/liquid/objects/rule",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'directive', type: 'string' },
@@ -3101,7 +3047,7 @@ export const docList: DocType[] = [
         {
           title: "script",
           url: "https://shopify.dev/docs/api/liquid/objects/script",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'id', type: 'number' },
@@ -3119,7 +3065,7 @@ export const docList: DocType[] = [
         {
           title: "scripts",
           url: "https://shopify.dev/docs/api/liquid/objects/scripts",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'cart_calculate_line_items', type: 'script' },
@@ -3135,7 +3081,7 @@ export const docList: DocType[] = [
         {
           title: "search",
           url: "https://shopify.dev/docs/api/liquid/objects/search",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'default_sort_by', type: 'string' },
@@ -3172,7 +3118,7 @@ export const docList: DocType[] = [
         {
           title: "section",
           url: "https://shopify.dev/docs/api/liquid/objects/section",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'blocks', type: 'array of block' },
@@ -3195,7 +3141,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'checkout_charge', type: 'selling_plan_checkout_charge' },
@@ -3228,7 +3174,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_allocation",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_allocation",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'checkout_charge_amount', type: 'number' },
@@ -3260,7 +3206,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_allocation_price_adjustment",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_allocation_price_adjustment",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'position', type: 'number' },
@@ -3278,7 +3224,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_checkout_charge",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_checkout_charge",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'value', type: 'number' },
@@ -3296,7 +3242,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_group",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_group",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'app_id', type: 'string' },
@@ -3323,7 +3269,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_group_option",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_group_option",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'name', type: 'string' },
@@ -3348,7 +3294,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_option",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_option",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'name', type: 'string' },
@@ -3367,7 +3313,7 @@ export const docList: DocType[] = [
         {
           title: "selling_plan_price_adjustment",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_price_adjustment",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'order_count', type: 'number' },
@@ -3390,7 +3336,7 @@ export const docList: DocType[] = [
         {
           title: "settings",
           url: "https://shopify.dev/docs/api/liquid/objects/settings",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           description: `Allows you to access all of the theme's settings from the [settings_schema.json](https://shopify.dev/themes/architecture/config/settings-schema-json) file.
           
@@ -3403,7 +3349,7 @@ export const docList: DocType[] = [
         {
           title: "shipping_method",
           url: "https://shopify.dev/docs/api/liquid/objects/shipping_method",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'discount_allocations', type: 'array of discount_allocation' },
@@ -3430,7 +3376,7 @@ export const docList: DocType[] = [
         {
           title: "shop",
           url: "https://shopify.dev/docs/api/liquid/objects/shop",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'accepts_gift_cards', type: 'boolean' },
@@ -3548,7 +3494,7 @@ export const docList: DocType[] = [
         {
           title: "shop_locale",
           url: "https://shopify.dev/docs/api/liquid/objects/shop_locale",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'endonym_name', type: 'string' },
@@ -3572,7 +3518,7 @@ export const docList: DocType[] = [
         {
           title: "sitemap",
           url: "https://shopify.dev/docs/api/liquid/objects/sitemap",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'directive', type: 'string' },
@@ -3589,7 +3535,7 @@ export const docList: DocType[] = [
         {
           title: "sort_option",
           url: "https://shopify.dev/docs/api/liquid/objects/sort_option",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'name', type: 'string' },
@@ -3607,7 +3553,7 @@ export const docList: DocType[] = [
         {
           title: "store_availability",
           url: "https://shopify.dev/docs/api/liquid/objects/store_availability",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'available', type: 'boolean' },
@@ -3630,7 +3576,7 @@ export const docList: DocType[] = [
         {
           title: "tablerowloop",
           url: "https://shopify.dev/docs/api/liquid/objects/tablerowloop",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'col', type: 'number' },
@@ -3669,7 +3615,7 @@ export const docList: DocType[] = [
         {
           title: "tax_line",
           url: "https://shopify.dev/docs/api/liquid/objects/tax_line",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'price', type: 'number' },
@@ -3691,7 +3637,7 @@ export const docList: DocType[] = [
         {
           title: "template",
           url: "https://shopify.dev/docs/api/liquid/objects/template",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'directory', type: 'string' },
@@ -3710,7 +3656,7 @@ export const docList: DocType[] = [
         {
           title: "theme",
           url: "https://shopify.dev/docs/api/liquid/objects/theme",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           isDeprecated: true,
           objectProperties: [
@@ -3730,7 +3676,7 @@ export const docList: DocType[] = [
         {
           title: "transaction",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'amount', type: 'number' },
@@ -3776,7 +3722,7 @@ export const docList: DocType[] = [
         {
           title: "transaction_payment_details",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction_payment_details",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'credit_card_company', type: 'string' },
@@ -3796,7 +3742,7 @@ export const docList: DocType[] = [
         {
           title: "unit_price_measurement",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction_payment_details",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'measured_type', type: 'string from a set of values' },
@@ -3821,7 +3767,7 @@ export const docList: DocType[] = [
         {
           title: "user",
           url: "https://shopify.dev/docs/api/liquid/objects/user",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'account_owner', type: 'boolean' },
@@ -3851,7 +3797,7 @@ export const docList: DocType[] = [
         {
           title: "user_agent",
           url: "https://shopify.dev/docs/api/liquid/objects/user_agent",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'directive', type: 'string' },
@@ -3869,7 +3815,7 @@ export const docList: DocType[] = [
         {
           title: "variant",
           url: "https://shopify.dev/docs/api/liquid/objects/variant",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'available', type: 'boolean' },
@@ -3961,7 +3907,7 @@ export const docList: DocType[] = [
         {
           title: "video",
           url: "https://shopify.dev/docs/api/liquid/objects/video",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'alt', type: 'string' },
@@ -3992,7 +3938,7 @@ export const docList: DocType[] = [
         {
           title: "video_source",
           url: "https://shopify.dev/docs/api/liquid/objects/video",
-          keyword: ['object', 'objects'],
+          keyword: ['objects'],
           category: "Objects",
           objectProperties: [
             {name: 'format', type: 'string' },
