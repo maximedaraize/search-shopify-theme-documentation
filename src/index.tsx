@@ -28,7 +28,7 @@ export default function UserSearchRoot() {
                     <List.Item.Detail.Metadata>
                       {item.category ?
                         <List.Item.Detail.Metadata.TagList title="Category">
-                          <List.Item.Detail.Metadata.TagList.Item text={item.category} color={item.category === 'Basics' ? Color.Blue : item.category === 'Tags' ? Color.Orange : item.category === 'Filters' ? Color.Green : item.category === 'Objects' ? Color.Magenta : null} />
+                          <List.Item.Detail.Metadata.TagList.Item text={item.category} color={item.category === 'Basics' ? Color.Blue : item.category === 'Tags' ? Color.Orange : item.category === 'Filters' ? Color.Red : item.category === 'Objects' ? Color.Magenta : null} />
                         </List.Item.Detail.Metadata.TagList>
                         : null }
                       {item.subcategory ?
@@ -40,7 +40,10 @@ export default function UserSearchRoot() {
                         <List.Item.Detail.Metadata.Separator/>
                         : null}
                       {item.category === 'Objects' && item.objectProperties && item.objectProperties.length > 0 ?
-                        <List.Item.Detail.Metadata.Label title="Properties" />
+                        // <List.Item.Detail.Metadata.Label title="Properties" />
+                        <List.Item.Detail.Metadata.TagList title="Properties">
+                          <List.Item.Detail.Metadata.TagList.Item text="Supported" color={Color.Green}/>
+                        </List.Item.Detail.Metadata.TagList>
                         : null}
                       {item.category === 'Objects' && item.objectProperties && item.objectProperties.length > 0 ?
                         item.objectProperties.map(({name, type}: any) => (
@@ -51,7 +54,10 @@ export default function UserSearchRoot() {
                         <List.Item.Detail.Metadata.Separator/>
                         : null}
                       {item.category === 'Objects' && item.objectPropertiesDeprecated && item.objectPropertiesDeprecated.length > 0 ?
-                        <List.Item.Detail.Metadata.Label title="Deprecated Properties" />
+                        // <List.Item.Detail.Metadata.Label title="Properties" />
+                        <List.Item.Detail.Metadata.TagList title="Properties">
+                          <List.Item.Detail.Metadata.TagList.Item text="Deprecated" color={Color.Yellow}/>
+                        </List.Item.Detail.Metadata.TagList>
                         : null}
                       {item.category === 'Objects' && item.objectPropertiesDeprecated && item.objectPropertiesDeprecated.length > 0 ?
                         item.objectPropertiesDeprecated.map(({name, type}: any) => (
