@@ -2517,378 +2517,1398 @@ export const docList: DocType[] = [
           url: "https://shopify.dev/docs/api/liquid/objects/page_image",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `An image to be shown in search engine listings and social media previews for the current page. \n\n The resource's featured image for product and collection pages, and blog posts, is used. For all other pages, or pages where there's no featured image, the social sharing image is used.`
         },
         {
           title: "page_title",
           url: "https://shopify.dev/docs/api/liquid/objects/page_title",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `The page title of the current page. \n\n The page_title object can be used to specify the title of page for search engine listings and social media previews. \n\n To learn about where to edit the title for a page, visit the Shopify Help Center.`
         },
         {
           title: "pages",
           url: "https://shopify.dev/docs/api/liquid/objects/pages",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `All of the pages on a store. You can access a specific page through the pages object using the page's handle.
+          
+    {{ pages.contact.title }}
+    {{ pages['about-us'].title }}
+
+    {% paginate pages by 2 -%}
+    {% for page in pages -%}
+      {{ page.title | link_to: page.url }}
+    {%- endfor %}
+
+    {{- paginate | default_pagination }}
+    {%- endpaginate %}
+          
+          `
         },
         {
           title: "paginate",
           url: "https://shopify.dev/docs/api/liquid/objects/paginate",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'current_offset', type: 'number' },
+            { name: 'current_page', type: 'number' },
+            { name: 'items', type: 'number'},
+            { name: 'next', type: 'part' },
+            { name: 'page_param', type: 'string' },
+            { name: 'page_size', type: 'number' },
+            { name: 'pages', type: 'number' },
+            { name: 'parts', type: 'array of part' },
+            { name: 'previous', type: 'part' },
+          ],
+          description: `Information about the pagination inside a set of paginate tags.`
         },
         {
           title: "part",
           url: "https://shopify.dev/docs/api/liquid/objects/part",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'is_link', type: 'boolean' },
+            { name: 'title', type: 'string' },
+            { name: 'url', type: 'string' },
+          ],
+          description: `A part in the navigation for pagination.
+          
+      {% paginate collection.products by 5 -%}
+      {% for part in paginate.parts -%}
+        {% if part.is_link -%}
+          {{ part.title | link_to: part.url}}
+        {%- else -%}
+          <span>{{ part.title }}</span>
+        {% endif %}
+      {%- endfor %}
+    {%- endpaginate %}
+          
+          `
         },
         {
           title: "pending_payment_instruction_input",
           url: "https://shopify.dev/docs/api/liquid/objects/pending_payment_instruction_input",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'header', type: 'link' },
+            { name: 'value', type: 'string' },
+          ],
+          description: `Header-value pairs that make up the list of payment information specific to the payment method. This information can be be used by the customer to complete the transaction offline.`
         },
         {
           title: "policy",
           url: "https://shopify.dev/docs/api/liquid/objects/policy",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            { name: 'body', type: 'string' },
+            { name: 'id', type: 'number' },
+            { name: 'title', type: 'string' },
+            { name: 'url', type: 'string' },
+          ],
+          description: `A store policy, such as a privacy or return policy.`
         },
         {
           title: "powered_by_link",
           url: "https://shopify.dev/docs/api/liquid/objects/powered_by_link",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Creates an HTML link element that links to a localied version of \`shopify.com\`, based on the locale of the store.
+          
+    {{ powered_by_link }}
+          `
         },
         {
           title: "predictive_search",
           url: "https://shopify.dev/docs/api/liquid/objects/predictive_search",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'performed', type: 'boolean' },
+            {name: 'resources', type: 'predictive_search_resources' },
+            {name: 'terms', type: 'string' },
+            {name: 'types', type: 'array of string' },
+          ],
+          description: `Information about the results from a predictive search query through the [Predictive Search API](https://shopify.dev/api/ajax/reference/predictive-search#get-locale-search-suggest). \n\n ## Note \n\n The predictive_search object returns results only when rendered in a section using the Predictive Search API and the [Section Rendering API](https://shopify.dev/api/section-rendering). To learn about how to include predictive search in your theme, refer to [Add predictive search to your theme](https://shopify.dev/themes/navigation-search/search/predictive-search).`
         },
         {
           title: "predictive_search_resources",
           url: "https://shopify.dev/docs/api/liquid/objects/predictive_search_resources",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'articles', type: 'array of article' },
+            {name: 'collections', type: 'array of collection' },
+            {name: 'pages', type: 'array of page' },
+            {name: 'products', type: 'array of product' },
+          ],
+          description: `Contains arrays of objects for each resource type that can be returned by a [predictive search query](https://shopify.dev/api/ajax/reference/predictive-search#get-locale-search-suggest). You can check whether any resources of a specific type were returned using the [size filter](https://shopify.dev/docs/api/liquid/filters/size).
+          
+          
+    {% if predictive_search.resources.articles.size > 0 %}
+      {% for article in predictive_search.resources.articles %}
+        {{ article.title }}
+      {% endfor %}
+    {% endif %}
+          
+          `
         },
         {
           title: "product",
           url: "https://shopify.dev/docs/api/liquid/objects/product",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'available', type: 'boolean' },
+            {name: 'collections', type: 'array of collection' },
+            {name: 'compare_at_price', type: 'number' },
+            {name: 'compare_at_price_max', type: 'number' },
+            {name: 'compare_at_price_min', type: 'number' },
+            {name: 'compare_at_price_varies', type: 'boolean' },
+            {name: 'content', type: 'string' },
+            {name: 'created_at', type: 'string' },
+            {name: 'description', type: 'string' },
+            {name: 'featured_image', type: 'image' },
+            {name: 'featured_media', type: 'media' },
+            {name: 'first_available_variant', type: 'variant' },
+            { name: 'gift_card?', type: 'boolean' },
+            { name: 'handle', type: 'string' },
+            {name: 'has_only_default_variant', type: 'boolean' },
+            {name: 'id', type: 'number' },
+            {name: 'images', type: 'array of image' },
+            {name: 'media', type: 'array of media' },
+            {name: 'metafields', type: '-' },
+            {name: 'options', type: 'array of string' },
+            {name: 'options_by_name', type: '-' },
+            {name: 'options_with_value', type: 'array of product_option' },
+            {name: 'price', type: 'number' },
+            {name: 'price_max', type: 'number' },
+            {name: 'price_min', type: 'number' },
+            {name: 'price_varies', type: 'boolean' },
+            {name: 'published_at', type: 'string' },
+            {name: 'quantity_price_breaks_configured?', type: 'boolean' },
+            {name: 'requires_selling_plan', type: 'boolean' },
+            {name: 'selected_of_first_available_selling_plan_allocation', type: 'selling_plan_allocation' },
+            {name: 'selected_or_first_available_variant', type: 'variant' },
+            {name: 'selected_selling_plan', type: 'selling_plan' },
+            {name: 'selected_selling_plan_allocation', type: 'selling_plan_allocation' },
+            {name: 'selected_variant', type: 'variant' },
+            {name: 'selling_plan_groups', type: 'array of selling_plan_group' },
+            {name: 'tags', type: 'array of string' },
+            {name: 'template_suffix', type: 'string' },
+            {name: 'title', type: 'string' },
+            {name: 'type', type: 'string' },
+            {name: 'url', type: 'string' },
+            {name: 'variants', type: 'array of variant' },
+            {name: 'vendor', type: 'string' },
+          ],
+          description: `A [product](https://help.shopify.com/manual/products?shpxid=592bf10c-59C4-4CD2-4781-520D88A4013B) in the store.
+          
+    {
+      "available": true,
+      "collections": [],
+      "compare_at_price": "25.00",
+      "compare_at_price_max": "25.00",
+      "compare_at_price_min": "25.00",
+      "compare_at_price_varies": false,
+      "content": "<h3>Are you low on health? Well we've got the potion just for you!</h3> <p>Just need a top up? Almost dead? In between? No need to worry
+      because we have a range of sizes and strengths!</p>",
+      "created_at": "2022-04-13 14:46:16 -0400",
+      "description": "<h3>Are you low on health? Well we've got the potion just for you!</h3> <p>Just need a top up? Almost dead? In between? No need to worry
+      because we have a range of sizes and strengths!</p>",
+      "featured_image": {},
+      "featured_media": {},
+      "first_available_variant": {},
+      "gift_card?": false,
+      "handle": "health-potion",
+      "has_only_default_variant": false,
+      "id": 6786188247105,
+      "images": [],
+      "media": [],
+      "metafields": {},
+      "options": [
+        "Size",
+        "Strength"
+      ],
+      "options_by_name": {},
+      "options_with_values": [],
+      "price": "10.00",
+      "price_max": "22.00",
+      "price_min": "10.00",
+      "price_varies": true,
+      "published_at": "2022-04-13 14:53:34 -0400",
+      "quantity_price_breaks_configured?": false,
+      "requires_selling_plan": false,
+      "selected_or_first_available_selling_plan_allocation": {},
+      "selected_or_first_available_variant": {},
+      "selected_selling_plan": null,
+      "selected_selling_plan_allocation": null,
+      "selected_variant": null,
+      "selling_plan_groups": [],
+      "tags": [
+        "healing"
+      ],
+      "template_suffix": "",
+      "title": "Health potion",
+      "type": "Health",
+      "url": {},
+      "variants": [],
+      "vendor": "Polina's Potent Potions"
+    }
+          
+          `
         },
         {
           title: "product_option",
           url: "https://shopify.dev/docs/api/liquid/objects/product_option",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'name', type: 'string' },
+            {name: 'position', type: 'number' },
+            {name: 'selected_values', type: 'string' },
+            {name: 'values', type: 'array of string' },
+          ],
+          description: `A product option, such as size or color.
+          
+    {
+      "name": "Size",
+      "position": 1,
+      "selected_value": "S",
+      "values": [
+        "S",
+        "M",
+        "L"
+      ]
+    }
+          
+          `
         },
         {
           title: "quantity_price_break",
           url: "https://shopify.dev/docs/api/liquid/objects/quantity_price_break",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'minimum_quantity', type: 'number' },
+            {name: 'price', type: 'number' },
+          ],
+          description: `The per-unit price of a variant when purchasing the minimum quantity or more.
+          
+    {
+      "minimum_quantity": "10",
+      "price": "20.00"
+    }
+
+          `
         },
         {
           title: "quantity_rule",
           url: "https://shopify.dev/docs/api/liquid/objects/quantity_rule",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'increment', type: 'number' },
+            {name: 'max', type: 'number' },
+            {name: 'min', type: 'number' },
+          ],
+          description: `A variant order quantity rule. \n\n If no rule exists, then a default value is returned. \n\n This rule can be set as part of a [B2B catalog](https://help.shopify.com/manual/b2b/catalogs/quantity-pricing?shpxid=592bf10c-59C4-4CD2-4781-520D88A4013B).
+          
+          
+    {{ product.variants.first.quantity_rule }}
+          `
         },
         {
           title: "rating",
           url: "https://shopify.dev/docs/api/liquid/objects/rating",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'rating', type: 'number' },
+            {name: 'scale_max', type: 'number' },
+            {name: 'scale_min', type: 'number' },
+          ],
+          description: `Information for a [rating type](https://shopify.dev/apps/metafields/types) metafield.
+          
+    {
+      "rating": "4.5",
+      "scale_max": "5.0",
+      "scale_min": "0.0"
+    }
+          
+          `
         },
         {
           title: "recipient",
           url: "https://shopify.dev/docs/api/liquid/objects/recipient",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'email', type: 'string' },
+            {name: 'name', type: 'string' },
+            {name: 'nuckname', type: 'string' },
+          ],
+          description: `A recipient that is associated with a [gift card](https://help.shopify.com/manual/products/gift-card-products?shpxid=592bf10c-59C4-4CD2-4781-520D88A4013B).
+          
+    {
+      "email": "cornelius.potionmaker@gmail.com",
+      "name": "Cornelius Potionmaker",
+      "nickname": "Cornelius"
+    }
+          
+          `
         },
         {
           title: "recommendations",
           url: "https://shopify.dev/docs/api/liquid/objects/recommendations",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'intent', type: 'string' },
+            {name: 'performed?', type: 'boolean' },
+            {name: 'products', type: 'array of product' },
+            {name: 'products_count', type: 'number' },
+          ],
+          description: `Product recommendations for a specific product based on sales data, product descriptions, and collection relationships. \n\n Product recommendations become more accurate over time as new orders and product data become available. To learn more about how product recommendations are generated, refer to [Product recommendations](https://shopify.dev/themes/product-merchandising/recommendations).
+          
+          
+    {
+      "products": [],
+      "products_count": 4,
+      "performed?": true
+    }
+          
+          `
         },
         {
           title: "request",
           url: "https://shopify.dev/docs/api/liquid/objects/request",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'design_mode', type: 'boolean' },
+            {name: 'host', type: 'string' },
+            {name: 'locale', type: 'shop_locale' },
+            {name: 'origin', type: 'string' },
+            {name: 'page_type', type: 'string from a set of values' },
+            {name: 'path', type: 'string' },
+            {name: 'visual_preview_mode', type: 'boolean' },
+          ],
+          description: `Information about the current URL and the associated page.
+          
+    {
+      "design_mode": false,
+      "host": "polinas-potent-potions.myshopify.com",
+      "locale": {},
+      "origin": "https://polinas-potent-potions.myshopify.com",
+      "page_type": "index",
+      "path": "/",
+      "visual_preview_mode": false
+    }
+          
+          `
         },
         {
           title: "robots",
           url: "https://shopify.dev/docs/api/liquid/objects/robots",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'default_groups', type: 'array of group' },
+          ],
+          description: `The default rule groups for the \`robots.txt\` file.
+          
+    {
+      "default_groups": []
+    }
+          
+          `
         },
         {
           title: "routes",
           url: "https://shopify.dev/docs/api/liquid/objects/routes",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'account_addresses_url', type: 'string' },
+            {name: 'account_login_url', type: 'string' },
+            {name: 'account_logout_url', type: 'string' },
+            {name: 'account_recover_url', type: 'string' },
+            {name: 'account_register_url', type: 'string' },
+            {name: 'account_url', type: 'string' },
+            {name: 'all_products_collection_url', type: 'string' },
+            {name: 'cart_add_url', type: 'string' },
+            {name: 'cart_change_url', type: 'string' },
+            {name: 'cart_clear_url', type: 'string' },
+            {name: 'cart_update_url', type: 'string' },
+            {name: 'cart_url', type: 'string' },
+            {name: 'collections_url', type: 'string' },
+            {name: 'predictive_search_url', type: 'string' },
+            {name: 'product_recommendations_url', type: 'string' },
+            {name: 'root_url', type: 'string' },
+            {name: 'search_url', type: 'string' },
+          ],
+          description: `Allows you to generate standard URLs for the storefront. \n\n Using the \`routes\` object instead of hardcoding URLs helps ensure that your theme supports [multiple languages](https://shopify.dev/themes/internationalization/multiple-currencies-languages), as well as any possible changes in URL format.
+          
+    {
+      "account_addresses_url": "/account/addresses",
+      "account_login_url": "/account/login",
+      "account_logout_url": "/account/logout",
+      "account_recover_url": "/account/recover",
+      "account_register_url": "/account/register",
+      "account_url": "/account",
+      "all_products_collection_url": "/collections/all",
+      "cart_add_url": "/cart/add",
+      "cart_change_url": "/cart/change",
+      "cart_clear_url": "/cart/clear",
+      "cart_update_url": "/cart/update",
+      "cart_url": "/cart",
+      "collections_url": "/collections",
+      "predictive_search_url": "/search/suggest",
+      "product_recommendations_url": "/recommendations/products",
+      "root_url": "/",
+      "search_url": "/search"
+    }     
+          
+          `
         },
         {
           title: "rule",
           url: "https://shopify.dev/docs/api/liquid/objects/rule",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'directive', type: 'string' },
+            {name: 'value', type: 'string' },
+          ],
+          description: `A rule for the \`robots.txt\` file, which tells crawlers which pages can, or can't, be accessed. \n\n A rule consists of a directive, which can be either \`Allow\` or \`Disallow\`, and a value of the associated URL path.
+          
+          
+    {
+      "directive": "Disallow",
+      "value": "/policies/"
+    }
+          
+          `
         },
         {
           title: "script",
           url: "https://shopify.dev/docs/api/liquid/objects/script",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'id', type: 'number' },
+            {name: 'name', type: 'string' },
+          ],
+          description: `Information about a Shopify Script.
+          
+    {
+      "id": 209584193,
+      "name": "10% off Whole bloodroot"
+    }
+          
+          `
         },
         {
           title: "scripts",
           url: "https://shopify.dev/docs/api/liquid/objects/scripts",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'cart_calculate_line_items', type: 'script' },
+          ],
+          description: `The active scripts, of each script type, on the store. \n\n There can be only one active script of each type. Currently, the only type accessible in Liquid is \`cart_calculate_line_items\`.
+          
+    {
+      "cart_calculate_line_items": {}
+    }
+          
+          `
         },
         {
           title: "search",
           url: "https://shopify.dev/docs/api/liquid/objects/search",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'default_sort_by', type: 'string' },
+            {name: 'filters', type: ' array of filter' },
+            {name: 'performed', type: 'boolean' },
+            {name: 'results', type: '-' },
+            {name: 'results_count', type: 'number' },
+            {name: 'sort_by', type: '-' },
+            {name: 'sort_options', type: 'array of sort_option' },
+            {name: 'terms', type: 'string' },
+            {name: 'types', type: 'array of string' },
+          ],
+          description: `Information about a storefront search query. \n\n To learn about storefront search and how to include it in your theme, refer to [Storefront search](https://shopify.dev/themes/navigation-search/search).
+          
+    {
+      "default_sort_by": "relevance",
+      "filters": {},
+      "performed": true,
+      "results": [],
+      "results_count": 14,
+      "sort_by": "relevance",
+      "sort_options": [],
+      "terms": "potion",
+      "types": [
+        "article",
+        "page",
+        "product"
+      ]
+    }
+          
+          
+          `
         },
         {
           title: "section",
           url: "https://shopify.dev/docs/api/liquid/objects/section",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'blocks', type: 'array of block' },
+            {name: 'id', type: 'string' },
+            {name: 'index', type: 'number' },
+            {name: 'index0', type: 'number' },
+            {name: 'location', type: 'string' },
+            {name: 'settings', type: '-' },
+          ],
+          description: `The properties and settings of a section.
+          
+    {
+      "blocks": [],
+      "id": "template--14453298921537__cart-items",
+      "settings": {}
+    }  
+          
+          `
         },
         {
           title: "selling_plan",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'checkout_charge', type: 'selling_plan_checkout_charge' },
+            {name: 'description', type: 'string' },
+            {name: 'group_id', type: 'string' },
+            {name: 'id', type: 'number' },
+            {name: 'name', type: 'string' },
+            {name: 'options', type: 'array of selling_plan_option' },
+            {name: 'price_adjustments', type: 'array of selling_plan_price_adjustment' },
+            {name: 'recurring_deliveries', type: 'boolean' },
+            {name: 'selected', type: 'boolean' },
+          ],
+          description: `Information about the intent of how a specific [selling plan](https://shopify.dev/apps/subscriptions/selling-plans) affects a line item. To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+    {
+      "checkout_charge": {},
+      "description": null,
+      "group_id": "f6f782040b07aa2353008932051a8d9bef0536d0",
+      "id": 610435137,
+      "name": "Delivery every 1 Week",
+      "options": [],
+      "price_adjustments": [],
+      "recurring_deliveries": true,
+      "selected": true
+    }
+          
+          
+          `
         },
         {
           title: "selling_plan_allocation",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_allocation",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'checkout_charge_amount', type: 'number' },
+            {name: 'compare_at_price', type: 'number' },
+            {name: 'per_delivery_price', type: 'number' },
+            {name: 'price', type: 'number' },
+            {name: 'price_adjustment', type: 'array of selling_plan_allocation_price_adjustment' },
+            {name: 'remaining_balance_charge_amount', type: 'number' },
+            {name: 'selling_plan', type: 'selling_plan' },
+            {name: 'selling_plan_group_id', type: 'string' },
+            {name: 'unit_price', type: 'number' },
+          ],
+          description: `Information about how a specific [selling plan](https://shopify.dev/apps/subscriptions/selling-plans) affects a line item. To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+    {
+      "checkout_charge_amount": "13.50",
+      "compare_at_price": "15.00",
+      "per_delivery_price": "13.50",
+      "price": "13.50",
+      "price_adjustments": [],
+      "remaining_balance_charge_amount": "0.00",
+      "selling_plan": {},
+      "selling_plan_group_id": "f6f782040b07aa2353008932051a8d9bef0536d0",
+      "unit_price": null
+    }
+          
+          `
         },
         {
           title: "selling_plan_allocation_price_adjustment",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_allocation_price_adjustment",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'position', type: 'number' },
+            {name: 'price', type: 'number' },
+          ],
+          description: `The resulting price from the intent of the associated [selling_plan_price_adjustment](https://shopify.dev/docs/api/liquid/objects/selling_plan_price_adjustment). To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+    {
+      "position": 1,
+      "price": "13.50"
+    }
+          
+          `
         },
         {
           title: "selling_plan_checkout_charge",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_checkout_charge",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
-        },
-        {
-          title: "selling_plan_checkout_charge",
-          url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_checkout_charge",
-          keyword: ['object', 'objects'],
-          category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'value', type: 'number' },
+            {name: 'value_type', type: 'string from a set of values' },
+          ],
+          description: `Information about how a specific [selling plan](https://shopify.dev/apps/subscriptions/selling-plans) affects the amount that a customer needs to pay for a line item at checkout. To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+    {
+      "value": 100,
+      "value_type": "percentage"
+    }
+          
+          `
         },
         {
           title: "selling_plan_group",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_group",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'app_id', type: 'string' },
+            {name: 'id', type: 'number' },
+            {name: 'name', type: 'string' },
+            {name: 'options', type: 'array of selling_plan_group_option' },
+            {name: 'selling_plan_selected', type: 'boolean' },
+            {name: 'selling_plans', type: 'array of selling_plan' },
+          ],
+          description: `Information about a specific group of [selling plans](https://shopify.dev/apps/subscriptions/selling-plans) that include any of a product's variants. Selling plans are grouped based on shared [selling plan option names](https://shopify.dev/docs/api/liquid/objects/selling_plan_option#selling_plan_option-name). To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+          
+    {
+      "app_id": "294517",
+      "id": "f6f782040b07aa2353008932051a8d9bef0536d0",
+      "name": "Health potion",
+      "options": [],
+      "selling_plan_selected": false,
+      "selling_plans": []
+    }
+          
+          `
         },
         {
           title: "selling_plan_group_option",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_group_option",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'name', type: 'string' },
+            {name: 'position', type: 'number' },
+            {name: 'selected_value', type: 'string' },
+            {name: 'values', type: 'array of string' },
+          ],
+          description: `Information about a specific option in a [selling plan group](https://shopify.dev/docs/api/liquid/objects/selling_plan_group).
+          
+    {
+      "name": "1 Week(s), 4 Week(s)",
+      "position": 1,
+      "selected_value": null,
+      "values": [
+        "1 Week(s)",
+        "4 Week(s)"
+      ]
+    }
+          
+          `
         },
         {
           title: "selling_plan_option",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_option",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'name', type: 'string' },
+            {name: 'position', type: 'number' },
+            {name: 'values', type: 'array of string' },
+          ],
+          description: `Information about a selling plan's value for a specific [selling_plan_group_option](https://shopify.dev/docs/api/liquid/objects/selling_plan_group_option). To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options). 
+          
+    {
+      "name": "1 Week(s), 4 Week(s)",
+      "position": 1,
+      "value": "1 Week(s)"
+    }
+          `
         },
         {
           title: "selling_plan_price_adjustment",
           url: "https://shopify.dev/docs/api/liquid/objects/selling_plan_price_adjustment",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'order_count', type: 'number' },
+            {name: 'position', type: 'number' },
+            {name: 'value', type: 'number' },
+            {name: 'value_type', type: 'string from a set of values' },
+          ],
+          description: `Information about how a selling plan changes the price of a variant for a given period of time. To learn about how to support selling plans in your theme, refer to [Purchase options](https://shopify.dev/themes/pricing-payments/purchase-options).
+          
+          
+    {
+      "order_count": null,
+      "position": 1,
+      "value": 10,
+      "value_type": "percentage"
+    }
+          
+          `
         },
         {
           title: "settings",
           url: "https://shopify.dev/docs/api/liquid/objects/settings",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          description: `Allows you to access all of the theme's settings from the [settings_schema.json](https://shopify.dev/themes/architecture/config/settings-schema-json) file.
+          
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {% endif %}
+          
+          `
         },
         {
           title: "shipping_method",
           url: "https://shopify.dev/docs/api/liquid/objects/shipping_method",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'discount_allocations', type: 'array of discount_allocation' },
+            {name: 'handle', type: 'string' },
+            {name: 'id', type: 'string' },
+            {name: 'original_price', type: 'number' },
+            {name: 'price', type: 'number' },
+            {name: 'tax_lines', type: 'array of tax_line' },
+            {name: 'title', type: 'string' },
+          ],
+          description: `Information about the shipping method for an order.
+          
+    {
+      "handle": "shopify-Standard-0.00",
+      "id": "shopify-Standard-0.00",
+      "original_price": "0.00",
+      "price": "0.00",
+      "tax_lines": [],
+      "title": "Standard"
+    }
+          
+          `
         },
         {
           title: "shop",
           url: "https://shopify.dev/docs/api/liquid/objects/shop",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'accepts_gift_cards', type: 'boolean' },
+            {name: 'address', type: 'address' },
+            {name: 'brand', type: 'brand' },
+            {name: 'collections_count', type: 'number' },
+            {name: 'currency', type: 'string' },
+            {name: 'customer_accounts_enabled', type: 'boolean' },
+            {name: 'customer_accounts_optional', type: 'boolean' },
+            {name: 'description', type: 'string' },
+            {name: 'domain', type: 'string' },
+            {name: 'email', type: 'string' },
+            {name: 'enabled_currencies', type: 'array of currency' },
+            {name: 'enabled_payment_types', type: 'array of string' },
+            {name: 'id', type: 'string' },
+            {name: 'metafields', type: '-' },
+            {name: 'metaobjects', type: '-' },
+            {name: 'money_format', type: 'curreny' },
+            {name: 'money_with_currency_format', type: 'string' },
+            {name: 'name', type: 'string' },
+            {name: 'password_message', type: 'string' },
+            {name: 'permanent_domain', type: 'string' },
+            {name: 'phone', type: 'string' },
+            {name: 'policies', type: 'array of policy' },
+            {name: 'privacy_policy', type: 'policy' },
+            {name: 'products_count', type: 'number' },
+            {name: 'published_locales', type: 'array of shop_locale' },
+            {name: 'refund_policy', type: 'policy' },
+            {name: 'secure_url', type: 'string' },
+            {name: 'shipping_policy', type: 'policy' },
+            {name: 'subscription_policy', type: 'policy' },
+            {name: 'terms_of_service', type: 'policy' },
+            {name: 'types', type: 'array of string' },
+            {name: 'url', type: 'string' },
+            {name: 'vendors', type: 'array of string' },
+          ],
+          objectPropertiesDeprecated: [
+            {name: 'enabled_locales', type: 'array of shop_locale' },
+            {name: 'locale', type: 'shop_locale' },
+            {name: 'taxes_included', type: 'boolean' },
+          ],
+          description: `Information about the store, such as the store address, the total number of products, and various settings.
+          
+    {
+      "accepts_gift_cards": true,
+      "address": {},
+      "brand": {},
+      "collections_count": 7,
+      "currency": "CAD",
+      "customer_accounts_enabled": true,
+      "customer_accounts_optional": true,
+      "description": "Canada's foremost retailer for potions and potion accessories. Try one of our award-winning artisanal potions, or find the supplies to make your own!",
+      "domain": "polinas-potent-potions.myshopify.com",
+      "email": "polinas.potent.potions@gmail.com",
+      "enabled_currencies": [],
+      "enabled_locales": [],
+      "enabled_payment_types": [
+        "american_express",
+        "apple_pay",
+        "diners_club",
+        "discover",
+        "google_pay",
+        "master",
+        "paypal",
+        "shopify_pay",
+        "visa"
+      ],
+      "id": 56174706753,
+      "locale": "en",
+      "metafields": {},
+      "metaobjects": {},
+      "money_format": "\${{amount}}",
+      "money_with_currency_format": "\${{amount}} CAD",
+      "name": "Polina's Potent Potions",
+      "password_message": "Our store will be opening when the moon is in the seventh house!!",
+      "permanent_domain": "polinas-potent-potions.myshopify.com",
+      "phone": "416-123-1234",
+      "policies": [],
+      "privacy_policy": {},
+      "products_count": 18,
+      "published_locales": [],
+      "refund_policy": {},
+      "secure_url": "https://polinas-potent-potions.myshopify.com",
+      "shipping_policy": {},
+      "subscription_policy": null,
+      "taxes_included": false,
+      "terms_of_service": {},
+      "types": [
+        "",
+        "Animals & Pet Supplies",
+        "Baking Flavors & Extracts",
+        "Container",
+        "Cooking & Baking Ingredients",
+        "Dried Flowers",
+        "Fruits & Vegetables",
+        "Gift Cards",
+        "Health",
+        "Health & Beauty",
+        "Invisibility",
+        "Love",
+        "Music & Sound Recordings",
+        "Seasonings & Spices",
+        "Water"
+      ],
+      "url": "https://polinas-potent-potions.myshopify.com",
+      "vendors": [
+        "Clover's Apothecary",
+        "Polina's Potent Potions",
+        "Ted's Apothecary Supply"
+      ]
+    }
+          
+          `
         },
         {
           title: "shop_locale",
           url: "https://shopify.dev/docs/api/liquid/objects/shop_locale",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'endonym_name', type: 'string' },
+            {name: 'iso_code', type: 'string' },
+            {name: 'name', type: 'string' },
+            {name: 'primary', type: 'boolean' },
+            {name: 'root_url', type: 'string' },
+          ],
+          description: `A language in a store. To learn how to offer localization options in your theme, refer to [Support multiple currencies and languages](https://shopify.dev/themes/internationalization/multiple-currencies-languages).
+          
+    {
+      "endonym_name": "English",
+      "iso_code": "en",
+      "name": "English",
+      "primary": true,
+      "root_url": "/"
+    }
+          
+          `
         },
         {
           title: "sitemap",
           url: "https://shopify.dev/docs/api/liquid/objects/sitemap",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'directive', type: 'string' },
+            {name: 'value', type: 'string' },
+          ],
+          description: `The sitemap for a specific group in the [robots.txt](https://shopify.dev/themes/architecture/templates/robots-txt-liquid) file. \n\n The sitemap provides information about the pages and content on a site, and the relationships between them, which helps crawlers crawl a site more efficiently.
+          
+    {
+      "directive": "Sitemap",
+      "value": "https://polinas-potent-potions.myshopify.com/sitemap.xml"
+    }
+          `
         },
         {
           title: "sort_option",
           url: "https://shopify.dev/docs/api/liquid/objects/sort_option",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'name', type: 'string' },
+            {name: 'value', type: 'string' },
+          ],
+          description: `A sort option for a collection or search results page.
+          
+    {
+      "name": "Alphabetically, A-Z",
+      "value": "title-ascending"
+    }
+          
+          `
         },
         {
           title: "store_availability",
           url: "https://shopify.dev/docs/api/liquid/objects/store_availability",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'available', type: 'boolean' },
+            {name: 'location', type: 'location' },
+            {name: 'pick_up_enabled', type: 'boolean' },
+            {name: 'pick_up_time', type: 'string' },
+          ],
+          description: `A variant's inventory information for a physical store location. \n\n If a location doesn't stock a variant, then there won't be a \`store_availability\` for that variant and location. 
+          
+          
+    {
+      "available": true,
+      "location": {},
+      "pick_up_enabled": true,
+      "pick_up_time": "Usually ready in 24 hours"
+    }
+          
+          `
         },
         {
           title: "tablerowloop",
           url: "https://shopify.dev/docs/api/liquid/objects/tablerowloop",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'col', type: 'number' },
+            {name: 'col0', type: 'number' },
+            {name: 'col_first', type: 'boolean' },
+            {name: 'col_last', type: 'boolean' },
+            {name: 'first', type: 'boolean' },
+            {name: 'index', type: 'number' },
+            {name: 'index0', type: 'number' },
+            {name: 'last', type: 'boolean' },
+            {name: 'length', type: 'number' },
+            {name: 'rindex', type: 'number' },
+            {name: 'rindex0', type: 'number' },
+            {name: 'row', type: 'number' },
+          ],
+          description: `Information about a parent [tablerow loop](https://shopify.dev/docs/api/liquid/tags/tablerow).
+          
+          
+    {
+      "col": 1,
+      "col0": 0,
+      "col_first": true,
+      "col_last": false,
+      "first": true,
+      "index": 1,
+      "index0": 0,
+      "last": false,
+      "length": 5,
+      "rindex": 5,
+      "rindex0": 4,
+      "row": 1
+    }
+          
+          `
         },
         {
           title: "tax_line",
           url: "https://shopify.dev/docs/api/liquid/objects/tax_line",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'price', type: 'number' },
+            {name: 'rate', type: 'number' },
+            {name: 'rate_percentage', type: 'number' },
+            {name: 'title', type: 'string' },
+          ],
+          description: `Information about a tax line of a checkout or order.
+          
+    {
+      "price": 1901,
+      "rate": 0.05,
+      "rate_percentage": 5,
+      "title": "GST"
+    }
+          
+          `
         },
         {
           title: "template",
           url: "https://shopify.dev/docs/api/liquid/objects/template",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'directory', type: 'string' },
+            {name: 'name', type: 'string from a set of values' },
+            {name: 'suffix', type: 'string' },
+          ],
+          description: `Information about the current [template](https://shopify.dev/docs/themes/architecture/templates).
+          
+    {
+      "directory": null,
+      "name": "product",
+      "suffix": null
+    }
+          `
         },
         {
           title: "theme",
           url: "https://shopify.dev/docs/api/liquid/objects/theme",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          isDeprecated: true,
+          objectProperties: [
+            {name: 'id', type: 'number' },
+            {name: 'name', type: 'string' },
+            {name: 'role', type: 'string from a set of values' },
+          ],
+          description: `Information about the current theme. \n\n ## ⚠️ Deprecated \n\n Deprecated because the values of this object's properties are subject to change, so can't be relied on within the theme. If you want to link to the theme editor for the published theme, then you can use the URL path \`/admin/themes/current/editor\`\n\n While this object is deprecated in Liquid and shouldn't be used, you can still access it through the [REST Admin API](https://shopify.dev/api/admin-rest/current/resources/theme).
+    {
+      "id": 124051750977,
+      "name": "Dawn",
+      "role": "main"
+    }
+          
+          `
         },
         {
           title: "transaction",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'amount', type: 'number' },
+            {name: 'buyer_pending_payment_instructions', type: 'array of pending_payment_instruction_input' },
+            {name: 'buyer_pending_payment_notice', type: 'string' },
+            {name: 'created_at', type: 'string' },
+            {name: 'gateway', type: 'string' },
+            {name: 'gateway_display_name', type: 'string' },
+            {name: 'id', type: 'number' },
+            {name: 'kind', type: 'string from a set of values' },
+            {name: 'name', type: 'string' },
+            {name: 'payment_details', type: 'transaction_payment_details' },
+            {name: 'receipt', type: 'string' },
+            {name: 'show_buyer_pending_payment_instructions?', type: 'boolean' },
+            {name: 'status', type: 'string from a set of values' },
+            {name: 'status_label', type: 'string' },
+          ],
+          description: `A transaction associated with a checkout or order.
+          
+          
+    {
+      "amount": "380.25",
+      "created_at": "2022-06-15 19:13:14 -0400",
+      "gateway": "shopify_payments",
+      "gateway_display_name": "Shopify payments",
+      "id": 5432242176065,
+      "kind": "sale",
+      "name": "c29944051400769.",
+      "payment_details": {
+        "credit_card_number": "•••• •••• •••• 4242",
+        "credit_card_company": "Visa",
+        "credit_card_last_four_digits": "4242",
+        "receiver_info": null
+      },
+      "receipt": "#☠1☢\\n---\\nid: pi_3LB5Oh2m9fH5ulsO18aKrXyL\\nobject: payment_intent\\namount: 38025\\namount_capturable: 0\\namount_received: 38025\\ncanceled_at: \\ncancellation_reason: \\ncapture_method: automatic\\ncharges:\\n  object: list\\n  data:\\n  - id: ch_3LB5Oh2m9fH5ulsO1KncBePo\\n    object: charge\\n    amount: 38025\\n    application_fee: fee_1LB5Oi2m9fH5ulsOrVcBjr4k\\n    balance_transaction:\\n      id: txn_3LB5Oh2m9fH5ulsO1JtjGSxy\\n      object: balance_transaction\\n      exchange_rate: \\n    captured: true\\n    created: 1655334796\\n    currency: cad\\n    failure_code: \\n    failure_message: \\n    fraud_details: {}\\n    livemode: false\\n    metadata:\\n      shop_id: '56174706753'\\n      shop_name: Polina's Potent Potions\\n      transaction_fee_total_amount: '791'\\n      transaction_fee_tax_amount: '0'\\n      payments_charge_id: '2076986474561'\\n      order_transaction_id: '5432242176065'\\n      manual_entry: 'false'\\n      order_id: c29944051400769.1\\n      email: cornelius.potionmaker@gmail.com\\n    outcome:\\n      network_status: approved_by_network\\n      reason: \\n      risk_level: normal\\n      risk_score: 15\\n      seller_message: Payment complete.\\n      type: authorized\\n    paid: true\\n    payment_intent: pi_3LB5Oh2m9fH5ulsO18aKrXyL\\n    payment_method: pm_1LB5Oh2m9fH5ulsOk67EqrsK\\n    payment_method_details:\\n      card:\\n        brand: visa\\n        checks:\\n          address_line1_check: pass\\n          address_postal_code_check: pass\\n          cvc_check: pass\\n        country: US\\n        description: Visa Classic\\n        ds_transaction_id: \\n        exp_month: 1\\n        exp_year: 2029\\n        fingerprint: KE6OIQsc8EspGDeW\\n        funding: credit\\n        iin: '424242'\\n        installments: \\n        issuer: Stripe Payments UK Limited\\n        last4: '4242'\\n        mandate: \\n        moto: \\n        network: visa\\n        network_token: \\n        network_transaction_id: '541168454791087'\\n        three_d_secure: \\n        wallet: \\n      type: card\\n    refunded: false\\n    source: \\n    status: succeeded\\n    mit_params:\\n      network_transaction_id: '541168454791087'\\n  has_more: false\\n  total_count: 1\\n  url: \"/v1/charges?payment_intent=pi_3LB5Oh2m9fH5ulsO18aKrXyL"\\nconfirmation_method: manual\\ncreated: 1655334795\\ncurrency: cad\\nlast_payment_error: \\nlivemode: false\\nmetadata:\\n  shop_id: '56174706753'\\n  shop_name: Polina's Potent Potions\\n  transaction_fee_total_amount: '791'\\n  transaction_fee_tax_amount: '0'\\n  payments_charge_id: '2076986474561'\\n  order_transaction_id: '5432242176065'\\n  manual_entry: 'false'\\n  order_id: c29944051400769.1\\n  email: cornelius.potionmaker@gmail.com\\nnext_action: \\npayment_method: pm_1LB5Oh2m9fH5ulsOk67EqrsK\\npayment_method_types:\\n- card\\nsource: \\nstatus: succeeded\\n",
+      "show_buyer_pending_payment_instructions?": null,
+      "status": "success",
+      "status_label": "Success"
+    }
+          
+          `
         },
         {
           title: "transaction_payment_details",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction_payment_details",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'credit_card_company', type: 'string' },
+            {name: 'credit_card_last_four_digits', type: 'string' },
+            {name: 'credit_card_number', type: 'string' },
+            {name: 'gift_card', type: 'gift_card' },
+          ],
+          description: `Information about the payment methods used for a transaction.
+          
+    {
+      "credit_card_number": "•••• •••• •••• 4242",
+      "credit_card_company": "Visa",
+      "credit_card_last_four_digits": "4242"
+    }     
+          `
         },
         {
           title: "unit_price_measurement",
           url: "https://shopify.dev/docs/api/liquid/objects/transaction_payment_details",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
-        },
-        {
-          title: "unit_price_measurement",
-          url: "https://shopify.dev/docs/api/liquid/objects/unit_price_measurement",
-          keyword: ['object', 'objects'],
-          category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'measured_type', type: 'string from a set of values' },
+            {name: 'quantity_unit', type: 'string' },
+            {name: 'quantity_value', type: 'number' },
+            {name: 'reference_unit', type: 'string' },
+            {name: 'reference_value', type: 'number' },
+          ],
+          description: `Information about how units of a product variant are measured. It's used to calculate [unit prices](https://help.shopify.com/manual/intro-to-shopify/initial-setup/sell-in-france/price-per-unit?shpxid=592bf10c-59C4-4CD2-4781-520D88A4013B#add-unit-prices-to-your-product).
+          
+          
+      {
+        "measured_type": "weight",
+        "quantity_value": "500.0",
+        "quantity_unit": "g",
+        "reference_value": 1,
+        "reference_unit": "kg"
+      }    
+          
+          `
         },
         {
           title: "user",
           url: "https://shopify.dev/docs/api/liquid/objects/user",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'account_owner', type: 'boolean' },
+            {name: 'bio', type: 'string' },
+            {name: 'email', type: 'string' },
+            {name: 'first_name', type: 'string' },
+            {name: 'homepage', type: 'string' },
+            {name: 'image', type: 'image' },
+            {name: 'last_name', type: 'string' },
+            {name: 'name', type: 'string' },
+          ],
+          description: `The author of a blog article.
+          
+    {
+      "account_owner": false,
+      "bio": "Polina got her first cauldron at the tender age of six, and she has been passionate about potions ever since!!",
+      "email": "polinas.potent.potions@gmail.com",
+      "first_name": "Polina",
+      "homepage": null,
+      "image": {},
+      "last_name": "Waters",
+      "name": "Polina Waters"
+    }
+          
+          `
         },
         {
           title: "user_agent",
           url: "https://shopify.dev/docs/api/liquid/objects/user_agent",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'directive', type: 'string' },
+            {name: 'value', type: 'string' },
+          ],
+          description: `The user-agent, which is the name of the crawler, for a specific group in the [robots.txt file](https://shopify.dev/themes/architecture/templates/robots-txt-liquid). The \`user_agent\` object consists of a \`User-agent\` directive, and a value of the name of the user-agent. For example: \n\n \`User-agent: *\`
+        
+    {
+      "directive": "User-agent",
+      "value": "*"
+    }  
+          
+          `
         },
         {
           title: "variant",
           url: "https://shopify.dev/docs/api/liquid/objects/variant",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'available', type: 'boolean' },
+            {name: 'barcode', type: 'string' },
+            {name: 'compare_at_price', type: 'number' },
+            {name: 'featured_image', type: 'image' },
+            {name: 'featured_media', type: 'media' },
+            {name: 'id', type: 'number' },
+            {name: 'image', type: 'image' },
+            {name: 'incoming', type: 'boolean' },
+            {name: 'inventory_management', type: 'string' },
+            {name: 'inventory_policy', type: 'string from a set of values' },
+            {name: 'inventory_quantity', type: 'number' },
+            {name: 'matched', type: 'boolean' },
+            {name: 'metafields', type: '-' },
+            {name: 'next_incoming_date', type: 'string' },
+            {name: 'option1', type: 'string' },
+            {name: 'option2', type: 'string' },
+            {name: 'option3', type: 'string' },
+            {name: 'options', type: 'array of string' },
+            {name: 'price', type: 'number' },
+            {name: 'product', type: 'product' },
+            {name: 'quantity_price_breaks', type: 'array of quantity_price_break' },
+            {name: 'quantity_price_breaks_configured?', type: 'boolean' },
+            {name: 'quantity_rule', type: 'quantity_rule' },
+            {name: 'requires_selling_plan', type: 'boolean' },
+            {name: 'requires_shipping', type: 'boolean' },
+            {name: 'selected', type: 'boolean' },
+            {name: 'selected_selling_plan_allocation', type: 'selling_plan_allocation' },
+            {name: 'selling_plan_allocations', type: 'array of selling_plan_allocation' },
+            {name: 'sku', type: 'string' },
+            {name: 'store_availabilities', type: 'array of store_availability' },
+            {name: 'taxable', type: 'boolean' },
+            {name: 'title', type: 'string' },
+            {name: 'unit_price', type: 'number' },
+            {name: 'unit_price_measurement', type: 'unit_price_measurement' },
+            {name: 'url', type: 'url' },
+            {name: 'weight', type: 'number' },
+            {name: 'weight_in_unit', type: 'number' },
+            {name: 'weight_unit', type: 'string' },
+          ],
+          description: `A [product variant](https://help.shopify.com/manual/products/variants?shpxid=592bf10c-59C4-4CD2-4781-520D88A4013B).
+          
+    {
+      "available": true,
+      "barcode": "",
+      "compare_at_price": null,
+      "featured_image": null,
+      "featured_media": null,
+      "id": 39897499729985,
+      "image": null,
+      "incoming": false,
+      "inventory_management": "shopify",
+      "inventory_policy": "deny",
+      "inventory_quantity": 5,
+      "matched": true,
+      "metafields": {},
+      "next_incoming_date": null,
+      "option1": "S",
+      "option2": "Low",
+      "option3": null,
+      "options": [
+        "S",
+        "Low"
+      ],
+      "price": "10.00",
+      "product": {},
+      "quantity_price_breaks": [],
+      "quantity_rule": {},
+      "requires_selling_plan": false,
+      "requires_shipping": true,
+      "selected": false,
+      "selected_selling_plan_allocation": null,
+      "selling_plan_allocations": [],
+      "sku": "",
+      "store_availabilities": [],
+      "taxable": true,
+      "title": "S / Low",
+      "unit_price": null,
+      "unit_price_measurement": null,
+      "url": {},
+      "weight": 500,
+      "weight_in_unit": 500,
+      "weight_unit": "g"
+    }    
+          
+          `
         },
         {
           title: "video",
           url: "https://shopify.dev/docs/api/liquid/objects/video",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'alt', type: 'string' },
+            {name: 'aspect_ratio', type: 'number' },
+            {name: 'duration', type: 'number' },
+            {name: 'id', type: 'number' },
+            {name: 'media_type', type: 'string from a set of values' },
+            {name: 'position', type: 'number' },
+            {name: 'preview_image', type: 'image' },
+            {name: 'sources', type: 'array of video_source' },
+          ],
+          description: `Information about a video uploaded as [product media](https://shopify.dev/docs/api/liquid/objects/product-media) or a [file_reference metafield](https://shopify.dev/apps/metafields/types).
+          
+          
+    {
+      "alt": "Potion beats",
+      "aspect_ratio": 1.779,
+      "duration": 34801,
+      "id": 22070396551233,
+      "media_type": "video",
+      "position": 2,
+      "preview_image": {},
+      "sources": []
+    }
+          
+          `
         },
         {
           title: "video_source",
           url: "https://shopify.dev/docs/api/liquid/objects/video",
           keyword: ['object', 'objects'],
           category: "Objects",
-          description: ``
+          objectProperties: [
+            {name: 'format', type: 'string' },
+            {name: 'height', type: 'number' },
+            {name: 'mime_type', type: 'string' },
+            {name: 'url', type: 'string' },
+            {name: 'width', type: 'number' },
+          ],
+          description: `Information about the source files for a video.
+          
+    {
+      "format": "mp4",
+      "height": 1080,
+      "mime_type": "video/mp4",
+      "url": "https://cdn.shopify.com/videos/c/vp/4edc28a708b7405093a927cebe794f1a/4edc28a708b7405093a927cebe794f1a.HD-1080p-7.2Mbps.mp4",
+      "width": 1920
+    }
+          
+          `
         },
       ],
     },
