@@ -100,6 +100,7 @@ export const docList: DocType[] = [
       ],
     },
   },
+
   {
     section: {
       sectionTitle: "Tags: Conditional",
@@ -581,27 +582,1538 @@ export const docList: DocType[] = [
     }
   },
 
-
-
   {
     section: {
       sectionTitle: "Filters: Array",
       items: [
         {
-          title: "assign",
-          url: "https://shopify.dev/docs/api/liquid/tags/assign",
-          keyword: ['filters', 'variable'],
-          category: "Tags",
-          subcategory: "Variable",
-          description: `Creates a new variable. \n\n You can create variables of any [basic type](https://shopify.dev/docs/api/liquid/basics#types), [object](https://shopify.dev/docs/api/liquid/objects), or object property.
+          title: "compact",
+          url: "https://shopify.dev/docs/api/liquid/filters/compact",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Removes any \`nil\` items from an array.
 
-    {%- assign product_title = product.title | upcase -%}
+    {%- assign original_prices = collection.products | map: 'compare_at_price' -%}
 
-    {{ product_title }}
+    Original prices:
+
+    {% for price in original_prices -%}
+      - {{ price }}
+    {%- endfor %}
+
+    {%- assign compacted_original_prices = original_prices | compact -%}
+
+    Original prices - compacted:
+
+    {% for price in compacted_original_prices -%}
+      - {{ price }}
+    {%- endfor %}
+
+        `
+        },
+        {
+          title: "concat",
+          url: "https://shopify.dev/docs/api/liquid/filters/concat",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Concatenates (combines) two arrays.
+
+    {%- assign types_and_vendors = collection.all_types | concat: collection.all_vendors -%}
+
+    Types and vendors:
+
+    {% for item in types_and_vendors -%}
+      {%- if item != blank -%}
+        - {{ item }}
+      {%- endif -%}
+    {%- endfor %}
+
+        `
+        },
+        {
+          title: "first",
+          url: "https://shopify.dev/docs/api/liquid/filters/first",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Returns the first item in an array.
+
+    {%- assign first_product = collection.products | first -%}
+
+    {{ first_product.title }}
+
+        `
+        },
+        {
+          title: "join",
+          url: "https://shopify.dev/docs/api/liquid/filters/join",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Combines all of the items in an array into a single string, separated by a space.
+
+    {{ collection.all_tags | join }}
+
+        `
+        },
+        {
+          title: "last",
+          url: "https://shopify.dev/docs/api/liquid/filters/last",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Returns the last item in an array.
+
+    {%- assign last_product = collection.products | last -%}
+
+    {{ last_product.title }}
+
+        `
+        },
+        {
+          title: "map",
+          url: "https://shopify.dev/docs/api/liquid/filters/map",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Creates an array of values from a specific property of the items in an array.
+
+    {%- assign product_titles = collection.products | map: 'title' -%}
+
+    {{ product_titles | join: ', ' }}
+
+        `
+        },
+        {
+          title: "reverse",
+          url: "https://shopify.dev/docs/api/liquid/filters/reverse",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Reverses the order of the items in an array.
+
+    {{ collection.products | reverse | map: 'title' | join: ', ' }}
+
+        `
+        },
+        {
+          title: "size",
+          url: "https://shopify.dev/docs/api/liquid/filters/size",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Returns the size of a string or array. \n\n The size of a string is the number of characters that the string includes. The size of an array is the number of items in the array.
+
+    {{ collection.title | size }}
+    {{ collection.products | size }}
+
+        `
+        },
+        {
+          title: "sort",
+          url: "https://shopify.dev/docs/api/liquid/filters/sort",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Sorts the items in an array in case-sensitive alphabetical, or numerical, order.
+
+    {% assign tags = collection.all_tags | sort %}
+
+    {% for tag in tags -%}
+      {{ tag }}
+    {%- endfor %}
+
+        `
+        },
+        {
+          title: "sort_natural",
+          url: "https://shopify.dev/docs/api/liquid/filters/sort_natural",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          isDeprecated: true,
+          description: `Sorts the items in an array in case-insensitive alphabetical order.
+
+    {% assign tags = collection.all_tags | sort_natural %}
+
+    {% for tag in tags -%}
+      {{ tag }}
+    {%- endfor %}
+
+        `
+        },
+        {
+          title: "sum",
+          url: "https://shopify.dev/docs/api/liquid/filters/sum",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Returns the sum of all elements in an array.
+
+    {% assign fibonacci = '0, 1, 1, 2, 3, 5' | split: ', ' %}
+
+    {{ fibonacci | sum }}
+
+        `
+        },
+        {
+          title: "uniq",
+          url: "https://shopify.dev/docs/api/liquid/filters/uniq",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Removes any duplicate items in an array.
+
+    {% assign potion_array = 'invisibility, health, love, health, invisibility' | split: ', ' %}
+
+    {{ potion_array | uniq | join: ', ' }}
+
+        `
+        },
+        {
+          title: "where",
+          url: "https://shopify.dev/docs/api/liquid/filters/where",
+          keyword: ['filters', 'array'],
+          category: "Filters",
+          subcategory: "Array",
+          description: `Filters an array to include only items with a specific property value. This requires you to provide both the property name and the associated value.
+
+    {% assign polina_products = collection.products | where: 'vendor', "Polina's Potent Potions" %}
+
+    Products from Polina's Potent Potions:
+
+    {% for product in polina_products -%}
+      - {{ product.title }}
+    {%- endfor %}
 
         `
         },
 
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Cart",
+      items: [
+        {
+          title: "item_count_for_variant",
+          url: "https://shopify.dev/docs/api/liquid/filters/item_count_for_variant",
+          keyword: ['filters', 'cart'],
+          category: "Filters",
+          subcategory: "Cart",
+          description: `Returns the total item count for a specified variant in the cart.
+
+    {{ cart | item_count_for_variant: 39888235757633 }}
+
+        `
+        },
+        {
+          title: "line_items_for",
+          url: "https://shopify.dev/docs/api/liquid/filters/line_items_for",
+          keyword: ['filters', 'cart'],
+          category: "Filters",
+          subcategory: "Cart",
+          description: `Returns the total item count for a specified variant in the cart.
+
+    {% assign product = all_products['bloodroot-whole'] %}
+    {% assign line_items = cart | line_items_for: product %}
+
+    Total cart quantity for product: {{ line_items | sum: 'quantity' }}
+
+        `
+        },
+
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Collection",
+      items: [
+        {
+          title: "hightlight_active_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/hightlight_active_tag",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Wraps a given tag in an HTML \`<span>\` tag, with a \`class\` attribute of \`active\`, if the tag is currently active. Only applies to collection tags.
+
+    {% for tag in collection.all_tags %}
+      {{- tag | highlight_active_tag | link_to_tag: tag }}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "link_to_type",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to_type",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates an HTML \`<a>\` tag with an \`href\` attribute linking to a collection page that lists all products of the given product type.
+
+    {{ 'Health' | link_to_type }}
+
+        `
+        },
+        {
+          title: "link_to_vendor",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to_vendor",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates an HTML \`<a>\` tag with an \`href\` attribute linking to a collection page that lists all products of the given product vendor.
+
+    {{ "Polina's Potent Potions" | link_to_vendor }}
+
+        `
+        },
+        {
+          title: "sort_by",
+          url: "https://shopify.dev/docs/api/liquid/filters/sort_by",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates a collection URL with the provided \`sort_by\` parameter appended. This filter must be applied to a collection URL. \n\n Accepts the following values: \n\n - \`manual\` \n\n - \`best-selling\` \n\n - \`title-ascending\` \n\n - \`title-descending\` \n\n - \`price-ascending\` \n\n - \`price-descending\` \n\n - \`created-ascending\` \n\n - \`created-descending\`
+
+
+    \`\`\`json
+    {{ "Polina's Potent Potions" | link_to_vendor }}
+    \`\`\`
+        `
+        },
+        {
+          title: "url_for_type",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_for_type",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates a URL for a collection page that lists all products of the given product type.
+
+    {{ 'health' | url_for_type }}
+        `
+        },
+        {
+          title: "url_for_vendor",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_for_type",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates a URL for a collection page that lists all products from the given product vendor.
+
+    {{ "Polina's Potent Potions" | url_for_vendor }}
+        `
+        },
+        {
+          title: "within",
+          url: "https://shopify.dev/docs/api/liquid/filters/within",
+          keyword: ['filters', 'collection'],
+          category: "Filters",
+          subcategory: "Collection",
+          description: `Generates a product URL within the context of the provided collection. \n\n When the collection context is included, you can access the associated [collection object](https://shopify.dev/docs/api/liquid/objects/collection) in the [product template](https://shopify.dev/themes/architecture/templates/product). \n\n ## ⚠️ Caution \n\n Because a standard product page and a product page in the context of a collection have the same content on separate URLs, you should consider the SEO implications of using the \`within\` filter.
+
+    {%- assign collection_product = collection.products.first -%}
+
+    {{ collection_product.url | within: collection }}
+        `
+        },
+
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Color",
+      items: [
+        {
+          title: "brightness_difference",
+          url: "https://shopify.dev/docs/api/liquid/filters/brightness_difference",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Calculates the [perceived brightness difference](https://www.w3.org/WAI/ER/WD-AERT/#color-contrast) between two colors.
+
+    {{ '#E800B0' | brightness_difference: '#FECEE9' }}
+
+        `
+        },
+        {
+          title: "color_brightness",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_brightness",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Calculates the[ perceived brightness](https://www.w3.org/WAI/ER/WD-AERT/#color-contrast) of a given color.
+
+    {{ '#E800B0' | brightness_difference: '#FECEE9' }}
+
+        `
+        },
+        {
+          title: "color_contrast",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_contrast",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Calculates the contrast ratio between two colors and returns the ratio's numerator. The ratio's denominator, which isn't returned, is always 1. For example, with a contrast ratio of 3.5:1, this filter returns 3.5. \n\n The order in which you specify the colors doesn't matter.
+
+    {{ '#E800B0' | color_contrast: '#D9D8FF' }}
+
+        `
+        },
+        {
+          title: "color_darken",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_darken",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Darkens a given color by a specific percentage. The percentage must be between 0 and 100.
+
+    {{ '#EA5AB9' | color_darken: 30 }}
+
+        `
+        },
+        {
+          title: "color_desaturate",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_desaturate",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Desaturates a given color by a specific percentage. The percentage must be between 0 and 100.
+
+    {{ '#EA5AB9' | color_desaturate: 30 }}
+
+        `
+        },
+        {
+          title: "color_difference",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_difference",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Calculates the [color difference](https://www.w3.org/WAI/ER/WD-AERT/#color-contrast) between two colors.
+
+    {{ '#720955' | color_difference: '#FFF3F9' }}
+
+        `
+        },
+        {
+          title: "color_extract",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_extract",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Extracts a specific color component from a given color. \n\n Accepts the following color components: \n\n - \`alpha\` \n\n - \`red\` \n\n - \`green\` \n\n - \`blue\` \n\n - \`hue\` \n\n - \`saturation\` \n\n - \`lightness\`
+
+    {{ '#EA5AB9' | color_extract: 'red' }}
+
+        `
+        },
+        {
+          title: "color_lighten",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_lighten",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Lightens a given color by a specific percentage. The percentage must be between 0 and 100.
+
+    {{ '#EA5AB9' | color_lighten: 30 }}
+
+        `
+        },
+        {
+          title: "color_mix",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_mix",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Blends two colors together by a specific percentage factor. The percentage must be between 0 and 100.
+
+    {{ '#E800B0' | color_mix: '#00936F', 50 }}
+
+        `
+        },
+        {
+          title: "color_modify",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_modify",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Modifies a specific color component of a given color by a specific amount. \n\n The following table outlines valid color components, and the value range for their modifications.
+
+    {{ '#EA5AB9' | color_modify: 'red', 255 }}
+
+        `
+        },
+        {
+          title: "color_saturate",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_saturate",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Saturates a given color by a specific percentage. The percentage must be between 0 and 100.
+
+    {{ '#EA5AB9' | color_saturate: 30 }}
+
+        `
+        },
+        {
+          title: "color_to_hex",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_to_hex",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Converts a CSS color string to hexadecimal format \`(hex6)\`. \n\n Because colors are converted to \`hex6\` format, if a color with an alpha component is provided, then the alpha component is excluded from the output.
+
+    {{ 'rgb(234, 90, 185)' | color_to_hex }}
+
+        `
+        },
+        {
+          title: "color_to_hsl",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_to_hsl",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Converts a CSS color string to \`HSL\` format. \n\n If a color with an alpha component is provided, the color is converted to \`HSLA\` format.
+
+    {{ '#EA5AB9' | color_to_hsl }}
+
+        `
+        },
+        {
+          title: "color_to_rgb",
+          url: "https://shopify.dev/docs/api/liquid/filters/color_to_rgb",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          description: `Converts a CSS color string to \`RGB\` format. \n\n If a color with an alpha component is provided, then the color is converted to \`RGBA\` format.
+
+    {{ '#EA5AB9' | color_to_rgb }}
+
+        `
+        },
+        {
+          title: "hex_to_rgba",
+          url: "https://shopify.dev/docs/api/liquid/filters/hex_to_rgba",
+          keyword: ['filters', 'color'],
+          category: "Filters",
+          subcategory: "Color",
+          isDeprecated: true,
+          description: `Converts a CSS color string from hexadecimal format to \`RGBA\` format. Shorthand hexadecimal formatting (\`hex3\`) is also accepted. \n\n ## ⚠️ Deprecated \n\n The \`hex_to_rgba filter\` has been replaced by \`color_to_rgb\` and \`color_modify\`.
+
+    {{ '#EA5AB9' | color_to_rgb }}
+
+        `
+        },
+
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Customer",
+      items: [
+        {
+          title: "customer_login_link",
+          url: "https://shopify.dev/docs/api/liquid/filters/customer_login_link",
+          keyword: ['filters', 'customer'],
+          category: "Filters",
+          subcategory: "Customer",
+          description: `Generates an HTML link to the customer login page.
+
+    {{ 'Log in' | customer_login_link }}
+
+        `
+        },
+        {
+          title: "customer_logout_link",
+          url: "https://shopify.dev/docs/api/liquid/filters/customer_logout_link",
+          keyword: ['filters', 'customer'],
+          category: "Filters",
+          subcategory: "Customer",
+          description: `Generates an HTML link to log the customer out of their account and redirect to the homepage.
+
+    {{ 'Log out' | customer_logout_link }}
+
+        `
+        },
+        {
+          title: "customer_register_link",
+          url: "https://shopify.dev/docs/api/liquid/filters/customer_register_link",
+          keyword: ['filters', 'customer'],
+          category: "Filters",
+          subcategory: "Customer",
+          description: `Generates an HTML link to the customer registration page.
+
+    {{ 'Create an account' | customer_register_link }}
+
+        `
+        },
+        {
+          title: "login_button",
+          url: "https://shopify.dev/docs/api/liquid/filters/login_button",
+          keyword: ['filters', 'customer'],
+          category: "Filters",
+          subcategory: "Customer",
+          description: `Generates an HTML Button that enables a customer to follow the Shop in the Shop App \n\n Configure the storefront for Follow on Shop. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
+
+    {{ shop | login_button: action: 'follow' }}
+
+        `
+        },
+        
+
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Default",
+      items: [
+        {
+          title: "default",
+          url: "https://shopify.dev/docs/api/liquid/filters/default",
+          keyword: ['filters', 'default'],
+          category: "Filters",
+          subcategory: "Default",
+          description: `Sets a default value for any variable whose value is one of the following: \n\n - [empty](https://shopify.dev/docs/api/liquid/basics#empty)  \n\n - [false](https://shopify.dev/docs/api/liquid/basics#truthy-and-falsy)  \n\n - [nil](https://shopify.dev/docs/api/liquid/basics#nil)
+
+    {{ product.selected_variant.url | default: product.url }}
+
+        `
+        },
+        {
+          title: "default_errors",
+          url: "https://shopify.dev/docs/api/liquid/filters/default_errors",
+          keyword: ['filters', 'default'],
+          category: "Filters",
+          subcategory: "Default",
+          description: `Generates default error messages for each possible value of [form.errors](https://shopify.dev/docs/themes/liquid/reference/objects/form#form-errors).`
+        },
+        {
+          title: "default_pagination",
+          url: "https://shopify.dev/docs/api/liquid/filters/default_pagination",
+          keyword: ['filters', 'default'],
+          category: "Filters",
+          subcategory: "Default",
+          description: `Generates HTML for a set of links for paginated results. Must be applied to the [paginate object](https://shopify.dev/docs/api/liquid/objects/paginate).
+          
+    {% paginate collection.products by 2 %}
+      {% for product in collection.products %}
+        {{- product.title }}
+      {% endfor %}
+
+      {{- paginate | default_pagination -}}
+    {% endpaginate %}
+          
+          
+          `
+        },
+        
+        
+
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Font",
+      items: [
+        {
+          title: "font_face",
+          url: "https://shopify.dev/docs/api/liquid/filters/font_face",
+          keyword: ['filters', 'font'],
+          category: "Filters",
+          subcategory: "Font",
+          description: `Generates a CSS @font_face declaration to load the provided font.
+
+    {{ settings.type_header_font | font_face }}
+
+        `
+        },
+        {
+          title: "font_modify",
+          url: "https://shopify.dev/docs/api/liquid/filters/font_modify",
+          keyword: ['filters', 'font'],
+          category: "Filters",
+          subcategory: "Font",
+          description: `Modifies a specific property of a given font. \n\n The \`font_modify\` filter requires two parameters. The first indicates which property should be modified and the second is either the new value, or modification amount, for that property.
+
+    {%- assign bold_font = settings.type_body_font | font_modify: 'weight', 'bold' -%}
+
+    h2 {
+      font-weight: {{ bold_font.weight }};
+    }
+
+        `
+        },
+        {
+          title: "font_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/font_url",
+          keyword: ['filters', 'font'],
+          category: "Filters",
+          subcategory: "Font",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for the provided font in woff2 format.
+
+    {{ settings.type_header_font | font_url }}
+
+        `
+        },
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Format",
+      items: [
+        {
+          title: "date",
+          url: "https://shopify.dev/docs/api/liquid/filters/date",
+          keyword: ['filters', 'format'],
+          category: "Filters",
+          subcategory: "Format",
+          description: `Converts a timestamp into another date format. \n\n The \`date\` filter accepts the same parameters as Ruby's strftime method for formatting the date. For a list of shorthand formats, refer to the [Ruby documentation](https://ruby-doc.org/core-3.1.1/Time.html#method-i-strftime) or [strftime reference and sandbox](http://www.strfti.me/).
+
+    {{ article.created_at | date: '%B %d, %Y' }}
+
+        `
+        },
+        {
+          title: "json",
+          url: "https://shopify.dev/docs/api/liquid/filters/json",
+          keyword: ['filters', 'format'],
+          category: "Filters",
+          subcategory: "Format",
+          description: `Converts a string, or object, into JSON format.
+
+    {{ product | json }}
+
+        `
+        },
+        {
+          title: "weight_with_unit",
+          url: "https://shopify.dev/docs/api/liquid/filters/weight_with_unit",
+          keyword: ['filters', 'format'],
+          category: "Filters",
+          subcategory: "Format",
+          description: `Generates a formatted weight for a [variant object](https://shopify.dev/docs/api/liquid/objects/variant#variant-weight). The weight unit is set in the [general settings](https://www.shopify.com/admin/settings/general?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) in the Shopify admin.
+
+    %- assign variant = product.variants.first -%}
+
+    {{ variant.weight | weight_with_unit }}
+
+        `
+        },
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: HTML",
+      items: [
+        {
+          title: "highlight",
+          url: "https://shopify.dev/docs/api/liquid/filters/highlight",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Wraps all instances of a specific string, within a given string, with an HTML \`<strong>\` tag with a \`class\` attribute of \`highlight\`.
+
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        {{ item.description | highlight: search.terms }}
+      {% else %}
+        {{ item.content | highlight: search.terms }}
+      {% endif %}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "link_to",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Generates an HTML \`<a>\` tag.
+
+    {{ 'Shopify' | link_to: 'https://www.shopify.com' }}
+
+        `
+        },
+        {
+          title: "placeholder_svg_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/placeholder_svg_tag",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Generates an HTML <svg> tag for a given placeholder name.
+
+    {{ 'collection-1' | placeholder_svg_tag }}
+
+        `
+        },
+        {
+          title: "preload_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/preload_tag",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Generates an HTML \`<link>\` tag with a \`rel\` attribute of \`preload\` to prioritize loading a given Shopify-hosted asset. The asset URL is also added to the [Link header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link) with a \`rel\` attribute of \`preload\`. \n\n You should use this filter sparingly. For example, consider preloading only resources necessary for rendering above-the-fold content. To learn more about preloading resources, refer to [Performance best practices for Shopify themes](https://shopify.dev/themes/best-practices/performance#preload-key-resources-defer-or-avoid-loading-others).
+
+    {{ 'collection-1' | placeholder_svg_tag }}
+
+        `
+        },
+        {
+          title: "script_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/script_tag",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Generates an HTML \`<script>\` tag for a given resource URL. The tag has a \`type\` attribute of \`text/javascript\`.
+
+    {{ 'cart.js' | asset_url | script_tag }}
+
+        `
+        },
+        {
+          title: "stylesheet_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/stylesheet_tag",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Generates an HTML \`<link>\` tag for a given resource URL. The tag has the following parameters:
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+        `
+        },
+        {
+          title: "time_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/time_tag",
+          keyword: ['filters', 'html'],
+          category: "Filters",
+          subcategory: "HTML",
+          description: `Converts a timestamp into an HTML \`<time>\` tag. \n\n The time_tag filter accepts the same parameters as Ruby's strftime method for formatting the date. For a list of shorthand formats, refer to the [Ruby documentation](https://ruby-doc.org/core-3.1.1/Time.html#method-i-strftime) or strftime [reference and sandbox](http://www.strfti.me/).
+
+    {{ article.created_at | time_tag: '%B %d, %Y' }}
+
+        `
+        },
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Hosted File",
+      items: [
+        {
+          title: "asset_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/asset_img_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an image in the [assets directory](https://shopify.dev/themes/architecture#assets) of a theme.
+
+    {{ 'red-and-black-bramble-berries.jpg' | asset_img_url }}
+
+        `
+        },
+        {
+          title: "asset_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/asset_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an file in the [assets directory](https://shopify.dev/themes/architecture#assets) of a theme.
+
+    {{ 'cart.js' | asset_url }}
+
+        `
+        },
+        {
+          title: "file_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/file_img_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an image from the [Files](https://www.shopify.com/admin/settings/files?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) page of the Shopify admin.
+
+    {{ 'potions-header.png' | file_img_url }}
+
+        `
+        },
+        {
+          title: "file_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/file_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for a file from the [Files](https://www.shopify.com/admin/settings/files?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) page of the Shopify admin.
+
+    {{ 'disclaimer.pdf' | file_url }}
+
+        `
+        },
+        {
+          title: "global_asset_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/global_asset_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for a global asset. \n\n Global assets are kept in a directory on Shopify's server. Using global assets can be faster than loading the resource directly. \n\n Depending on the resource type, you might need to use an additional filter to load the resource. The following table outlines which filter to use for specific resource types.
+
+    {{ 'disclaimer.pdf' | file_url }}
+
+        `
+        },
+        {
+          title: "shopify_asset_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/shopify_asset_url",
+          keyword: ['filters', 'hosted file'],
+          category: "Filters",
+          subcategory: "Hosted File",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn)  for a globally accessible Shopify asset. 
+
+    {{ 'option_selection.js' | shopify_asset_url }}
+
+        `
+        },
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Localization",
+      items: [
+        {
+          title: "currency_selector",
+          url: "https://shopify.dev/docs/api/liquid/filters/currency_selector",
+          keyword: ['filters', 'localization'],
+          category: "Filters",
+          subcategory: "Localization",
+          isDeprecated: true,
+          description: `Generates an HTML \`<select>\` element with an option for each currency available on the store.
+
+    {% form 'currency' %}
+      {{ form | currency_selector }}
+    {% endform %}
+
+        `
+        },
+        {
+          title: "format_address",
+          url: "https://shopify.dev/docs/api/liquid/filters/format_address",
+          keyword: ['filters', 'localization'],
+          category: "Filters",
+          subcategory: "Localization",
+          description: `Generates an HTML address display, with each address component ordered according to the address's locale.
+
+    {{ shop.address | format_address }}
+
+        `
+        },
+        {
+          title: "translate",
+          url: "https://shopify.dev/docs/api/liquid/filters/translate",
+          keyword: ['filters', 'localization'],
+          category: "Filters",
+          subcategory: "Localization",
+          description: `Returns a string of translated text for a given translation key from a [locale file](https://shopify.dev/themes/architecture/locales). The \`translate\` filter has an alias of \`t\`, which is more commonly used.`
+        },
+        
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Math",
+      items: [
+        {
+          title: "abs",
+          url: "https://shopify.dev/docs/api/liquid/filters/abs",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Returns the absolute value of a number.
+
+    {{ -3 | abs }}
+
+        `
+        },
+        {
+          title: "at_least",
+          url: "https://shopify.dev/docs/api/liquid/filters/at_least",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Limits a number to a minimum value.
+
+    {{ 4 | at_least: 5 }}
+
+        `
+        },
+        {
+          title: "at_most",
+          url: "https://shopify.dev/docs/api/liquid/filters/at_most",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Limits a number to a minimum value.
+
+    {{ 6 | at_most: 5 }}
+
+        `
+        },
+        {
+          title: "ceil",
+          url: "https://shopify.dev/docs/api/liquid/filters/ceil",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Rounds a number up to the nearest integer.
+
+    {{ 1.2 | ceil }}
+
+        `
+        },
+        {
+          title: "divided_by",
+          url: "https://shopify.dev/docs/api/liquid/filters/divided_by",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Divides a number by a given number. The \`divided_by\` filter produces a result of the same type as the divisor. This means if you divide by an integer, the result will be an integer, and if you divide by a float, the result will be a float.
+
+    {{ 4 | divided_by: 2 }}
+    {{ 20 | divided_by: 7 }}
+    {{ 20 | divided_by: 7.0 }}
+        `
+        },
+        {
+          title: "floor",
+          url: "https://shopify.dev/docs/api/liquid/filters/floor",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Rounds a number down to the nearest integer.
+
+    {{ 1.2 | floor }}
+        `
+        },
+        {
+          title: "minus",
+          url: "https://shopify.dev/docs/api/liquid/filters/minus",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Subtracts a given number from another number.
+
+    {{ 4 | minus: 2 }}
+        `
+        },
+        {
+          title: "modulo",
+          url: "https://shopify.dev/docs/api/liquid/filters/modulo",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Returns the remainder of dividing a number by a given number.
+
+    {{ 12 | modulo: 5 }}
+        `
+        },
+        {
+          title: "plus",
+          url: "https://shopify.dev/docs/api/liquid/filters/plus",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Adds two numbers.
+
+    {{ 2 | plus: 2 }}
+        `
+        },
+        {
+          title: "round",
+          url: "https://shopify.dev/docs/api/liquid/filters/round",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Rounds a number to the nearest integer.
+
+    {{ 2.7 | round }}
+        `
+        },
+        {
+          title: "times",
+          url: "https://shopify.dev/docs/api/liquid/filters/times",
+          keyword: ['filters', 'math'],
+          category: "Filters",
+          subcategory: "Math",
+          description: `Multiplies a number by a given number.
+
+    {{ 2 | times: 2 }}
+        `
+        },
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Media",
+      items: [
+        {
+          title: "article_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/article_img_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          isDeprecated: true,
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an [article's image](https://shopify.dev/docs/api/liquid/objects/article#article-image). \n\n ## ⚠️ Deprecated \n\n The \`article_img_url\` filter has been replaced by \`image_url\`.
+
+    {{ article.image | article_img_url }}
+
+        `
+        },
+        {
+          title: "collection_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/collection_img_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          isDeprecated: true,
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an [collection's image](https://shopify.dev/docs/api/liquid/objects/collection#collection-image). \n\n ## ⚠️ Deprecated \n\n The \`collection_img_url\` filter has been replaced by \`image_url\`.
+
+    {{ collection.image | collection_img_url }}
+
+        `
+        },
+        {
+          title: "external_video_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/external_video_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Generates an HTML \`<iframe>\` tag containing the player for a given external video. The input for the \`external_video_tag\` filter can be either a [media object](https://shopify.dev/docs/api/liquid/objects/media) or [external_video_url](https://shopify.dev/docs/api/liquid/filters/external_video_url). \n\n If [alt text is set on the video](https://help.shopify.com/en/manual/products/product-media/add-alt-text?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), then it's included in the \`title\` attribute of the \`<iframe>\`. If no alt text is set, then the \`title\` attribute is set to the product title.
+
+    {% for media in product.media %}
+      {% if media.media_type == 'external_video' %}
+        {% if media.host == 'youtube' %}
+          {{ media | external_video_url: color: 'white' | external_video_tag }}
+        {% elsif media.host == 'vimeo' %}
+          {{ media | external_video_url: loop: '1', muted: '1' | external_video_tag }}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "external_video_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/external_video_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Returns the URL for a given external video. Use this filter to specify parameters for the external video player generated by the [external_video_tag filter](https://shopify.dev/docs/api/liquid/filters/external_video_tag). \n\n You can specify [YouTube](https://developers.google.com/youtube/player_parameters#Parameters) and [Vimeo](https://vimeo.zendesk.com/hc/en-us/articles/360001494447-Using-Player-Parameters) video parameters by adding a parameter that matches the parameter name, and the desired value.
+
+    {% for media in product.media %}
+      {% if media.media_type == 'external_video' %}
+        {% if media.host == 'youtube' %}
+          {{ media | external_video_url: color: 'white' | external_video_tag }}
+        {% elsif media.host == 'vimeo' %}
+          {{ media | external_video_url: loop: '1', muted: '1' | external_video_tag }}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "image_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/image_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Generates an HTML \`<img>\` tag for a given [image_url](https://shopify.dev/docs/api/liquid/filters/image_url). \n\n By default, \`width\` and \`height\` attributes are added to the \`<img>\` tag based on the dimensions and aspect ratio from the image URL. However, you can override these attributes with the [width](https://shopify.dev/docs/api/liquid/filters/image_tag#image_tag-width) and [height](https://shopify.dev/docs/api/liquid/filters/image_tag#image_tag-height) parameters. If only one parameter is provided, then only that attribute is added.
+
+    {{ product | image_url: width: 200 | image_tag }}
+
+        `
+        },
+        {
+          title: "image_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/image_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an image.
+
+    {{ product | image_url: width: 200 | image_tag }}
+
+        `
+        },
+        {
+          title: "img_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/img_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          isDeprecated: true,
+          description: `Generates an HTML <img> tag for a given image URL.
+
+    {{ product | img_tag }}
+
+        `
+        },
+        {
+          title: "img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/img_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          isDeprecated: true,
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for an image.
+
+    {{ product | img_url }}
+
+        `
+        },
+        {
+          title: "media_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/media_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Generates an appropriate HTML tag for a given media object.
+
+    {% for media in product.media %}
+      {{- media | media_tag }}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "model_viewer_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/model_viewer_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Generates a [Google model viewer component](https://modelviewer.dev/) for a given 3D model.
+
+    {% for media in product.media %}
+      {% if media.media_type == 'model' %}
+        {{ media | model_viewer_tag }}
+      {% endif %}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "product_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/product_img_url",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          isDeprecated: true,
+          description: `Returns the [CDN URL](https://shopify.dev/themes/best-practices/performance/platform#shopify-cdn) for a [product image](https://shopify.dev/docs/api/liquid/objects/product).
+
+    {{ product.featured_image | product_img_url }}
+
+        `
+        },
+        {
+          title: "video_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/video_tag",
+          keyword: ['filters', 'media'],
+          category: "Filters",
+          subcategory: "Media",
+          description: `Generates an HTML \`<video>\` tag for a given video.
+
+    {% for media in product.media %}
+      {% if media.media_type == 'video' %}
+        {{ media | video_tag }}
+      {% endif %}
+    {% endfor %}
+
+        `
+        },
+        
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Metafield",
+      items: [
+        {
+          title: "metafield_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/metafield_tag",
+          keyword: ['filters', 'metafield'],
+          category: "Filters",
+          subcategory: "Metafield",
+          description: `Generates an HTML element to host the metafield data. The type of element that's generated differs depending on the type of metafield.
+
+    {{ product.metafields.information.seasonal | metafield_tag }}
+
+        `
+        },
+        {
+          title: "metafield_text",
+          url: "https://shopify.dev/docs/api/liquid/filters/metafield_text",
+          keyword: ['filters', 'metafield'],
+          category: "Filters",
+          subcategory: "Metafield",
+          description: `Generates a text version of the metafield data.
+
+    {{ product.metafields.information.dosage | metafield_text }}
+
+        `
+        },
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Money",
+      items: [
+        {
+          title: "money",
+          url: "https://shopify.dev/docs/api/liquid/filters/money",
+          keyword: ['filters', 'money'],
+          category: "Filters",
+          subcategory: "Money",
+          description: `Formats a given price based on the store's [HTML without currency setting](https://help.shopify.com/manual/payments/currency-formatting?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
+
+    {{ product.price | money }}
+
+        `
+        },
+        {
+          title: "money_with_currency",
+          url: "https://shopify.dev/docs/api/liquid/filters/money_with_currency",
+          keyword: ['filters', 'money'],
+          category: "Filters",
+          subcategory: "Money",
+          description: `Formats a given price based on the store's [HTML with currency setting](https://help.shopify.com/manual/payments/currency-formatting?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3).
+
+    {{ product.price | money_with_currency }}
+
+        `
+        },
+        {
+          title: "money_without_currency",
+          url: "https://shopify.dev/docs/api/liquid/filters/money_without_currency",
+          keyword: ['filters', 'money'],
+          category: "Filters",
+          subcategory: "Money",
+          description: `Formats a given price based on the store's [HTML without currency setting](https://help.shopify.com/manual/payments/currency-formatting?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), without the currency symbol.
+
+    {{ product.price | money_without_currency }}
+
+        `
+        },
+        {
+          title: "money_without_trailing_zeros",
+          url: "https://shopify.dev/docs/api/liquid/filters/money_without_trailing_zeros",
+          keyword: ['filters', 'money'],
+          category: "Filters",
+          subcategory: "Money",
+          description: `Formats a given price based on the store's [HTML without currency setting](https://help.shopify.com/manual/payments/currency-formatting?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3), excluding the decimal separator (either \`.\` or \`,\`) and trailing zeros.
+
+    {{ product.price | money_without_trailing_zeros }}
+
+        `
+        },
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Payment",
+      items: [
+        {
+          title: "payment_button",
+          url: "https://shopify.dev/docs/api/liquid/filters/payment_button",
+          keyword: ['filters', 'payment'],
+          category: "Filters",
+          subcategory: "Payment",
+          description: `Generates an HTML container to host [dynamic checkout buttons](https://help.shopify.com/manual/online-store/dynamic-checkout?shpxid=5995f953-CDD1-47F5-E2B5-BFF82C1881B3) for a product. The \`payment_button\` filter must be used on the form object within a [product form](https://shopify.dev/docs/api/liquid/tags/form#form-product).
+
+    {% form 'product', product %}
+      {{ form | payment_button }}
+    {% endform %}
+
+        `
+        },
+        {
+          title: "payment_terms",
+          url: "https://shopify.dev/docs/api/liquid/filters/payment_terms",
+          keyword: ['filters', 'payment'],
+          category: "Filters",
+          subcategory: "Payment",
+          description: `Generates the HTML for the [Shop Pay Installments banner](https://shopify.dev/themes/pricing-payments/installments). \n\n The \`payment_terms\` filter must be used on the \`form\` object within a [product form](https://shopify.dev/docs/api/liquid/tags/form#form-product) or cart form.
+
+    {% form 'product', product %}
+      {{ form | payment_terms }}
+    {% endform %}
+
+        `
+        },
+        {
+          title: "payment_type_img_url",
+          url: "https://shopify.dev/docs/api/liquid/filters/payment_type_img_url",
+          keyword: ['filters', 'payment'],
+          category: "Filters",
+          subcategory: "Payment",
+          description: `Returns the URL for an SVG image of a given [payment type](https://shopify.dev/docs/api/liquid/objects/shop#shop-enabled_payment_types).
+
+    {% for type in shop.enabled_payment_types %}
+      <img src="{{ type | payment_type_img_url }}" width="50" height="50" />
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "payment_type_svg_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/payment_type_svg_tag",
+          keyword: ['filters', 'payment'],
+          category: "Filters",
+          subcategory: "Payment",
+          description: `Generates an HTML \`<svg>\` tag for a given [payment type](https://shopify.dev/docs/api/liquid/objects/shop#shop-enabled_payment_types).
+
+    {% for type in shop.enabled_payment_types -%}
+      {{ type | payment_type_svg_tag }}
+    {% endfor %}
+
+        `
+        },
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: String",
+      items: [
+        {
+          title: "append",
+          url: "https://shopify.dev/docs/api/liquid/filters/append",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Adds a given string to the end of a string.
+
+    {%-  assign path = product.url -%}
+
+    {{ request.origin | append: path }}
+
+        `
+        },
+        {
+          title: "base64_decode",
+          url: "https://shopify.dev/docs/api/liquid/filters/base64_decode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Decodes a string in [Base64 format](https://developer.mozilla.org/en-US/docs/Glossary/Base64).
+
+    {{ 'b25lIHR3byB0aHJlZQ==' | base64_decode }}
+
+        `
+        },
+        {
+          title: "base64_encode",
+          url: "https://shopify.dev/docs/api/liquid/filters/base64_encode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Encodes a string to [Base64 format](https://developer.mozilla.org/en-US/docs/Glossary/Base64).
+
+    {{ 'one two three' | base64_encode }}
+
+        `
+        },
+        {
+          title: "base64_encode",
+          url: "https://shopify.dev/docs/api/liquid/filters/base64_encode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Encodes a string to [Base64 format](https://developer.mozilla.org/en-US/docs/Glossary/Base64).
+
+    {{ 'one two three' | base64_encode }}
+
+        `
+        },
+        
+      ],
+    },
+  },
+  {
+    section: {
+      sectionTitle: "Filters: Tag",
+      items: [
+        {
+          title: "link_to_add_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to_add_tag",
+          keyword: ['filters', 'tag'],
+          category: "Filters",
+          subcategory: "Tag",
+          description: `Generates an HTML \`<a>\` tag with an \`href\` attribute linking to the current blog or collection, filtered to show only articles or products that have a given tag, as well as any currently active tags.
+
+    {% for tag in collection.all_tags %}
+      {%- if current_tags contains tag -%}
+        {{ tag }}
+      {%- else -%}
+        {{ tag | link_to_add_tag: tag }}
+      {%- endif -%}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "link_to_remove_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to_remove_tag",
+          keyword: ['filters', 'tag'],
+          category: "Filters",
+          subcategory: "Tag",
+          description: `Generates an HTML \`<a>\` tag with an \`href\` attribute linking to the current blog or collection, filtered to show only articles or products that have any currently active tags, except the provided tag.
+
+    {% for tag in collection.all_tags %}
+      {%- if current_tags contains tag -%}
+        {{ tag | link_to_remove_tag: tag }}
+      {%- else -%}
+        {{ tag | link_to_add_tag: tag }}
+      {%- endif -%}
+    {% endfor %}
+
+        `
+        },
+        {
+          title: "link_to_tag",
+          url: "https://shopify.dev/docs/api/liquid/filters/link_to_tag",
+          keyword: ['filters', 'tag'],
+          category: "Filters",
+          subcategory: "Tag",
+          description: `Generates an HTML \`<a>\` tag with an \`href\` attribute linking to the current blog or collection, filtered to show only articles or products that have a given tag.
+
+    {% for tag in collection.all_tags %}
+      {{- tag | link_to_tag: tag }}
+    {% endfor %}
+
+        `
+        },
+        
       ],
     },
   },
