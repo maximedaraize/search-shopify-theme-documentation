@@ -40,7 +40,6 @@ export default function UserSearchRoot() {
                         <List.Item.Detail.Metadata.Separator/>
                         : null}
                       {item.category === 'Objects' && item.objectProperties && item.objectProperties.length > 0 ?
-                        // <List.Item.Detail.Metadata.Label title="Properties" />
                         <List.Item.Detail.Metadata.TagList title="Properties">
                           <List.Item.Detail.Metadata.TagList.Item text="Supported" color={Color.Green}/>
                         </List.Item.Detail.Metadata.TagList>
@@ -54,7 +53,6 @@ export default function UserSearchRoot() {
                         <List.Item.Detail.Metadata.Separator/>
                         : null}
                       {item.category === 'Objects' && item.objectPropertiesDeprecated && item.objectPropertiesDeprecated.length > 0 ?
-                        // <List.Item.Detail.Metadata.Label title="Properties" />
                         <List.Item.Detail.Metadata.TagList title="Properties">
                           <List.Item.Detail.Metadata.TagList.Item text="Deprecated" color={Color.Yellow}/>
                         </List.Item.Detail.Metadata.TagList>
