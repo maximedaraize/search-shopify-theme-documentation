@@ -2055,6 +2055,473 @@ export const docList: DocType[] = [
 
         `
         },
+        {
+          title: "base64_url_safe_decode",
+          url: "https://shopify.dev/docs/api/liquid/filters/base64_url_safe_decode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Decodes a string in URL-safe [Base64 format](https://developer.mozilla.org/en-US/docs/Glossary/Base64).
+
+    {{ 'b25lIHR3byB0aHJlZQ==' | base64_url_safe_decode }}
+
+        `
+        },
+        {
+          title: "base64_url_safe_encode",
+          url: "https://shopify.dev/docs/api/liquid/filters/base64_url_safe_encode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Encodes a string to URL-safe [Base64 format](https://developer.mozilla.org/en-US/docs/Glossary/Base64). \n\n To produce URL-safe Base64, this filter uses \`-\` and \`_\` in place of \`+\` and \`/\`.
+
+    {{ 'one two three' | base64_url_safe_encode }}
+
+        `
+        },
+        {
+          title: "camelize",
+          url: "https://shopify.dev/docs/api/liquid/filters/camelize",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string to CamelCase.
+
+    {{ 'variable-name' | camelize }}
+
+        `
+        },
+        {
+          title: "capitalize",
+          url: "https://shopify.dev/docs/api/liquid/filters/capitalize",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Capitalizes the first word in a string and downcases the remaining characters.
+
+    {{ 'this sentence should start with a capitalized word.' | capitalize }}
+
+        `
+        },
+        {
+          title: "downcase",
+          url: "https://shopify.dev/docs/api/liquid/filters/downcase",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string to all lowercase characters.
+
+    {{ product.title | downcase }}
+
+        `
+        },
+        {
+          title: "escape",
+          url: "https://shopify.dev/docs/api/liquid/filters/escape",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Escapes special characters in HTML, such as \`<>\`, \`'\`, and \`&\`, and converts characters into escape sequences. The filter doesn't effect characters within the string that don’t have a corresponding escape sequence.".
+
+    {{ '<p>Text to be escaped.</p>' | escape }}
+
+        `
+        },
+        {
+          title: "escape",
+          url: "https://shopify.dev/docs/api/liquid/filters/escape",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Escapes special characters in HTML, such as \`<>\`, \`'\`, and \`&\`, and converts characters into escape sequences. The filter doesn't effect characters within the string that don’t have a corresponding escape sequence.".
+
+    {{ '<p>Text to be escaped.</p>' | escape }}
+
+        `
+        },
+        {
+          title: "escape_once",
+          url: "https://shopify.dev/docs/api/liquid/filters/escape_once",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Escapes a string without changing characters that have already been escaped.
+
+    {{ "&lt;p&gt;Text to be escaped.&lt;/p&gt;" | escape }}
+
+        `
+        },
+        {
+          title: "handleize",
+          url: "https://shopify.dev/docs/api/liquid/filters/handleize",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into a [handle](https://shopify.dev/docs/api/liquid/basics#handles).
+
+    {{ product.title | handleize }}
+
+        `
+        },
+        {
+          title: "hmac_sha1",
+          url: "https://shopify.dev/docs/api/liquid/filters/hmac_sha1",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into an SHA-1 hash using a hash message authentication code (HMAC). \n\n The secret key for the message is supplied as a parameter to the filter.
+
+    {%- assign secret_potion = 'Polyjuice' | hmac_sha1: 'Polina' -%}
+
+        `
+        },
+        {
+          title: "hmac_sha256",
+          url: "https://shopify.dev/docs/api/liquid/filters/hmac_sha256",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into an SHA-256 hash using a hash message authentication code (HMAC). \n\n The secret key for the message is supplied as a parameter to the filter.
+
+    {%- assign secret_potion = 'Polyjuice' | hmac_sha1: 'Polina' -%}
+
+        `
+        },
+        {
+          title: "lstrip",
+          url: "https://shopify.dev/docs/api/liquid/filters/lstrip",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Strips all whitespace from the left of a string.
+
+    {%- assign text = '  Some potions create whitespace.      ' -%}
+    "{{ text | lstrip }}"
+        `
+        },
+        {
+          title: "md5",
+          url: "https://shopify.dev/docs/api/liquid/filters/md5",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into an MD5 hash.
+
+    {{ '' | md5 }}
+        `
+        },
+        {
+          title: "newline_to_br",
+          url: "https://shopify.dev/docs/api/liquid/filters/newline_to_br",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts newlines (\`\n\`) in a string to HTML line breaks (\`<br>\`).
+
+    {{ product.description | newline_to_br }}
+        `
+        },
+        {
+          title: "pluralize",
+          url: "https://shopify.dev/docs/api/liquid/filters/pluralize",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Outputs the singular or plural version of a string based on a given number. \n\n ## ⚠️ Caution \n\n The \`pluralize\` filter applies English pluralization rules to determine which string to output. You shouldn't use this filter on non-English strings because it could lead to incorrect pluralizations.
+
+    Cart item count: {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}
+        `
+        },
+        {
+          title: "prepend",
+          url: "https://shopify.dev/docs/api/liquid/filters/prepend",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Adds a given string to the beginning of a string.
+
+    {%- assign origin = request.origin -%}
+
+    {{ product.url | prepend: origin }}
+        `
+        },
+        {
+          title: "remove",
+          url: "https://shopify.dev/docs/api/liquid/filters/remove",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Removes any instance of a substring inside a string.
+
+    {{ "I can't do it!" | remove: "'t" }}
+
+        `
+        },
+        {
+          title: "remove_first",
+          url: "https://shopify.dev/docs/api/liquid/filters/remove_first",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Removes the first instance of a substring inside a string.
+
+    {{ "I hate it when I accidentally spill my duplication potion accidentally!" | remove_first: ' accidentally' }}
+
+        `
+        },
+        {
+          title: "remove_last",
+          url: "https://shopify.dev/docs/api/liquid/filters/remove_last",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Removes the last instance of a substring inside a string.
+
+    { "I hate it when I accidentally spill my duplication potion accidentally!" | remove_last: ' accidentally' }}
+
+        `
+        },
+        {
+          title: "replace",
+          url: "https://shopify.dev/docs/api/liquid/filters/replace",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Replaces any instance of a substring inside a string with a given string.
+
+    {{ product.handle | replace: '-', ' ' }}
+
+        `
+        },
+        {
+          title: "replace_first",
+          url: "https://shopify.dev/docs/api/liquid/filters/replace_first",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Replaces the first instance of a substring inside a string with a given string.
+
+    {{ product.handle | replace_first: '-', ' ' }}
+
+        `
+        },
+        {
+          title: "replace_last",
+          url: "https://shopify.dev/docs/api/liquid/filters/replace_last",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Replaces the last instance of a substring inside a string with a given string.
+
+    {{ product.handle | replace_last: '-', ' ' }}
+
+        `
+        },
+        {
+          title: "rstrip",
+          url: "https://shopify.dev/docs/api/liquid/filters/rstrip",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Strips all whitespace from the right of a string.
+
+    {%- assign text = '  Some potions create whitespace.      ' -%}
+    
+    "{{ text }}"
+    "{{ text | rstrip }}"
+
+        `
+        },
+        {
+          title: "sha1",
+          url: "https://shopify.dev/docs/api/liquid/filters/sha1",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into an SHA-1 hash.
+
+    {%- assign secret_potion = 'Polyjuice' | sha1 -%}
+
+    My secret potion: {{ secret_potion }}
+
+        `
+        },
+        {
+          title: "sha256",
+          url: "https://shopify.dev/docs/api/liquid/filters/sha256",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string into an SHA-256 hash.
+
+    {%- assign secret_potion = 'Polyjuice' | sha256 -%}
+
+    My secret potion: {{ secret_potion }}
+
+        `
+        },
+        {
+          title: "slice",
+          url: "https://shopify.dev/docs/api/liquid/filters/slice",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Returns a substring or series of array items, starting at a given 0-based index. \n\n By default, the substring has a length of one character, and the array series has one array item. However, you can provide a second parameter to specify the number of characters or array items.
+
+    {{ collection.title | slice: 0 }}
+    {{ collection.title | slice: 0, 5 }}
+
+    {{ collection.all_tags | slice: 1, 2 | join: ', ' }}
+
+        `
+        },
+        {
+          title: "split",
+          url: "https://shopify.dev/docs/api/liquid/filters/split",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Splits a string into an array of substrings based on a given separator.
+
+    {%- assign title_words = product.handle | split: '-' -%}
+
+    {% for word in title_words -%}
+      {{ word }}
+    {%- endfor %}
+
+        `
+        },
+        {
+          title: "strip",
+          url: "https://shopify.dev/docs/api/liquid/filters/strip",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Strips all whitespace from the left and right of a string.
+
+    {%- assign text = '  Some potions create whitespace.      ' -%}
+
+    "{{ text }}"
+    "{{ text | strip }}"
+
+        `
+        },
+        {
+          title: "strip_html",
+          url: "https://shopify.dev/docs/api/liquid/filters/strip_html",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Strips all HTML tags from a string.
+
+    <!-- With HTML -->
+    {{ product.description }}
+
+    <!-- HTML stripped -->
+    {{ product.description | strip_html }}
+
+        `
+        },
+        {
+          title: "strip_newlines",
+          url: "https://shopify.dev/docs/api/liquid/filters/strip_newlines",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Strips all newline characters (line breaks) from a string.
+
+    !-- With newlines -->
+    {{ product.description }}
+
+    <!-- Newlines stripped -->
+    {{ product.description | strip_newlines }}
+
+        `
+        },
+        {
+          title: "truncate",
+          url: "https://shopify.dev/docs/api/liquid/filters/truncate",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Truncates a string down to a given number of characters. \n\n If the specified number of characters is less than the length of the string, then an ellipsis (\`...\`) is appended to the truncated string. The ellipsis is included in the character count of the truncated string.
+
+    {{ article.title | truncate: 15 }}
+
+        `
+        },
+        {
+          title: "truncatewords",
+          url: "https://shopify.dev/docs/api/liquid/filters/truncatewords",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Truncates a string down to a given number of words. \n\n If the specified number of words is less than the number of words in the string, then an ellipsis (\`...\`) is appended to the truncated string. \n\n ## ⚠️ Caution \n\n HTML tags are treated as words, so you should strip any HTML from truncated content. If you don't strip HTML, then closing HTML tags can be removed, which can result in unexpected behavior.
+
+    {{ article.content | strip_html | truncatewords: 15 }}
+
+        `
+        },
+        {
+          title: "upcase",
+          url: "https://shopify.dev/docs/api/liquid/filters/upcase",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts a string to all uppercase characters.
+
+    {{ product.title | upcase }}
+
+        `
+        },
+        {
+          title: "url_decode",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_decode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Decodes any [percent-encoded](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding) characters in a string.
+
+    {{ 'test%40test.com' | url_decode }}
+
+        `
+        },
+        {
+          title: "url_encode",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_encode",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Converts any URL-unsafe characters in a string to the [percent-encoded](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding) equivalent.
+
+    {{ 'test@test.com' | url_encode }}
+
+        `
+        },
+        {
+          title: "url_escape",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_escape",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Escapes any URL-unsafe characters in a string.
+
+    {{ '<p>Health & Love potions</p>' | url_escape }}
+
+        `
+        },
+        {
+          title: "url_param_escape",
+          url: "https://shopify.dev/docs/api/liquid/filters/url_param_escape",
+          keyword: ['filters', 'string'],
+          category: "Filters",
+          subcategory: "String",
+          description: `Escapes any characters in a string that are unsafe for URL parameters. \n\n The \`url_param_escape\` filter escapes the same characters as [url_escape](https://shopify.dev/docs/api/liquid/filters/url_escape), with the addition of \`&\`.
+
+    {{ '<p>Health & Love potions</p>' | url_param_escape }}
+
+        `
+        },
         
       ],
     },
