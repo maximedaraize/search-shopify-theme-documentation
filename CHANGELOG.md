@@ -10,4 +10,4 @@
 
 - Enable search with keywords of the main categories and subcategories
 - Add "Deprecated" tag to the search result if the element is deprecated
-- Add Sidepanel view to show documentation pewview, code snippets, links, objects properties, and more
+- Add Side-panel view to show documentation pewview, code snippets, links, objects properties, and more
