@@ -393,7 +393,7 @@ export const docList: DocType[] = [
         `,
         },
         {
-          title: "Raw",
+          title: "raw",
           url: "https://shopify.dev/docs/api/liquid/tags/raw",
           keyword: ["tags", "syntax"],
           category: "Tags",
@@ -413,6 +413,22 @@ export const docList: DocType[] = [
     section: {
       sectionTitle: "Tags: Theme",
       items: [
+        {
+          title: "content_for",
+          url: "https://shopify.dev/docs/api/liquid/tags/content_for",
+          keyword: ["tags", "theme"],
+          category: "Tags",
+          subcategory: "Theme",
+          description: `Creates a surface for rendering a block or blocks. \n\n The content_for tag requires a type to indicate whether it will render a single static block or a number of theme blocks defined in the JSON templates or section groups. \n\n Renders block elements within sections or other blocks as configured in the JSON template or section groups. See [theme blocks](https://shopify.dev/themes/architecture/blocks/theme-blocks) to see how to create theme blocks that can be used this way.
+
+    {% 
+      content_for "block", 
+      type: "button", 
+      id: "static-block-1" 
+    %}
+
+        `,
+        },
         {
           title: "include",
           url: "https://shopify.dev/docs/api/liquid/tags/include",
