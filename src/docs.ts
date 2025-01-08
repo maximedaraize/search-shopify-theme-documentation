@@ -4782,6 +4782,34 @@ export const docList: DocType[] = [
           `,
         },
         {
+          title: "product_option_value",
+          url: "https://shopify.dev/docs/api/liquid/objects/product_option_value",
+          keyword: ["objects"],
+          category: "Objects",
+          objectProperties: [
+            { name: "available", type: "boolean" },
+            { name: "id", type: "number" },
+            { name: "name", type: "string" },
+            { name: "product_url", type: "string" },
+            { name: "selected", type: "boolean" },
+            { name: "swatch", type: "swatch" },
+            { name: "variant", type: "variant" },
+          ],
+          description: `A product option value, such as "red" for the option "color"..
+          
+    {
+      "available": true,
+      "id": 2070385033281,
+      "name": "Bronze",
+      "product_url": null,
+      "selected": true,
+      "swatch": {},
+      "variant": {}
+    }
+          
+          `,
+        },
+        {
           title: "quantity_price_break",
           url: "https://shopify.dev/docs/api/liquid/objects/quantity_price_break",
           keyword: ["objects"],
@@ -5514,6 +5542,25 @@ export const docList: DocType[] = [
           `,
         },
         {
+          title: "swatch",
+          url: "https://shopify.dev/docs/api/liquid/objects/swatch",
+          keyword: ["objects"],
+          category: "Objects",
+          objectProperties: [
+            { name: "color", type: "color" },
+            { name: "image", type: "image" },
+          ],
+          description: `Color and image for visual representation. Available for [product option values](https://shopify.dev/docs/api/liquid/objects/product_option_value) and [filter](https://shopify.dev/docs/api/liquid/objects/filter_value) values.
+          
+          
+    {
+      "color": {},
+      "image": {}
+    }
+          
+          `,
+        },
+        {
           title: "tablerowloop",
           url: "https://shopify.dev/docs/api/liquid/objects/tablerowloop",
           keyword: ["objects"],
@@ -5570,6 +5617,28 @@ export const docList: DocType[] = [
       "rate": 0.05,
       "rate_percentage": 5,
       "title": "GST"
+    }
+          
+          `,
+        },
+        {
+          title: "taxonomy_category",
+          url: "https://shopify.dev/docs/api/liquid/objects/taxonomy_category",
+          keyword: ["objects"],
+          category: "Objects",
+          objectProperties: [
+            { name: "ancestors", type: "array of taxonomy category" },
+            { name: "gid", type: "string" },
+            { name: "id", type: "string" },
+            { name: "name", type: "string" },
+          ],
+          description: `The taxonomy category for a product
+          
+    {
+      "ancestors": [],
+      "gid": "gid://shopify/TaxonomyCategory/hb-1-9-6",
+      "id": "hb-1-9-6",
+      "name": "Vitamins & Supplements"
     }
           
           `,
